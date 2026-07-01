@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ДомПлюс — Агентство недвижимости · Продажа домов и квартир</title>
+  <meta
+    name="description"
+    content="ДомПлюс — риелторское агентство. Каталог квартир и домов, покупка и аренда, филиалы в Москве, Санкт-Петербурге, Казани и Екатеринбурге. Отзывы клиентов."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f8cff'/><path d='M25 52 50 30l25 22v22H25z' fill='white'/></svg>"
+  />
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="ДомПлюс — на главную">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="34" height="34">
+            <rect width="100" height="100" rx="22" fill="currentColor" />
+            <path d="M25 52 50 30l25 22v22H25z" fill="#fff" />
+          </svg>
+        </span>
+        <span class="logo__text">Дом<b>Плюс</b></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#catalog">Каталог</a>
+        <a href="#buy">Покупка</a>
+        <a href="#branches">Адреса и филиалы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#catalog" class="fav-link" id="favLink" aria-label="Избранное">
+          ♥ <span id="favCount">0</span>
+        </a>
+        <a class="btn btn--primary header__cta" href="tel:+74951204567">
+          Позвонить
+        </a>
+        <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__badge">Риелторское агентство №1 по отзывам</span>
+        <h1 class="hero__title">
+          Найдём дом<br />вашей мечты
+        </h1>
+        <p class="hero__lead">
+          Продажа и аренда квартир и домов. Полное сопровождение сделки,
+          проверка документов и помощь с ипотекой — бесплатно для покупателя.
+        </p>
+
+        <form class="search" id="searchForm" aria-label="Поиск недвижимости">
+          <div class="search__field">
+            <label for="fCity">Город</label>
+            <select id="fCity"><option value="">Любой</option></select>
+          </div>
+          <div class="search__field">
+            <label for="fType">Тип</label>
+            <select id="fType">
+              <option value="">Любой</option>
+              <option value="apartment">Квартира</option>
+              <option value="house">Дом</option>
+            </select>
+          </div>
+          <div class="search__field">
+            <label for="fDeal">Сделка</label>
+            <select id="fDeal">
+              <option value="">Любая</option>
+              <option value="sale">Покупка</option>
+              <option value="rent">Аренда</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary search__btn">
+            Найти
+          </button>
+        </form>
+
+        <ul class="hero__stats">
+          <li><b>12 лет</b><span>на рынке</span></li>
+          <li><b>4 500+</b><span>сделок</span></li>
+          <li><b>4 филиала</b><span>в РФ</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 400 360" class="hero__svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eaf1ff" />
+              <stop offset="1" stop-color="#dfeaff" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="360" rx="28" fill="url(#g1)" />
+          <rect x="60" y="150" width="120" height="150" rx="8" fill="#4f8cff" />
+          <rect x="210" y="90" width="130" height="210" rx="8" fill="#2f6fe0" />
+          <path d="M60 150 120 105 180 150z" fill="#3b7bef" />
+          <path d="M210 90 275 48 340 90z" fill="#255ec0" />
+          <g fill="#fff" opacity=".85">
+            <rect x="80" y="175" width="22" height="22" rx="3" />
+            <rect x="118" y="175" width="22" height="22" rx="3" />
+            <rect x="80" y="212" width="22" height="22" rx="3" />
+            <rect x="118" y="212" width="22" height="22" rx="3" />
+            <rect x="232" y="120" width="24" height="24" rx="3" />
+            <rect x="272" y="120" width="24" height="24" rx="3" />
+            <rect x="232" y="160" width="24" height="24" rx="3" />
+            <rect x="272" y="160" width="24" height="24" rx="3" />
+            <rect x="252" y="240" width="46" height="60" rx="4" opacity=".95" />
+          </g>
+          <circle cx="330" cy="60" r="26" fill="#ffd76a" opacity=".9" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section class="features container">
+    <article class="feature">
+      <div class="feature__ico">🔎</div>
+      <h3>Большой каталог</h3>
+      <p>Тысячи проверенных объектов — квартиры, дома, таунхаусы и пентхаусы.</p>
+    </article>
+    <article class="feature">
+      <div class="feature__ico">🛡️</div>
+      <h3>Чистая сделка</h3>
+      <p>Юридическая проверка объекта и собственника. Никаких скрытых комиссий.</p>
+    </article>
+    <article class="feature">
+      <div class="feature__ico">🏦</div>
+      <h3>Помощь с ипотекой</h3>
+      <p>Подберём выгодную ставку в банках-партнёрах и оформим документы.</p>
+    </article>
+    <article class="feature">
+      <div class="feature__ico">🔑</div>
+      <h3>Под ключ</h3>
+      <p>От показа до получения ключей — ведём вас на каждом этапе сделки.</p>
+    </article>
+  </section>
+
+  <!-- КАТАЛОГ -->
+  <section class="section" id="catalog">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Каталог недвижимости</h2>
+          <p class="section__sub" id="catalogCount">Загрузка объектов…</p>
+        </div>
+        <div class="chips" id="chips" role="tablist" aria-label="Фильтр по типу">
+          <button class="chip is-active" data-filter="all">Все</button>
+          <button class="chip" data-filter="apartment">Квартиры</button>
+          <button class="chip" data-filter="house">Дома</button>
+          <button class="chip" data-filter="sale">Покупка</button>
+          <button class="chip" data-filter="rent">Аренда</button>
+          <button class="chip" data-filter="fav">♥ Избранное</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"><!-- карточки рендерятся из app.js --></div>
+      <p class="empty" id="emptyState" hidden>
+        По вашему запросу ничего не найдено. Попробуйте изменить фильтры.
+      </p>
+    </div>
+  </section>
+
+  <!-- ПОКУПКА / КАК ПРОХОДИТ СДЕЛКА -->
+  <section class="section section--alt" id="buy">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Как проходит покупка</h2>
+          <p class="section__sub">Прозрачный процесс из 4 шагов — от заявки до ключей.</p>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">1</span>
+          <h3>Заявка</h3>
+          <p>Выбираете объект в каталоге и оставляете заявку. Перезвоним за 15 минут.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">2</span>
+          <h3>Показ</h3>
+          <p>Организуем просмотр в удобное время, отвечаем на все вопросы по объекту.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">3</span>
+          <h3>Сделка</h3>
+          <p>Проверяем документы, готовим договор, помогаем с ипотекой и расчётами.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">4</span>
+          <h3>Ключи</h3>
+          <p>Регистрируем право собственности — и вы получаете ключи от нового дома.</p>
+        </li>
+      </ol>
+
+      <div class="buy-cta">
+        <div>
+          <h3>Готовы подобрать недвижимость под ваш бюджет?</h3>
+          <p>Оставьте заявку — риелтор подготовит подборку объектов бесплатно.</p>
+        </div>
+        <button class="btn btn--primary btn--lg" data-open-request="Подбор недвижимости">
+          Оставить заявку
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- АДРЕСА И ФИЛИАЛЫ -->
+  <section class="section" id="branches">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Адреса и филиалы</h2>
+          <p class="section__sub">Приходите в офис или закажите звонок — работаем по всей стране.</p>
+        </div>
+      </div>
+      <div class="branches" id="branches-grid"><!-- из app.js --></div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="section section--alt" id="reviews">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Отзывы клиентов</h2>
+          <p class="section__sub" id="reviewsSummary">—</p>
+        </div>
+        <button class="btn btn--outline" id="addReviewBtn">Оставить отзыв</button>
+      </div>
+
+      <form class="review-form" id="reviewForm" hidden>
+        <div class="review-form__row">
+          <input type="text" id="rName" placeholder="Ваше имя" required />
+          <input type="text" id="rCity" placeholder="Город" />
+          <select id="rRating" aria-label="Оценка">
+            <option value="5">★★★★★ — 5</option>
+            <option value="4">★★★★☆ — 4</option>
+            <option value="3">★★★☆☆ — 3</option>
+            <option value="2">★★☆☆☆ — 2</option>
+            <option value="1">★☆☆☆☆ — 1</option>
+          </select>
+        </div>
+        <textarea id="rText" rows="3" placeholder="Расскажите о вашем опыте работы с агентством" required></textarea>
+        <div class="review-form__actions">
+          <button type="submit" class="btn btn--primary">Опубликовать</button>
+          <button type="button" class="btn btn--ghost" id="cancelReview">Отмена</button>
+        </div>
+      </form>
+
+      <div class="reviews" id="reviews-grid"><!-- из app.js --></div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ / ФУТЕР -->
+  <footer class="footer" id="contacts">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="#top" class="logo logo--light">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="30" height="30">
+              <rect width="100" height="100" rx="22" fill="#4f8cff" />
+              <path d="M25 52 50 30l25 22v22H25z" fill="#fff" />
+            </svg>
+          </span>
+          <span class="logo__text">Дом<b>Плюс</b></span>
+        </a>
+        <p class="footer__about">
+          Агентство недвижимости полного цикла. Помогаем покупать, продавать и
+          арендовать жильё с 2014 года.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Разделы</h4>
+        <a href="#catalog">Каталог</a>
+        <a href="#buy">Покупка</a>
+        <a href="#branches">Филиалы</a>
+        <a href="#reviews">Отзывы</a>
+      </div>
+      <div class="footer__col">
+        <h4>Контакты</h4>
+        <a href="tel:+74951204567">+7 (495) 120-45-67</a>
+        <a href="mailto:info@domplus.ru">info@domplus.ru</a>
+        <p>Москва, ул. Тверская, 15</p>
+        <p>Ежедневно 09:00 – 21:00</p>
+      </div>
+      <div class="footer__col">
+        <h4>Заявка</h4>
+        <p>Перезвоним и подберём объект под ваш запрос.</p>
+        <button class="btn btn--primary" data-open-request="Обратный звонок">
+          Заказать звонок
+        </button>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <span>© 2026 ДомПлюс. Все права защищены.</span>
+      <span>Информация на сайте не является публичной офертой.</span>
+    </div>
+  </footer>
+
+  <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ / ПОКУПКИ -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close aria-label="Закрыть">×</button>
+      <h3 id="modalTitle">Оставить заявку</h3>
+      <p class="modal__object" id="modalObject" hidden></p>
+      <form id="requestForm" class="modal__form">
+        <label>Имя<input type="text" id="reqName" required placeholder="Как к вам обращаться" /></label>
+        <label>Телефон<input type="tel" id="reqPhone" required placeholder="+7 (___) ___-__-__" /></label>
+        <label>Комментарий<textarea id="reqComment" rows="2" placeholder="Удобное время звонка, вопросы…"></textarea></label>
+        <label class="modal__check">
+          <input type="checkbox" id="reqAgree" required />
+          <span>Согласен на обработку персональных данных</span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--lg">Отправить заявку</button>
+      </form>
+      <div class="modal__success" id="modalSuccess" hidden>
+        <div class="modal__success-ico">✓</div>
+        <h3>Заявка отправлена!</h3>
+        <p>Спасибо! Наш риелтор свяжется с вами в течение 15 минут.</p>
+        <button class="btn btn--primary" data-close>Хорошо</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
