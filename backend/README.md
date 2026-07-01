@@ -30,6 +30,12 @@ Returns `{ "reply": "..." }` — the tutor's answer, always in Tajik.
 
 `lesson` is optional; when present the tutor focuses on that lesson's vocabulary.
 
+## Demo mode
+If `ANTHROPIC_API_KEY` is **not** set, the server starts in **demo mode** and
+answers `/api/chat` with pre-written Tajik responses (`src/demo.js`) instead of
+crashing. `GET /health` reports `"demo": true`. Set the key to enable the live
+Claude tutor.
+
 ## Notes
 - The tutor's behaviour (always answer in Tajik, teach Chinese) is defined in
   `src/tutorPrompt.js`.

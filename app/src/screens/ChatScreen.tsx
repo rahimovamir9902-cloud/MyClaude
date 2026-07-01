@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ChatBubble } from '../components/ChatBubble';
 import { sendChat } from '../api/client';
+import { DEMO_MODE } from '../config';
 import { tj } from '../i18n/tj';
 import { colors, radius, spacing } from '../theme/colors';
 import type { ChatMessage, Lesson } from '../types';
@@ -55,9 +56,11 @@ export function ChatScreen({ lesson }: Props) {
       scrollToEnd();
 
       try {
-        const reply = await sendChat(nextMessages, lesson);
+        const { reply } = await sendChat(nextMessages, lesson);
         setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
       } catch (err) {
+        // sendChat degrades to the demo tutor internally, so this is a rare
+        // last-resort safety net.
         setMessages((prev) => [
           ...prev,
           { role: 'assistant', content: `⚠️ ${tj.tutor.offlineHint}` },
@@ -76,6 +79,12 @@ export function ChatScreen({ lesson }: Props) {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={insets.top + 44}
     >
+      {DEMO_MODE && (
+        <View style={styles.demoBanner}>
+          <Text style={styles.demoBannerText}>ℹ️ {tj.tutor.demoBanner}</Text>
+        </View>
+      )}
+
       <FlatList
         ref={listRef}
         data={messages}
@@ -133,6 +142,14 @@ export function ChatScreen({ lesson }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background },
+  demoBanner: {
+    backgroundColor: '#FFF3D6',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F3D98A',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+  },
+  demoBannerText: { color: '#7A5A00', fontSize: 13 },
   listContent: { padding: spacing.md, paddingBottom: spacing.md },
   thinking: {
     flexDirection: 'row',

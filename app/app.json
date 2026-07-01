@@ -25,7 +25,8 @@
       "bundler": "metro"
     },
     "extra": {
-      "apiBaseUrl": "http://localhost:8787"
+      "apiBaseUrl": "http://localhost:8787",
+      "demoMode": true
     }
   }
 }

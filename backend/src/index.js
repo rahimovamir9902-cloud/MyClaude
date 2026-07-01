@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import Anthropic from '@anthropic-ai/sdk';
 
 import { TUTOR_SYSTEM_PROMPT, lessonContext } from './tutorPrompt.js';
+import { demoReply } from './demo.js';
 
 const PORT = process.env.PORT || 8787;
 const CLAUDE_MODEL = process.env.CLAUDE_MODEL || 'claude-haiku-4-5-20251001';
@@ -12,14 +13,18 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || '*')
   .split(',')
   .map((s) => s.trim());
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error(
-    '\n[FATAL] ANTHROPIC_API_KEY is not set. Copy .env.example to .env and add your key.\n'
+// If no API key is set, run in DEMO mode: serve pre-written Tajik answers
+// instead of crashing. Set ANTHROPIC_API_KEY to enable the live Claude tutor.
+const DEMO_MODE = !process.env.ANTHROPIC_API_KEY;
+if (DEMO_MODE) {
+  console.warn(
+    '[warn] ANTHROPIC_API_KEY not set — running in DEMO mode (pre-written answers).'
   );
-  process.exit(1);
 }
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const anthropic = DEMO_MODE
+  ? null
+  : new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const app = express();
 app.use(express.json({ limit: '256kb' }));
@@ -36,7 +41,7 @@ app.use(
 );
 
 app.get('/health', (_req, res) => {
-  res.json({ ok: true, model: CLAUDE_MODEL });
+  res.json({ ok: true, model: CLAUDE_MODEL, demo: DEMO_MODE });
 });
 
 /**
@@ -53,6 +58,11 @@ app.post('/api/chat', async (req, res) => {
 
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: 'messages[] is required' });
+    }
+
+    // No API key configured — answer from the offline demo tutor.
+    if (DEMO_MODE) {
+      return res.json({ reply: demoReply(messages, lesson), demo: true });
     }
 
     // Keep only the last 20 turns and sanitise shape.

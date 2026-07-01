@@ -15,6 +15,22 @@ always paired with pinyin and a Tajik translation.
 | 💬 **AI tutor** | Chat with an AI устод (powered by the Claude API) that answers only in Tajik, explains grammar, corrects you, and role-plays. |
 | 📚 **HSK lessons** | Structured HSK 1 vocabulary units (greetings, numbers, family, time, food, verbs) with hanzi, pinyin, and Tajik meanings. |
 | 🎯 **Lesson practice** | Open the tutor scoped to a specific lesson to drill its words. |
+| 🧪 **Demo mode** | Works with **zero setup** — no API key, no backend. The tutor answers with pre-written Tajik responses so you can try everything immediately. |
+
+## Demo mode (no setup required)
+
+Out of the box the app runs in **demo mode** (`extra.demoMode: true` in
+`app/app.json`): the AI tutor replies with pre-written Tajik answers, so the
+whole app is usable with no API key and no running backend. A small banner in
+the tutor makes this clear.
+
+Even with demo mode off, if the backend is unreachable the app automatically
+falls back to these demo answers, so it is never broken.
+
+**To switch to the live Claude tutor:** set `extra.demoMode` to `false` in
+`app/app.json`, point `extra.apiBaseUrl` at your running backend, and give the
+backend an `ANTHROPIC_API_KEY`. (The backend itself also runs in demo mode if no
+key is set, so `npm run dev` works before you have a key.)
 
 ## Project structure
 
