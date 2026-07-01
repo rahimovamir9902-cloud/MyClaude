@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Хитоӣ — Омӯзиши забони хитоӣ",
+    "slug": "xitoi",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "xitoi",
+    "splash": {
+      "backgroundColor": "#B71C1C",
+      "resizeMode": "contain"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.xitoi.app"
+    },
+    "android": {
+      "package": "com.xitoi.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#B71C1C"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "apiBaseUrl": "http://localhost:8787"
+    }
+  }
+}

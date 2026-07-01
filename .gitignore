@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Env / secrets — never commit these
+.env
+.env.local
+*.local
+
+# Expo
+.expo/
+dist/
+web-build/
+*.orig.*
+
+# Native
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+android/
+ios/
+
+# Logs & OS
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+*.log
