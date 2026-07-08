@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Молочная Радость — премиальная молочная продукция</title>
+<meta name="description" content="Молочная Радость — премиальная молочная продукция с доставкой. Отборное молоко, кефир, творог, сыр и масло с семейных ферм." />
+<style>
+  :root{
+    --navy-950:#060E1F;
+    --navy-900:#0A1830;
+    --navy-850:#0C1D3B;
+    --navy-800:#0F2449;
+    --navy-700:#16305F;
+    --navy-600:#1E3D78;
+    --line:#213b6b;
+    --red:#E1232E;
+    --red-600:#C41822;
+    --red-glow:rgba(225,35,46,.35);
+    --gold:#CBA85B;
+    --gold-soft:#E4CE97;
+    --cream:#F6F1E6;
+    --mist:#A9BCE0;
+    --mist-dim:#7C90BC;
+    --white:#FCFBF8;
+
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+    --maxw:1200px;
+    --radius:16px;
+    --radius-sm:10px;
+    --shadow:0 24px 60px -20px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--cream);
+    background:
+      radial-gradient(1200px 700px at 78% -8%, rgba(203,168,91,.10), transparent 60%),
+      radial-gradient(900px 600px at 10% 8%, rgba(30,61,120,.55), transparent 55%),
+      linear-gradient(180deg,var(--navy-900),var(--navy-950));
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  button{font-family:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;text-wrap:balance;margin:0}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:700;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.55em;justify-content:center;
+    border:0;cursor:pointer;border-radius:999px;
+    font-weight:700;font-size:.95rem;letter-spacing:.01em;
+    padding:.85em 1.5em;color:#fff;
+    background:linear-gradient(180deg,var(--red),var(--red-600));
+    box-shadow:0 10px 24px -8px var(--red-glow), inset 0 1px 0 rgba(255,255,255,.22);
+    transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -8px var(--red-glow), inset 0 1px 0 rgba(255,255,255,.28)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:3px}
+  .btn.ghost{
+    background:transparent;color:var(--cream);
+    box-shadow:inset 0 0 0 1.5px var(--line);
+  }
+  .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--gold);color:var(--white)}
+  .btn.sm{padding:.6em 1.05em;font-size:.85rem}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:linear-gradient(180deg,rgba(6,14,31,.92),rgba(6,14,31,.62));
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;gap:20px;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+  .brand .mark{width:42px;height:42px;flex:0 0 auto}
+  .brand .name{font-family:var(--serif);font-size:1.3rem;line-height:1;font-weight:600}
+  .brand .name b{color:var(--gold-soft);font-weight:600}
+  .brand .tag{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--mist-dim);margin-top:4px}
+  .nav-links{display:flex;gap:26px;font-size:.9rem;color:var(--mist)}
+  .nav-links a{transition:color .15s}
+  .nav-links a:hover{color:var(--white)}
+  .cart-btn{
+    position:relative;display:inline-flex;align-items:center;gap:.5em;
+    background:rgba(255,255,255,.04);border:1px solid var(--line);
+    color:var(--cream);border-radius:999px;padding:.55em 1em;cursor:pointer;
+    font-weight:600;font-size:.9rem;transition:border-color .2s,background .2s;
+  }
+  .cart-btn:hover{border-color:var(--gold);background:rgba(255,255,255,.07)}
+  .cart-btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+  .cart-count{
+    min-width:20px;height:20px;padding:0 5px;border-radius:999px;
+    background:var(--red);color:#fff;font-size:.72rem;font-weight:800;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;
+    padding:72px 0 84px;
+  }
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero p.lead{color:var(--mist);font-size:1.12rem;max-width:46ch;margin:22px 0 32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+  .hero-stats .s b{font-family:var(--serif);font-size:1.9rem;display:block;color:var(--white)}
+  .hero-stats .s span{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist-dim)}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:.6em;margin-bottom:22px;
+    background:rgba(203,168,91,.10);border:1px solid rgba(203,168,91,.35);
+    color:var(--gold-soft);border-radius:999px;padding:.45em 1em;font-size:.8rem;font-weight:600;
+    letter-spacing:.03em;
+  }
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .hero-art .platter{
+    position:absolute;bottom:6%;width:88%;height:60px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(203,168,91,.28),transparent 72%);
+    filter:blur(2px);
+  }
+  .hero-art svg{position:relative;filter:drop-shadow(0 40px 40px rgba(0,0,0,.5))}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;padding:44px 0 56px;gap:8px}
+    .hero-art{order:-1}
+    .hero-art svg{max-width:260px}
+  }
+
+  /* ---------- marquee strip ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.02)}
+  .strip .row{display:flex;gap:48px;align-items:center;justify-content:center;
+    flex-wrap:wrap;padding:16px 0;color:var(--mist);font-size:.85rem;letter-spacing:.08em}
+  .strip .row span{display:inline-flex;align-items:center;gap:.5em}
+  .strip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+  /* ---------- catalog ---------- */
+  section{padding:76px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+  .sec-head p{color:var(--mist);margin:10px 0 0;max-width:52ch}
+
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+  .chip{
+    border:1px solid var(--line);background:rgba(255,255,255,.03);
+    color:var(--mist);border-radius:999px;padding:.5em 1.1em;font-size:.88rem;
+    cursor:pointer;font-weight:600;transition:all .18s;
+  }
+  .chip:hover{color:var(--white);border-color:var(--navy-600)}
+  .chip[aria-pressed="true"]{
+    background:linear-gradient(180deg,var(--red),var(--red-600));color:#fff;border-color:transparent;
+    box-shadow:0 8px 18px -8px var(--red-glow);
+  }
+  .chip:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    position:relative;display:flex;flex-direction:column;
+    background:linear-gradient(180deg,var(--navy-800),var(--navy-850));
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    transition:transform .18s ease, border-color .2s, box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-5px);border-color:rgba(203,168,91,.5);box-shadow:var(--shadow)}
+  .card .thumb{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    padding:26px 10px 12px;
+    background:radial-gradient(120px 120px at 50% 30%,rgba(255,255,255,.06),transparent 70%);
+  }
+  .card .thumb svg{height:150px;filter:drop-shadow(0 18px 18px rgba(0,0,0,.45))}
+  .tagpill{
+    position:absolute;top:12px;left:12px;font-size:.66rem;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;padding:.35em .7em;border-radius:999px;
+    background:rgba(203,168,91,.16);color:var(--gold-soft);border:1px solid rgba(203,168,91,.4);
+  }
+  .tagpill.hit{background:var(--red-glow);color:#ffd9db;border-color:rgba(225,35,46,.5)}
+  .card .body{padding:6px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card h3{font-size:1.12rem;font-family:var(--serif)}
+  .card .meta{font-size:.82rem;color:var(--mist-dim)}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px}
+  .price{font-family:var(--serif);font-size:1.35rem;color:var(--white)}
+  .price small{font-size:.72rem;color:var(--mist-dim);font-family:var(--sans);margin-left:2px}
+  .add{
+    border:0;cursor:pointer;border-radius:12px;width:44px;height:44px;flex:0 0 auto;
+    background:linear-gradient(180deg,var(--red),var(--red-600));color:#fff;
+    font-size:1.4rem;font-weight:700;line-height:1;
+    box-shadow:0 8px 18px -8px var(--red-glow), inset 0 1px 0 rgba(255,255,255,.25);
+    transition:transform .12s, filter .2s;
+  }
+  .add:hover{transform:translateY(-2px)}
+  .add:active{transform:scale(.94)}
+  .add:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+  /* ---------- quality section ---------- */
+  .quality{background:
+     linear-gradient(180deg,transparent,rgba(30,61,120,.20),transparent)}
+  .qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:820px){.qgrid{grid-template-columns:1fr}}
+  .qcard{
+    padding:28px;border:1px solid var(--line);border-radius:var(--radius);
+    background:rgba(255,255,255,.02);
+  }
+  .qcard .ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:rgba(203,168,91,.12);border:1px solid rgba(203,168,91,.35);color:var(--gold-soft);margin-bottom:16px}
+  .qcard h3{font-size:1.25rem;margin-bottom:8px}
+  .qcard p{color:var(--mist);margin:0;font-size:.95rem}
+
+  /* ---------- delivery / cta band ---------- */
+  .band{
+    border-radius:24px;padding:48px;overflow:hidden;position:relative;
+    background:
+      radial-gradient(600px 300px at 85% 20%,rgba(225,35,46,.22),transparent 60%),
+      linear-gradient(120deg,var(--navy-700),var(--navy-850));
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;
+  }
+  .band h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+  .band p{color:var(--mist);margin:14px 0 0;max-width:46ch}
+  .band .actions{display:flex;flex-direction:column;gap:12px}
+  .band ul{list-style:none;padding:0;margin:18px 0 0;display:flex;gap:22px;flex-wrap:wrap;color:var(--cream)}
+  .band ul li{display:flex;align-items:center;gap:.5em;font-size:.92rem}
+  .band ul li svg{color:var(--gold-soft)}
+  @media(max-width:820px){.band{grid-template-columns:1fr;padding:32px}}
+
+  /* ---------- footer ---------- */
+  footer.site{border-top:1px solid var(--line);padding:52px 0 40px;margin-top:20px;color:var(--mist)}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+  @media(max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
+  footer h4{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+    color:var(--mist-dim);margin:0 0 14px}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:.9rem}
+  footer a:hover{color:var(--white)}
+  .fbottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:.82rem;color:var(--mist-dim)}
+
+  /* ---------- cart drawer ---------- */
+  .overlay{
+    position:fixed;inset:0;background:rgba(3,8,18,.6);backdrop-filter:blur(3px);
+    opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;z-index:80;
+  }
+  .overlay.open{opacity:1;visibility:visible}
+  .drawer{
+    position:fixed;top:0;right:0;height:100%;width:min(420px,100%);z-index:90;
+    background:linear-gradient(180deg,var(--navy-850),var(--navy-900));
+    border-left:1px solid var(--line);box-shadow:var(--shadow);
+    transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+    display:flex;flex-direction:column;
+  }
+  .drawer.open{transform:translateX(0)}
+  .drawer .dhead{display:flex;align-items:center;justify-content:space-between;
+    padding:22px 22px 16px;border-bottom:1px solid var(--line)}
+  .drawer .dhead h3{font-size:1.3rem}
+  .xbtn{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--cream);
+    width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:1.1rem;transition:.2s}
+  .xbtn:hover{border-color:var(--gold);color:var(--white)}
+  .xbtn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+  .ditems{flex:1;overflow:auto;padding:14px 22px;display:flex;flex-direction:column;gap:12px}
+  .ditem{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;
+    padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+  .ditem .mini{width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,.04);
+    display:flex;align-items:center;justify-content:center}
+  .ditem .mini svg{height:44px}
+  .ditem .info b{font-family:var(--serif);font-weight:600;font-size:1rem;display:block}
+  .ditem .info span{font-size:.8rem;color:var(--mist-dim)}
+  .qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .qty button{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);
+    background:rgba(255,255,255,.04);color:var(--cream);cursor:pointer;font-size:1rem;line-height:1}
+  .qty button:hover{border-color:var(--gold)}
+  .qty span{min-width:20px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
+  .ditem .line{font-family:var(--serif);color:var(--white);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .empty{color:var(--mist-dim);text-align:center;margin:auto;padding:40px 20px}
+  .empty svg{opacity:.5;margin-bottom:12px}
+  .dfoot{padding:18px 22px 24px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+  .totrow{display:flex;justify-content:space-between;align-items:baseline}
+  .totrow .t-label{color:var(--mist)}
+  .totrow .t-val{font-family:var(--serif);font-size:1.7rem;color:var(--white);font-variant-numeric:tabular-nums}
+  .dfoot .btn{width:100%}
+  .note{font-size:.78rem;color:var(--mist-dim);text-align:center}
+
+  .toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);
+    background:var(--navy-700);border:1px solid var(--gold);color:var(--cream);
+    padding:.8em 1.3em;border-radius:12px;font-size:.9rem;font-weight:600;z-index:120;
+    box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.25s;
+  }
+  .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- reusable SVG symbols: dairy carton, drop, leaf, check, cart, truck, farm, star -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="glassW" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe7f5"/>
+    </linearGradient>
+    <symbol id="carton" viewBox="0 0 120 170">
+      <!-- roof -->
+      <path d="M20 42 L60 20 L100 42 L100 46 L60 24 L20 46 Z" fill="rgba(0,0,0,.18)"/>
+      <path class="cap" d="M20 42 L60 20 L100 42 L60 60 Z" fill="currentColor"/>
+      <path d="M60 20 L100 42 L60 60 Z" fill="rgba(0,0,0,.14)"/>
+      <!-- body -->
+      <rect x="20" y="44" width="80" height="112" rx="6" fill="url(#glassW)"/>
+      <rect x="20" y="44" width="40" height="112" rx="6" fill="#ffffff" opacity=".5"/>
+      <!-- label band -->
+      <rect class="band" x="20" y="86" width="80" height="46" fill="currentColor"/>
+      <rect x="20" y="86" width="80" height="4" fill="rgba(0,0,0,.12)"/>
+      <!-- gold hairline -->
+      <rect x="20" y="90" width="80" height="1.5" fill="#CBA85B" opacity=".9"/>
+      <rect x="20" y="127" width="80" height="1.5" fill="#CBA85B" opacity=".9"/>
+      <!-- drop emblem -->
+      <path d="M60 98 c-6 7 -9 11 -9 15 a9 9 0 0 0 18 0 c0 -4 -3 -8 -9 -15 Z" fill="#fff" opacity=".95"/>
+    </symbol>
+    <symbol id="tub" viewBox="0 0 120 170">
+      <path d="M28 66 h64 l-6 84 a6 6 0 0 1 -6 6 H40 a6 6 0 0 1 -6 -6 Z" fill="url(#glassW)"/>
+      <path d="M28 66 h32 l-2 90 H40 a6 6 0 0 1 -6 -6 Z" fill="#ffffff" opacity=".5"/>
+      <ellipse cx="60" cy="66" rx="34" ry="9" fill="currentColor"/>
+      <ellipse cx="60" cy="63" rx="34" ry="9" fill="#fff" opacity=".25"/>
+      <rect class="band" x="30" y="92" width="60" height="40" fill="currentColor" rx="3"/>
+      <rect x="30" y="96" width="60" height="1.4" fill="#CBA85B"/>
+      <rect x="30" y="127" width="60" height="1.4" fill="#CBA85B"/>
+      <path d="M60 102 c-5 6 -8 9 -8 13 a8 8 0 0 0 16 0 c0 -4 -3 -7 -8 -13 Z" fill="#fff" opacity=".95"/>
+    </symbol>
+    <symbol id="block" viewBox="0 0 120 170">
+      <rect x="24" y="70" width="72" height="66" rx="8" fill="url(#glassW)"/>
+      <rect x="24" y="70" width="34" height="66" rx="8" fill="#fff" opacity=".5"/>
+      <path d="M24 70 h72 v10 H24 Z" fill="currentColor" opacity=".85"/>
+      <rect class="band" x="24" y="92" width="72" height="30" fill="currentColor"/>
+      <rect x="24" y="96" width="72" height="1.4" fill="#CBA85B"/>
+      <rect x="24" y="117" width="72" height="1.4" fill="#CBA85B"/>
+      <circle cx="60" cy="107" r="7" fill="#fff" opacity=".95"/>
+    </symbol>
+    <symbol id="bottle" viewBox="0 0 120 170">
+      <rect x="50" y="22" width="20" height="16" rx="3" fill="currentColor"/>
+      <path d="M48 38 h24 l6 14 v98 a8 8 0 0 1 -8 8 H50 a8 8 0 0 1 -8 -8 V52 Z" fill="url(#glassW)"/>
+      <path d="M48 38 h12 v120 H50 a8 8 0 0 1 -8 -8 V52 Z" fill="#fff" opacity=".5"/>
+      <rect class="band" x="42" y="86" width="48" height="46" fill="currentColor"/>
+      <rect x="42" y="90" width="48" height="1.4" fill="#CBA85B"/>
+      <rect x="42" y="127" width="48" height="1.4" fill="#CBA85B"/>
+      <path d="M66 98 c-5 6 -8 9 -8 13 a8 8 0 0 0 16 0 c0 -4 -3 -7 -8 -13 Z" fill="#fff" opacity=".95"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Молочная Радость — на главную">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="#0F2449" stroke="#CBA85B" stroke-width="1.5"/>
+        <path d="M24 14c-5 6-8 9.5-8 13.2A8 8 0 0 0 32 27.2C32 23.5 29 20 24 14Z" fill="#F6F1E6"/>
+        <path d="M24 14c-5 6-8 9.5-8 13.2A8 8 0 0 0 24 35.2Z" fill="#E1232E" opacity=".9"/>
+      </svg>
+      <span class="name">Молочная <b>Радость</b>
+        <span class="tag">Премиум · с 1998 года</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Основная навигация">
+      <a href="#catalog">Каталог</a>
+      <a href="#quality">Качество</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="cart-btn" id="openCart" aria-label="Открыть корзину">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.2L22 7H6"/></svg>
+      Корзина
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3L21 9l-4.8 4.3L17.7 21 12 17.3 6.3 21l1.5-7.7L3 9l6.4-.7z"/></svg>
+          Натуральный состав · без консервантов
+        </span>
+        <h1>Вкус, которому <em>доверяют</em><br>с 1998 года</h1>
+        <p class="lead">Отборное молоко, живой кефир, нежный творог и выдержанный сыр
+          с семейных ферм — свежая доставка к вашему столу уже завтра утром.</p>
+        <div class="hero-cta">
+          <a href="#catalog" class="btn">Смотреть каталог
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#delivery" class="btn ghost">Условия доставки</a>
+        </div>
+        <div class="hero-stats">
+          <div class="s"><b>27</b><span>лет на рынке</span></div>
+          <div class="s"><b>140+</b><span>фермерских хозяйств</span></div>
+          <div class="s"><b>4.9</b><span>оценка покупателей</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="platter"></div>
+        <svg viewBox="0 0 120 170" width="320" style="color:#12356e"><use href="#carton"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap row">
+      <span><span class="dot"></span> Свежесть 1 день</span>
+      <span><span class="dot"></span> ГОСТ · контроль качества</span>
+      <span><span class="dot"></span> Доставка от 2 часов</span>
+      <span><span class="dot"></span> Фермерское молоко</span>
+      <span><span class="dot"></span> Экологичная упаковка</span>
+    </div>
+  </div>
+
+  <!-- CATALOG -->
+  <section id="catalog">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Каталог продукции</span>
+          <h2>Линейка «Молочная Радость»</h2>
+          <p>Всё, что нужно для завтрака и семейного стола. Выберите категорию — цена указана за упаковку.</p>
+        </div>
+        <a href="#delivery" class="btn ghost sm">Как заказать</a>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Категории"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- QUALITY -->
+  <section id="quality" class="quality">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Почему нас выбирают</span>
+          <h2>Премиальное качество в каждой упаковке</h2>
+        </div>
+      </div>
+      <div class="qgrid">
+        <div class="qcard">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Контроль на всех этапах</h3>
+          <p>Каждая партия проходит лабораторную проверку — от фермы до полки. Никаких сухих смесей и растительных жиров.</p>
+        </div>
+        <div class="qcard">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-5-3-8-6.5-8-11a8 8 0 0 1 8-3 8 8 0 0 1 8 3c0 4.5-3 8-8 11z"/><path d="M12 7v10"/></svg></div>
+          <h3>Живая культура</h3>
+          <p>Кефир и йогурты на заквасках прямого внесения — сохраняем пробиотики и настоящий вкус, а не имитацию.</p>
+        </div>
+        <div class="qcard">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l3 6 4-14 3 8h4"/></svg></div>
+          <h3>Свежесть за 24 часа</h3>
+          <p>От дойки до вашего холодильника — не более суток. Холодовая цепь не прерывается ни на минуту.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY BAND -->
+  <section id="delivery" style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <span class="eyebrow">Доставка</span>
+          <h2>Завтрак привезём к вашей двери</h2>
+          <p>Оформите заказ до 22:00 — и свежие продукты будут у вас утром. Бесплатно при заказе от 1 000 ₽.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Слоты по 2 часа</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Оплата при получении</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Термо-упаковка</li>
+          </ul>
+        </div>
+        <div class="actions">
+          <button class="btn" id="openCart2">Собрать корзину</button>
+          <a href="#catalog" class="btn ghost">Вернуться в каталог</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site" id="contacts">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="#top" style="margin:0 0 14px">
+          <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#0F2449" stroke="#CBA85B" stroke-width="1.5"/>
+            <path d="M24 14c-5 6-8 9.5-8 13.2A8 8 0 0 0 32 27.2C32 23.5 29 20 24 14Z" fill="#F6F1E6"/>
+            <path d="M24 14c-5 6-8 9.5-8 13.2A8 8 0 0 0 24 35.2Z" fill="#E1232E" opacity=".9"/>
+          </svg>
+          <span class="name">Молочная <b>Радость</b></span>
+        </a>
+        <p style="max-width:34ch;font-size:.9rem">Семейная молочная марка премиум-класса.
+          Настоящий вкус фермерских продуктов — каждый день.</p>
+      </div>
+      <div>
+        <h4>Продукция</h4>
+        <ul>
+          <li><a href="#catalog">Молоко</a></li>
+          <li><a href="#catalog">Кисломолочное</a></li>
+          <li><a href="#catalog">Творог и сыр</a></li>
+          <li><a href="#catalog">Масло</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="#quality">О качестве</a></li>
+          <li><a href="#delivery">Доставка</a></li>
+          <li><a href="#top">Фермерам</a></li>
+          <li><a href="#top">Вакансии</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:88001234567">8 800 123-45-67</a></li>
+          <li><a href="mailto:hello@moloko-radost.ru">hello@moloko-radost.ru</a></li>
+          <li>Ежедневно 7:00–23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 1998–2026 «Молочная Радость». Демонстрационное приложение.</span>
+      <span>Дизайн-концепт · премиум-линейка</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Корзина" aria-hidden="true">
+  <div class="dhead">
+    <h3>Ваша корзина</h3>
+    <button class="xbtn" id="closeCart" aria-label="Закрыть корзину">✕</button>
+  </div>
+  <div class="ditems" id="ditems"></div>
+  <div class="dfoot">
+    <div class="totrow">
+      <span class="t-label">Итого</span>
+      <span class="t-val" id="total">0 ₽</span>
+    </div>
+    <button class="btn" id="checkout">Оформить заказ</button>
+    <p class="note">Бесплатная доставка от 1 000 ₽ · оплата при получении</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CATS = [
+    {id:"all",   label:"Всё"},
+    {id:"milk",  label:"Молоко"},
+    {id:"ferm",  label:"Кисломолочное"},
+    {id:"curd",  label:"Творог и сыр"},
+    {id:"butter",label:"Масло"}
+  ];
+
+  // shape: carton | tub | block | bottle ; color = label band color
+  var PRODUCTS = [
+    {id:1, name:"Молоко отборное 3,2%", cat:"milk",  unit:"1 л",   price:89,  shape:"carton", color:"#1E4E8C", tag:"хит", hit:true},
+    {id:2, name:"Топлёное молоко 3,5%", cat:"milk",  unit:"0,9 л", price:95,  shape:"carton", color:"#B5651D"},
+    {id:3, name:"Кефир 2,5%",           cat:"ferm",  unit:"0,9 л", price:79,  shape:"bottle", color:"#2E6E5A"},
+    {id:4, name:"Ряженка 4%",           cat:"ferm",  unit:"0,5 л", price:85,  shape:"bottle", color:"#C46A2E"},
+    {id:5, name:"Йогурт клубника",      cat:"ferm",  unit:"290 г",  price:75,  shape:"tub",    color:"#C0344B", tag:"новинка"},
+    {id:6, name:"Творог 5%",            cat:"curd",  unit:"250 г",  price:129, shape:"tub",    color:"#2B57A0"},
+    {id:7, name:"Сметана 20%",          cat:"curd",  unit:"300 г",  price:99,  shape:"tub",    color:"#3E63A8"},
+    {id:8, name:"Сыр «Радость»",        cat:"curd",  unit:"200 г",  price:249, shape:"block",  color:"#C9A24B", tag:"хит", hit:true},
+    {id:9, name:"Масло сливочное 82,5%",cat:"butter",unit:"180 г",  price:189, shape:"block",  color:"#D2A24C"},
+    {id:10,name:"Питьевой йогурт",      cat:"ferm",  unit:"0,5 л", price:69,  shape:"bottle", color:"#7A4FB0"},
+    {id:11,name:"Молоко цельное 6%",    cat:"milk",  unit:"1 л",   price:109, shape:"carton", color:"#153E7E", tag:"премиум"},
+    {id:12,name:"Масло шоколадное",     cat:"butter",unit:"180 г",  price:159, shape:"block",  color:"#6B4226", tag:"новинка"}
+  ];
+
+  var cart = {}; // id -> qty
+  var activeCat = "all";
+
+  var $ = function(s){return document.querySelector(s);};
+  var grid = $("#grid"), filters = $("#filters"),
+      ditems = $("#ditems"), overlay = $("#overlay"), drawer = $("#drawer"),
+      cartCount = $("#cartCount"), totalEl = $("#total"), toastEl = $("#toast");
+
+  function fmt(n){ return n.toLocaleString("ru-RU") + " ₽"; }
+
+  function svgFor(p, size){
+    return '<svg viewBox="0 0 120 170" height="'+size+'" style="color:'+p.color+'" aria-hidden="true"><use href="#'+p.shape+'"/></svg>';
+  }
+
+  // ---- filters ----
+  CATS.forEach(function(c){
+    var b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = c.label;
+    b.setAttribute("aria-pressed", c.id === activeCat ? "true":"false");
+    b.addEventListener("click", function(){
+      activeCat = c.id;
+      Array.prototype.forEach.call(filters.children, function(ch){
+        ch.setAttribute("aria-pressed", ch === b ? "true":"false");
+      });
+      renderGrid();
+    });
+    filters.appendChild(b);
+  });
+
+  // ---- catalog grid ----
+  function renderGrid(){
+    var list = PRODUCTS.filter(function(p){ return activeCat==="all" || p.cat===activeCat; });
+    grid.innerHTML = list.map(function(p){
+      var pill = p.tag ? '<span class="tagpill'+(p.hit?' hit':'')+'">'+p.tag+'</span>' : '';
+      return '<article class="card">'+
+        '<div class="thumb">'+pill+svgFor(p,150)+'</div>'+
+        '<div class="body">'+
+          '<h3>'+p.name+'</h3>'+
+          '<div class="meta">'+p.unit+' · фермерское</div>'+
+          '<div class="foot">'+
+            '<div class="price">'+p.price+' <small>₽</small></div>'+
+            '<button class="add" data-id="'+p.id+'" aria-label="Добавить «'+p.name+'» в корзину">+</button>'+
+          '</div>'+
+        '</div>'+
+      '</article>';
+    }).join("");
+  }
+
+  // ---- cart ----
+  function totalCount(){ var n=0; for(var k in cart) n+=cart[k]; return n; }
+  function totalSum(){
+    var s=0; for(var k in cart){ var p=byId(+k); if(p) s+=p.price*cart[k]; } return s;
+  }
+  function byId(id){ for(var i=0;i<PRODUCTS.length;i++) if(PRODUCTS[i].id===id) return PRODUCTS[i]; return null; }
+
+  function add(id){
+    cart[id]=(cart[id]||0)+1;
+    syncCart();
+    var p=byId(id);
+    toast("«"+p.name+"» в корзине");
+  }
+  function setQty(id,delta){
+    cart[id]=(cart[id]||0)+delta;
+    if(cart[id]<=0) delete cart[id];
+    syncCart();
+  }
+
+  function syncCart(){
+    cartCount.textContent = totalCount();
+    totalEl.textContent = fmt(totalSum());
+    renderDrawer();
+  }
+
+  function renderDrawer(){
+    var ids = Object.keys(cart);
+    if(!ids.length){
+      ditems.innerHTML = '<div class="empty">'+
+        '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.2L22 7H6"/></svg>'+
+        '<p>Корзина пуста.<br>Добавьте продукты из каталога.</p></div>';
+      return;
+    }
+    ditems.innerHTML = ids.map(function(k){
+      var p=byId(+k), q=cart[k];
+      return '<div class="ditem">'+
+        '<div class="mini">'+svgFor(p,44)+'</div>'+
+        '<div class="info"><b>'+p.name+'</b><span>'+p.unit+' · '+fmt(p.price)+'</span>'+
+          '<div class="qty">'+
+            '<button data-dec="'+p.id+'" aria-label="Убрать одну">−</button>'+
+            '<span>'+q+'</span>'+
+            '<button data-inc="'+p.id+'" aria-label="Добавить одну">+</button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="line">'+fmt(p.price*q)+'</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  function openCart(){ overlay.classList.add("open"); drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); }
+  function closeCart(){ overlay.classList.remove("open"); drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
+
+  var toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 1900);
+  }
+
+  // ---- events (delegation) ----
+  grid.addEventListener("click", function(e){
+    var b = e.target.closest(".add"); if(b) add(+b.dataset.id);
+  });
+  ditems.addEventListener("click", function(e){
+    var inc = e.target.closest("[data-inc]"), dec = e.target.closest("[data-dec]");
+    if(inc) setQty(+inc.dataset.inc, +1);
+    if(dec) setQty(+dec.dataset.dec, -1);
+  });
+  $("#openCart").addEventListener("click", openCart);
+  $("#openCart2").addEventListener("click", openCart);
+  $("#closeCart").addEventListener("click", closeCart);
+  overlay.addEventListener("click", closeCart);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeCart(); });
+
+  $("#checkout").addEventListener("click", function(){
+    if(!totalCount()){ toast("Добавьте хотя бы один продукт"); return; }
+    var sum = totalSum();
+    toast("Заказ на "+fmt(sum)+" оформлен! Спасибо ♥");
+    cart = {}; syncCart();
+    setTimeout(closeCart, 900);
+  });
+
+  renderGrid();
+  syncCart();
+})();
+</script>
+</body>
+</html>
