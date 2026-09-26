@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Pinduoduo с 1000 сомони</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --red: #d8312a; --red-dark: #a8231d; --soft-red: #fcebe8;
+    --ink: #1f1c1a; --muted: #6b645c; --line: #e6ddd1;
+    --paper: #fffdf9; --cream: #f8f1e7;
+    --green: #2f7d4f; --soft-green: #e5f2e9;
+    --amber: #a86a12; --soft-amber: #fdf1dc;
+    --blue: #25588f; --soft-blue: #e6eef7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body {
+    font-family: "Liberation Sans", "DejaVu Sans", "WenQuanYi Zen Hei", sans-serif;
+    color: var(--ink); font-size: 10.9pt; line-height: 1.5;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .zh { font-family: "WenQuanYi Zen Hei", sans-serif; }
+  .page {
+    width: 210mm; height: 297mm; padding: 15mm 16mm 20mm;
+    position: relative; overflow: hidden; background: var(--paper);
+    page-break-after: always; break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .foot {
+    position: absolute; left: 16mm; right: 16mm; bottom: 9mm;
+    display: flex; justify-content: space-between; font-size: 8pt; color: var(--muted);
+    border-top: 1px solid var(--line); padding-top: 2.5mm;
+  }
+  .foot b { color: var(--red); }
+  .kicker {
+    display: inline-block; font-size: 8.5pt; font-weight: bold; letter-spacing: .08em;
+    text-transform: uppercase; color: #fff; background: var(--red);
+    padding: 1.2mm 3mm; border-radius: 1.5mm; margin-bottom: 3mm;
+  }
+  h1 { font-size: 22pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.01em; }
+  h2 { font-size: 13pt; margin: 5mm 0 2mm; }
+  h3 { font-size: 11pt; margin: 3mm 0 1.5mm; }
+  p { margin: 0 0 2.4mm; }
+  .lead { font-size: 11.5pt; color: #3d3833; margin-bottom: 4mm; }
+  .muted { color: var(--muted); }
+  .red { color: var(--red); }
+  .small { font-size: 9.5pt; }
+  ul, ol { margin: 0 0 2.5mm; padding-left: 5.5mm; }
+  li { margin-bottom: 1.2mm; }
+  .box { border-radius: 2.5mm; padding: 3.5mm 4.5mm; margin: 3mm 0; }
+  .box > :last-child { margin-bottom: 0; }
+  .box-title { font-weight: bold; margin-bottom: 1.5mm; font-size: 10.5pt; }
+  .b-red { background: var(--soft-red); border-left: 1.5mm solid var(--red); }
+  .b-green { background: var(--soft-green); border-left: 1.5mm solid var(--green); }
+  .b-amber { background: var(--soft-amber); border-left: 1.5mm solid var(--amber); }
+  .b-blue { background: var(--soft-blue); border-left: 1.5mm solid var(--blue); }
+  .b-cream { background: var(--cream); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; }
+  table.t { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; font-size: 9.8pt; }
+  table.t th { background: var(--ink); color: #fff; text-align: left; padding: 1.8mm 2.2mm; font-weight: bold; }
+  table.t td { padding: 1.7mm 2.2mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.t tr:nth-child(even) td { background: #fbf7f1; }
+  table.t td.num, table.t th.num { text-align: right; white-space: nowrap; }
+  table.t tr.total td { font-weight: bold; background: var(--soft-red); border-top: 2px solid var(--red); }
+  .check { list-style: none; padding-left: 0; }
+  .check li { position: relative; padding-left: 7mm; }
+  .check li::before {
+    content: ""; position: absolute; left: 0; top: .6mm; width: 3.6mm; height: 3.6mm;
+    border: 1.6px solid var(--red); border-radius: .8mm; background: #fff;
+  }
+  .num-list { list-style: none; padding-left: 0; counter-reset: n; }
+  .num-list li { counter-increment: n; position: relative; padding-left: 8.5mm; margin-bottom: 2mm; }
+  .num-list li::before {
+    content: counter(n); position: absolute; left: 0; top: -.3mm; width: 5.8mm; height: 5.8mm;
+    border-radius: 50%; background: var(--red); color: #fff; font-weight: bold; font-size: 8.5pt;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 2.5mm; padding: 3mm 3.5mm; }
+  .card h3 { margin-top: 0; }
+  .tag { display: inline-block; font-size: 7.8pt; font-weight: bold; padding: .6mm 2mm; border-radius: 5mm; background: var(--soft-red); color: var(--red-dark); }
+  .quote {
+    font-family: "DejaVu Sans Mono", monospace; font-size: 8.8pt; line-height: 1.5;
+    background: #fff; border: 1px dashed #c9bdb0; border-radius: 2mm; padding: 3mm 3.5mm; white-space: pre-wrap;
+  }
+
+  /* cover */
+  .cover { background: var(--red); color: #fff; padding: 0; }
+  .cover-inner { position: absolute; inset: 0; padding: 20mm 18mm; display: flex; flex-direction: column; }
+  .cover .badge { align-self: flex-start; border: 1.5px solid rgba(255,255,255,.7); border-radius: 10mm; padding: 1.5mm 4.5mm; font-size: 9pt; letter-spacing: .12em; font-weight: bold; }
+  .cover .zh-big { font-family: "WenQuanYi Zen Hei", sans-serif; position: absolute; right: -6mm; top: 168mm; font-size: 96pt; color: rgba(255,255,255,.11); line-height: 1; letter-spacing: 2mm; }
+  .cover .inside { list-style: none; padding: 0; margin: 10mm 0 0; font-size: 11.5pt; color: #fff; }
+  .cover .inside li { padding-left: 8mm; position: relative; margin-bottom: 2.6mm; }
+  .cover .inside li::before { content: "✓"; position: absolute; left: 0; color: #ffe1a8; font-weight: bold; font-family: "DejaVu Sans", sans-serif; }
+  .cover h1 { font-family: "DejaVu Serif", serif; font-size: 40pt; line-height: 1.06; margin: 26mm 0 7mm; color: #fff; letter-spacing: -.02em; }
+  .cover h1 span { display: block; color: #ffe1a8; }
+  .cover .sub { font-size: 14pt; line-height: 1.4; max-width: 135mm; color: #fff3ef; }
+  .cover .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: auto; }
+  .cover .stat { background: rgba(0,0,0,.16); border-radius: 3mm; padding: 4.5mm; }
+  .cover .stat b { display: block; font-size: 22pt; font-family: "DejaVu Serif", serif; color: #ffe1a8; }
+  .cover .stat span { font-size: 9.5pt; color: #fff3ef; }
+  .cover .bottom { margin-top: 8mm; display: flex; justify-content: space-between; font-size: 9pt; color: #ffd9d3; border-top: 1px solid rgba(255,255,255,.35); padding-top: 4mm; }
+
+  /* flow */
+  .flow { display: grid; grid-template-columns: 1fr 5mm 1fr 5mm 1fr 5mm 1fr; align-items: stretch; margin: 4mm 0; }
+  .flow .st { background: #fff; border: 1.5px solid var(--line); border-radius: 3mm; padding: 3mm; font-size: 8.8pt; }
+  .flow .st .n { display: inline-flex; width: 6mm; height: 6mm; border-radius: 50%; background: var(--red); color: #fff; font-weight: bold; align-items: center; justify-content: center; font-size: 8.5pt; margin-bottom: 1.5mm; }
+  .flow .st b { display: block; font-size: 10pt; margin-bottom: 1mm; }
+  .flow .st .time { display: block; margin-top: 2mm; font-weight: bold; color: var(--red-dark); }
+  .flow .ar { display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 13pt; font-weight: bold; }
+
+  /* budget bar */
+  .bar { display: flex; height: 11mm; border-radius: 2mm; overflow: hidden; margin: 3mm 0 2mm; font-size: 8pt; font-weight: bold; color: #fff; }
+  .bar div { display: flex; align-items: center; justify-content: center; }
+  .legend { display: flex; flex-wrap: wrap; gap: 2mm 5mm; font-size: 8.8pt; }
+  .legend i { display: inline-block; width: 3mm; height: 3mm; border-radius: .6mm; margin-right: 1.5mm; vertical-align: -.3mm; }
+
+  .toc { list-style: none; padding: 0; margin: 0; }
+  .toc li { display: flex; align-items: baseline; gap: 2mm; padding: .9mm 0; border-bottom: 1px dotted #d6cabb; margin: 0; }
+  .toc li .p { margin-left: auto; font-weight: bold; color: var(--red); }
+  .toc li .s { color: var(--muted); font-size: 8.8pt; min-width: 16mm; }
+
+  .idea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .idea-grid .card ul { margin: 0; padding-left: 4.5mm; font-size: 9.2pt; }
+  .idea-grid .card li { margin-bottom: .8mm; }
+
+  .week { display: grid; grid-template-columns: 28mm 1fr; gap: 4mm; margin-bottom: 5mm; }
+  .week .wk { background: var(--ink); color: #fff; border-radius: 2.5mm; padding: 3mm; font-size: 8.5pt; }
+  .week .wk b { display: block; font-size: 12pt; color: #ffe1a8; }
+  .week .check { margin: 0; font-size: 10.3pt; }
+  .week .check li { margin-bottom: 1.8mm; }
+
+  .fill { border-bottom: 1px solid #bdb2a5; display: inline-block; min-width: 30mm; height: 4mm; }
+  .scen { display: grid; grid-template-columns: repeat(3,1fr); gap: 3mm; margin-top: 2mm; }
+  .scen .card { text-align: center; }
+  .scen .card b { display: block; font-size: 15pt; margin: 1mm 0; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<section class="page cover">
+  <div class="zh-big">拼多多</div>
+  <div class="cover-inner">
+    <div class="badge">ПОШАГОВЫЙ ГАЙД · 15 СТРАНИЦ</div>
+    <h1>Pinduoduo<span>с 1000 сомони</span></h1>
+    <div class="sub">Как без опыта и без знания китайского закупить первую партию товара в Китае, довезти её до Таджикистана и выйти в плюс за 30 дней, не потеряв деньги на ошибках новичка.</div>
+    <ul class="inside">
+      <li>Как оплатить заказ из Таджикистана без китайской карты</li>
+      <li>10 вопросов карго, которые спасут ваш груз</li>
+      <li>20 товаров, проходящих 7 фильтров прибыльности</li>
+      <li>Готовый расчёт партии: на что уйдёт каждый сомони</li>
+      <li>Модель предзаказа: продаём до того, как купили</li>
+    </ul>
+    <div class="stats">
+      <div class="stat"><b>1000</b><span>сомони — готовое распределение бюджета до последнего дирама</span></div>
+      <div class="stat"><b>30</b><span>дней — план по неделям от регистрации до первой прибыли</span></div>
+      <div class="stat"><b>0</b><span>знаний китайского — словарь и готовые поисковые запросы внутри</span></div>
+    </div>
+    <div class="bottom"><span>Издание 2026 · Для Таджикистана</span><span>Душанбе · Худжанд · Бохтар · Куляб</span></div>
+  </div>
+</section>
+
+<!-- ============ 2. INTRO + TOC ============ -->
+<section class="page">
+  <div class="kicker">Начните здесь</div>
+  <h1>Какую проблему решает этот гайд</h1>
+  <p class="lead">У вас есть около 1000 сомони и желание начать своё дело. Вы видели, что на Pinduoduo те же заколки, органайзеры и детские игрушки стоят в 3–10 раз дешевле, чем на «Корвоне» или в Instagram-магазинах. Но на старте стоят пять стен:</p>
+  <div class="grid2">
+    <div class="box b-red"><div class="box-title">Что мешает начать</div>
+      <ul>
+        <li>Приложение полностью на китайском</li>
+        <li>Карту Корти Милли или Humo там не примешь к оплате</li>
+        <li>Pinduoduo <b>не доставляет</b> за пределы Китая</li>
+        <li>Непонятно, что из тысяч товаров реально продастся</li>
+        <li>Одна ошибка с весом или товаром съедает половину бюджета</li>
+      </ul>
+    </div>
+    <div class="box b-green"><div class="box-title">Что у вас будет через 30 дней</div>
+      <ul>
+        <li>Рабочая связка: Pinduoduo → карго → ваш город</li>
+        <li>Первая партия из 3–4 проверенных товаров</li>
+        <li>Страница в Instagram/Telegram с первыми покупателями</li>
+        <li>Точная себестоимость каждой позиции</li>
+        <li>Понимание, какой товар масштабировать во 2-й партии</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Содержание</h2>
+  <ul class="toc">
+    <li><span class="s">Основа</span>Как товар попадает из Китая к вам: весь маршрут на одной схеме<span class="p">3</span></li>
+    <li><span class="s">Шаг 1</span>Аккаунт на Pinduoduo и 4 способа оплатить заказ из Таджикистана<span class="p">4</span></li>
+    <li><span class="s">Шаг 2</span>Как выбрать карго: 10 вопросов до первой отправки<span class="p">5</span></li>
+    <li><span class="s">Шаг 3</span>Как распределить 1000 сомони: бюджет по корзинам<span class="p">6</span></li>
+    <li><span class="s">Шаг 4</span>Что продавать: 7 фильтров товара и стоп-лист<span class="p">7</span></li>
+    <li><span class="s">Идеи</span>20 товаров для рынка Таджикистана и сезонный календарь<span class="p">8</span></li>
+    <li><span class="s">Шаг 5</span>Как искать товар и проверять продавца на Pinduoduo<span class="p">9</span></li>
+    <li><span class="s">Словарь</span>35 китайских слов, которых хватит для заказа<span class="p">10</span></li>
+    <li><span class="s">Расчёт</span>Калькулятор себестоимости и пример реальной партии<span class="p">11</span></li>
+    <li><span class="s">Шаг 6</span>Модель предзаказа: как продавать до того, как купили<span class="p">12</span></li>
+    <li><span class="s">Продажи</span>Скрипты ответов клиентам и идеи для Reels<span class="p">13</span></li>
+    <li><span class="s">План</span>30-дневный чек-лист по неделям<span class="p">14</span></li>
+    <li><span class="s">Финал</span>10 ошибок новичков и что делать со второй партией<span class="p">15</span></li>
+  </ul>
+  <div class="box b-amber small"><b>Как читать.</b> Сначала прочитайте гайд целиком (около 40 минут), затем идите по чек-листу на стр. 14 — день за днём. Все цены, курсы и тарифы в гайде — ориентиры на момент подготовки; перед каждым заказом сверяйте актуальные цифры.</div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>2</b></div>
+</section>
+
+<!-- ============ 3. ROUTE ============ -->
+<section class="page">
+  <div class="kicker">Основа</div>
+  <h1>Как товар едет из Китая к вам</h1>
+  <p class="lead">Главное, что нужно понять: <b>Pinduoduo — внутрикитайский маркетплейс.</b> Он доставляет только по Китаю. Поэтому «ваш адрес в Китае» — это склад карго-компании, которая принимает посылки и везёт их в Таджикистан.</p>
+
+  <div class="flow">
+    <div class="st"><span class="n">1</span><b>Pinduoduo</b>Вы заказываете товар и указываете адрес склада карго. Доставка по Китаю чаще всего бесплатная.<span class="time">1–5 дней</span></div>
+    <div class="ar">→</div>
+    <div class="st"><span class="n">2</span><b>Склад карго</b>Гуанчжоу, Иу или Урумчи. Приём, фотоотчёт, переупаковка, взвешивание.<span class="time">1–3 дня</span></div>
+    <div class="ar">→</div>
+    <div class="st"><span class="n">3</span><b>Дорога</b>Обычно авто: через Кыргызстан или перевал Кульма. Растаможка — у карго.<span class="time">12–25 дней</span></div>
+    <div class="ar">→</div>
+    <div class="st"><span class="n">4</span><b>Ваш город</b>Забираете груз в офисе карго, снимаете распаковку, отдаёте заказы.<span class="time">1–2 дня</span></div>
+  </div>
+  <p class="small muted">Итого от заказа до получения: <b>в среднем 3–4 недели</b>. Закладывайте этот срок во все обещания клиентам.</p>
+
+  <h2>Сколько стоит доставка</h2>
+  <p>Карго берёт деньги <b>за килограмм</b>. Типичный тариф для обычных товаров — примерно <b>$2,5–4 за кг</b> (в расчётах гайда берём ≈ 30 сомони/кг с запасом). Но есть ловушка — <b>объёмный вес</b>:</p>
+  <div class="box b-amber">
+    <div class="box-title">Правило объёма</div>
+    Карго считает <b>больший</b> из двух весов — реальный или «объёмный». Подушка весит 400 г, но в коробке занимает место как 2–3 кг — платить будете за объём. Поэтому новичку нужны <b>плотные и маленькие</b> товары: заколки, броши, силикон, бижутерия, детские прописи.
+  </div>
+
+  <h2>Pinduoduo или другие площадки?</h2>
+  <table class="t">
+    <tr><th style="width:22%">Площадка</th><th>Особенность</th><th style="width:30%">Для кого</th></tr>
+    <tr><td><b>Pinduoduo</b> <span class="zh">拼多多</span></td><td>Самые низкие розничные цены, покупка от 1 шт, групповые скидки</td><td><b>Старт с малым бюджетом — ваш вариант</b></td></tr>
+    <tr><td><b>1688</b></td><td>Оптовая площадка, минимальные партии от 10–100 шт</td><td>Вторая-третья партия, когда знаете хиты</td></tr>
+    <tr><td><b>Taobao</b></td><td>Огромный выбор, но цены обычно выше Pinduoduo</td><td>Редкие и нишевые товары</td></tr>
+    <tr><td><b>Temu / AliExpress</b></td><td>Сами доставляют за рубеж, но цены в разы выше</td><td>Покупка для себя, не для перепродажи</td></tr>
+  </table>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>3</b></div>
+</section>
+
+<!-- ============ 4. STEP 1: ACCOUNT & PAYMENT ============ -->
+<section class="page">
+  <div class="kicker">Шаг 1</div>
+  <h1>Аккаунт и оплата из Таджикистана</h1>
+  <p class="lead">Это место, где застревает большинство новичков. Хорошая новость: чтобы сделать первый заказ, вам не нужен китайский номер и китайская карта.</p>
+
+  <h2>Регистрация за 10 минут</h2>
+  <ol class="num-list">
+    <li><b>Установите WeChat</b> и зарегистрируйтесь на свой номер +992. Это главный мессенджер Китая: через него же вы будете общаться с карго и поставщиками.</li>
+    <li><b>Установите приложение <span class="zh">拼多多</span> (Pinduoduo).</b> Если его нет в вашем магазине приложений — скачайте с официального сайта Pinduoduo. Не ставьте APK с неизвестных сайтов.</li>
+    <li><b>Войдите через WeChat</b> (кнопка с зелёным логотипом на экране входа) — это самый простой путь для иностранцев. Если вход не проходит, карго-компании часто помогают с аккаунтом.</li>
+    <li><b>Включите перевод экрана:</b> Google Переводчик → «Камера» или функция перевода на экране вашего телефона. Этого достаточно, чтобы ориентироваться в приложении.</li>
+  </ol>
+
+  <h2>4 способа оплатить заказ</h2>
+  <table class="t">
+    <tr><th style="width:27%">Способ</th><th>Как работает</th><th class="num" style="width:15%">Расходы</th></tr>
+    <tr><td><b>Выкуп через карго</b><br><span class="tag">лучший старт</span></td><td>Вы отправляете карго ссылки на товары и деньги (сомони, переводом). Карго оплачивает заказ и сразу принимает его на свой склад.</td><td class="num">обычно 3–7%</td></tr>
+    <tr><td><b>Alipay + ваша Visa/Mastercard</b></td><td>В Alipay можно привязать иностранную карту. Минус: не все платежи проходят, при суммах от 200 ¥ берётся комиссия.</td><td class="num">≈ 3% + конвертация</td></tr>
+    <tr><td><b>WeChat Pay + Visa/Mastercard</b></td><td>Аналогично Alipay. Удобно, если WeChat уже установлен.</td><td class="num">≈ 3% + конвертация</td></tr>
+    <tr><td><b>Знакомый в Китае</b></td><td>Студент или родственник в Китае оплачивает, вы возвращаете деньги. Работает, но держится на доверии.</td><td class="num">по договорённости</td></tr>
+  </table>
+
+  <div class="box b-green">
+    <div class="box-title">Рекомендация для первой партии</div>
+    Используйте <b>выкуп через карго</b>. Одна компания отвечает и за оплату, и за приём, и за доставку — если что-то пошло не так, спрос с одного человека. Способы с Alipay/WeChat Pay проверяйте позже на маленьком заказе на 20–30 юаней.
+  </div>
+  <div class="box b-red small">
+    <b>Важно:</b> национальные карты (Корти Милли, Humo) за границей обычно не работают. Если хотите платить сами — оформите Visa или Mastercard в банке с поддержкой зарубежных платежей и проверьте лимиты заранее.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>4</b></div>
+</section>
+
+<!-- ============ 5. STEP 2: CARGO ============ -->
+<section class="page">
+  <div class="kicker">Шаг 2</div>
+  <h1>Как выбрать карго и не потерять груз</h1>
+  <p class="lead">Карго — ваш главный партнёр. От него зависят сроки, сохранность товара и половина вашей себестоимости. Ищите в Instagram и Telegram по запросам «карго Китай Душанбе», «доставка из Китая Худжанд», спрашивайте в местных чатах предпринимателей.</p>
+
+  <div class="grid2">
+    <div>
+      <h3>10 вопросов до первой отправки</h3>
+      <ul class="check small">
+        <li>Сколько стоит 1 кг и есть ли минимальный вес партии?</li>
+        <li>Как считаете объёмный вес? Какая формула?</li>
+        <li>Где склад: Гуанчжоу, Иу или Урумчи?</li>
+        <li>Реальный срок до моего города (не «от 10 дней»)?</li>
+        <li>Делаете фотоотчёт при приёме посылки?</li>
+        <li>Проверяете количество и явный брак?</li>
+        <li>Что будет при потере или порче груза? Есть страховка?</li>
+        <li>Растаможка включена в тариф за кг?</li>
+        <li>Делаете выкуп с Pinduoduo? Какая комиссия и курс?</li>
+        <li>Сколько дней товар бесплатно хранится на складе?</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Признаки надёжного карго</h3>
+      <ul class="small">
+        <li>Работает от 2 лет, есть офис, куда можно прийти</li>
+        <li>Много свежих отзывов с фото груза</li>
+        <li>Даёт каждому клиенту личный <b>код</b> для адреса</li>
+        <li>Присылает трек и статусы: «принято», «отправлено», «на границе»</li>
+        <li>Письменно (в переписке) фиксирует тариф</li>
+      </ul>
+      <div class="box b-red small"><b>Красный флаг:</b> самый дешёвый тариф в городе, нет офиса, просят 100% предоплаты за доставку до отправки груза.</div>
+    </div>
+  </div>
+
+  <h2>Как выглядит адрес склада в Pinduoduo</h2>
+  <p class="small">Карго присылает адрес на китайском. Вы копируете его в раздел <span class="zh">收货地址</span> (адрес доставки) по полям:</p>
+  <table class="t">
+    <tr><th style="width:32%">Поле в приложении</th><th>Что вписать</th></tr>
+    <tr><td><span class="zh">收货人</span> — получатель</td><td>Имя из адреса карго + <b>ваш личный код</b> (например, <i>TJ-1234</i>)</td></tr>
+    <tr><td><span class="zh">手机号</span> — телефон</td><td>Китайский номер склада из адреса карго</td></tr>
+    <tr><td><span class="zh">所在地区</span> — регион</td><td>Провинция / город / район, например <span class="zh">广东省 广州市 白云区</span></td></tr>
+    <tr><td><span class="zh">详细地址</span> — точный адрес</td><td>Улица, дом, склад + <b>ещё раз ваш код</b></td></tr>
+  </table>
+  <div class="box b-amber small">
+    <b>Урумчи или Гуанчжоу?</b> Склад в Урумчи (Синьцзян) ближе — дорога короче. Но многие продавцы пишут <span class="zh">偏远地区不包邮</span> — «в отдалённые районы доставка платная», и к цене товара добавится 5–15 ¥. Склады в Гуанчжоу и Иу почти всегда получают бесплатную доставку, но груз едет дольше. Сравните итог, а не только тариф.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>5</b></div>
+</section>
+
+<!-- ============ 6. STEP 3: BUDGET ============ -->
+<section class="page">
+  <div class="kicker">Шаг 3</div>
+  <h1>Как распределить 1000 сомони</h1>
+  <p class="lead">Главная ошибка — потратить всю сумму на товар. Тогда нечем платить за доставку, рекламу и неожиданные расходы, и первая партия лежит мёртвым грузом. Делите деньги на пять корзин:</p>
+
+  <div class="bar">
+    <div style="width:60.2%;background:var(--red)">Товар 602</div>
+    <div style="width:16.5%;background:var(--ink)">Карго 165</div>
+    <div style="width:4%;background:var(--amber)"></div>
+    <div style="width:8%;background:var(--blue)">80</div>
+    <div style="width:11.3%;background:var(--green)">113</div>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--red)"></i>Товар</span>
+    <span><i style="background:var(--ink)"></i>Доставка карго</span>
+    <span><i style="background:var(--amber)"></i>Упаковка</span>
+    <span><i style="background:var(--blue)"></i>Реклама</span>
+    <span><i style="background:var(--green)"></i>Резерв</span>
+  </div>
+
+  <table class="t" style="margin-top:4mm">
+    <tr><th>Корзина</th><th class="num">Сомони</th><th class="num">Доля</th><th>На что именно</th></tr>
+    <tr><td><b>Товар</b></td><td class="num">602</td><td class="num">60%</td><td>3–4 позиции по 120–170 сомони каждая (≈ 430 ¥)</td></tr>
+    <tr><td><b>Доставка карго</b></td><td class="num">165</td><td class="num">16,5%</td><td>≈ 5,5 кг × 30 сомони/кг</td></tr>
+    <tr><td><b>Упаковка</b></td><td class="num">40</td><td class="num">4%</td><td>Зип-пакеты, крафт-пакеты, наклейки с названием страницы</td></tr>
+    <tr><td><b>Реклама</b></td><td class="num">80</td><td class="num">8%</td><td>Реклама у местного блогера или продвижение 1–2 Reels</td></tr>
+    <tr><td><b>Резерв</b></td><td class="num">113</td><td class="num">11,5%</td><td>Скачок курса, доплата за объём, комиссия выкупа, брак</td></tr>
+    <tr class="total"><td>Итого</td><td class="num">1000</td><td class="num">100%</td><td></td></tr>
+  </table>
+
+  <div class="grid3">
+    <div class="card"><h3>Правило 4 корзин</h3><p class="small">Не ставьте всё на один товар. 3–4 разных товара — это тест: через месяц вы <b>знаете</b>, что продаётся, а не угадываете.</p></div>
+    <div class="card"><h3>Резерв — не лишнее</h3><p class="small">Резерв нельзя тратить на «ещё один классный товар». Если он не понадобился — он переходит во вторую партию.</p></div>
+    <div class="card"><h3>Деньги — отдельно</h3><p class="small">Заведите отдельную карту или кошелёк только для бизнеса. Иначе через месяц вы не поймёте, заработали или нет.</p></div>
+  </div>
+
+  <h2>Шпаргалка пересчёта юаней в сомони</h2>
+  <div class="grid3" style="grid-template-columns:repeat(5,1fr);gap:2.5mm">
+    <div class="card" style="text-align:center"><b style="font-size:13pt">10 ¥</b><br><span class="small muted">≈ 14 сомони</span></div>
+    <div class="card" style="text-align:center"><b style="font-size:13pt">50 ¥</b><br><span class="small muted">≈ 70 сомони</span></div>
+    <div class="card" style="text-align:center"><b style="font-size:13pt">100 ¥</b><br><span class="small muted">≈ 140 сомони</span></div>
+    <div class="card" style="text-align:center"><b style="font-size:13pt">430 ¥</b><br><span class="small muted">≈ 602 сомони</span></div>
+    <div class="card" style="text-align:center"><b style="font-size:13pt">1 кг</b><br><span class="small muted">≈ 30 сомони карго</span></div>
+  </div>
+  <p class="small muted" style="margin-top:2mm">Курс 1 ¥ ≈ 1,4 сомони взят с запасом: реальный курс обычно чуть ниже, а разница уходит на комиссии перевода и выкупа. Узнайте курс выкупа у своего карго и пересчитайте таблицу под него.</p>
+
+  <div class="box b-green">
+    <div class="box-title">Вариант «почти без риска»</div>
+    Если страшно вкладывать всю сумму — начните с <b>модели предзаказа</b> (стр. 12): сначала собираете заказы с предоплатой, потом выкупаете товар. Тогда ваши 1000 сомони работают как страховка, а не как ставка.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>6</b></div>
+</section>
+
+<!-- ============ 7. STEP 4: PRODUCT FILTERS ============ -->
+<section class="page">
+  <div class="kicker">Шаг 4</div>
+  <h1>Что продавать: 7 фильтров товара</h1>
+  <p class="lead">С бюджетом 1000 сомони вы выигрываете не «уникальным» товаром, а правильной математикой. Товар для первой партии должен пройти <b>все семь</b> фильтров.</p>
+
+  <table class="t">
+    <tr><th style="width:6%">№</th><th style="width:28%">Фильтр</th><th>Почему это важно</th></tr>
+    <tr><td>1</td><td><b>Лёгкий — до 200 г</b></td><td>Карго берёт за килограмм. Тяжёлый товар съедает всю наценку.</td></tr>
+    <tr><td>2</td><td><b>Дешёвый — до 15 ¥</b></td><td>Можно купить 20–60 штук и протестировать спрос, а не 3 штуки «на пробу».</td></tr>
+    <tr><td>3</td><td><b>Наценка ×3 и выше</b></td><td>Цена продажи минимум в 3 раза выше полной себестоимости с доставкой (стр. 11).</td></tr>
+    <tr><td>4</td><td><b>Не бьётся, не мнётся</b></td><td>Груз едет 3 недели и перегружается несколько раз. Стекло и керамика — нет.</td></tr>
+    <tr><td>5</td><td><b>Без размеров</b></td><td>Одежда и обувь = «не подошло», обмены и возвраты. Оставьте на потом.</td></tr>
+    <tr><td>6</td><td><b>Без бренда</b></td><td>Копии известных марок могут задержать на таможне, а покупатели теряют доверие.</td></tr>
+    <tr><td>7</td><td><b>Понятен за 3 секунды</b></td><td>Польза видна с одного фото или короткого видео: «щёлк — и платок держится».</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box b-red">
+      <div class="box-title">Стоп-лист для первой партии</div>
+      <ul class="small">
+        <li>Жидкости, аэрозоли, духи</li>
+        <li>Косметика, крема, БАДы, лекарства</li>
+        <li>Электроника с аккумуляторами — многие карго не берут или везут дороже</li>
+        <li>Ножи и всё, что похоже на оружие</li>
+        <li>Продукты питания</li>
+        <li>Крупногабарит: подушки, пледы, большие игрушки</li>
+        <li>Брендовые копии</li>
+      </ul>
+    </div>
+    <div class="box b-green">
+      <div class="box-title">Тест «3 вопроса» перед покупкой</div>
+      <ol class="small">
+        <li><b>Кому</b> именно я это продам? Назовите 3 знакомых, кто купил бы.</li>
+        <li><b>Где</b> это уже продают в моём городе и по какой цене? Если нигде — это не всегда плюс.</li>
+        <li><b>Что</b> я покажу в видео? Если показать нечего — товар будет продаваться тяжело.</li>
+      </ol>
+      <p class="small">Если на любой вопрос ответа нет — ищите следующий товар.</p>
+    </div>
+  </div>
+  <div class="box b-blue small"><b>Совет:</b> лучшие товары для старта решают <b>маленькую ежедневную проблему</b> — булавка колет ткань, продукты сохнут в холодильнике, ребёнок не хочет учиться писать. Люди платят за решение, а не за вещь.</div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>7</b></div>
+</section>
+
+<!-- ============ 8. IDEAS + CALENDAR ============ -->
+<section class="page">
+  <div class="kicker">Идеи</div>
+  <h1>20 товаров для рынка Таджикистана</h1>
+  <p class="lead">Все позиции проходят 7 фильтров. Это не гарантия продаж, а стартовый список для проверки спроса в вашем городе.</p>
+
+  <div class="idea-grid">
+    <div class="card"><h3>Для женщин</h3><ul>
+      <li>Магнитные застёжки для платка (без иголок)</li>
+      <li>Крабы для волос, матовые и перламутровые</li>
+      <li>Резинки-пружинки наборами</li>
+      <li>Бижутерия наборами: кольца, серьги</li>
+      <li>Шёлковые резинки-скранчи</li>
+    </ul></div>
+    <div class="card"><h3>Дом и кухня</h3><ul>
+      <li>Силиконовые крышки-растяжки для посуды</li>
+      <li>Органайзеры-разделители для ящиков</li>
+      <li>Клипсы для пакетов с продуктами</li>
+      <li>Силиконовые формы для выпечки и льда</li>
+      <li>Самоклеящиеся крючки без сверления</li>
+    </ul></div>
+    <div class="card"><h3>Для детей</h3><ul>
+      <li>Прописи с желобками (многоразовые)</li>
+      <li>Деревянные пазлы и сортеры</li>
+      <li>Многоразовые книжки с наклейками</li>
+      <li>Детские заколки наборами</li>
+      <li>Мини-бизиборды</li>
+    </ul></div>
+    <div class="card"><h3>Телефон и авто</h3><ul>
+      <li>Держатели для телефона на стол</li>
+      <li>Органайзеры для кабелей</li>
+      <li>Попсокеты и кольца-держатели</li>
+      <li>Кардхолдеры на чехол</li>
+      <li>Держатели для телефона в машину</li>
+    </ul></div>
+  </div>
+
+  <h2>Сезонный календарь продаж</h2>
+  <p class="small">Правило: <b>заказывайте за 5–6 недель до праздника</b>, иначе товар приедет, когда спрос уже прошёл.</p>
+  <table class="t">
+    <tr><th style="width:24%">Когда продавать</th><th style="width:26%">Повод</th><th>Что заходит</th><th style="width:17%">Когда заказать</th></tr>
+    <tr><td>Конец фев. – март</td><td>8 Марта (День матери), Навруз</td><td>Бижутерия, подарочные наборы, аксессуары для волос</td><td>до середины января</td></tr>
+    <tr><td>Рамадан и Иды*</td><td>Иди Рамазон, Иди Қурбон</td><td>Застёжки для платков, подарки детям, кухонные мелочи</td><td>за 6 недель</td></tr>
+    <tr><td>Июль – август</td><td>Подготовка к 1 сентября</td><td>Прописи, пеналы, наклейки, органайзеры</td><td>июнь</td></tr>
+    <tr><td>Сентябрь – ноябрь</td><td>Сезон свадеб</td><td>Бижутерия, подарочные наборы, аксессуары</td><td>август</td></tr>
+    <tr><td>Декабрь</td><td>Новый год</td><td>Детские игрушки, подарки до 50 сомони</td><td>до середины ноября</td></tr>
+  </table>
+  <p class="small muted">* Даты Рамадана и Идов каждый год сдвигаются примерно на 11 дней раньше — сверяйтесь с календарём.</p>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>8</b></div>
+</section>
+
+<!-- ============ 9. STEP 5: SEARCH & SELLER ============ -->
+<section class="page">
+  <div class="kicker">Шаг 5</div>
+  <h1>Как найти товар и проверить продавца</h1>
+  <p class="lead">Один и тот же товар на Pinduoduo продают десятки магазинов с разницей в цене в 2–3 раза и в качестве — ещё больше. Пять минут проверки экономят вам партию брака.</p>
+
+  <div class="grid3">
+    <div class="card"><h3>1. Поиск по фото</h3><p class="small">Нажмите значок камеры в строке поиска и загрузите фото или скриншот товара из Instagram или Pinterest. Самый быстрый способ.</p></div>
+    <div class="card"><h3>2. Китайские слова</h3><p class="small">Вставьте готовый запрос из словаря на стр. 10, например <span class="zh">头巾磁扣</span> — магнитная застёжка для платка.</p></div>
+    <div class="card"><h3>3. Переводчик</h3><p class="small">Переведите название на китайский в Google Переводчике и вставьте в поиск. Хуже, чем 1 и 2, но работает.</p></div>
+  </div>
+
+  <h2>Как работают групповые цены</h2>
+  <p>На странице товара внизу две кнопки. Левая — <span class="zh">单独购买</span> («купить отдельно») — дороже. Правая — <span class="zh">发起拼单</span> («начать групповую покупку») — дешевле. Выше обычно висит список уже открытых групп с кнопкой <span class="zh">去拼单</span> — присоединяйтесь к ним, и групповая цена ваша сразу, без ожидания.</p>
+
+  <h2>Чек-лист продавца: 7 проверок</h2>
+  <table class="t">
+    <tr><th style="width:36%">Что смотреть</th><th>Хороший знак</th></tr>
+    <tr><td><span class="zh">已拼</span> — сколько уже купили</td><td>От 1000 продаж. «已拼10万+件» — продано 100 000+ штук</td></tr>
+    <tr><td><span class="zh">评价</span> — отзывы</td><td>Откройте отзывы <span class="zh">有图</span> (с фото) — там реальный вид товара</td></tr>
+    <tr><td>Негативные отзывы</td><td>Жалобы на цвет — терпимо. На сломанное и «не то» — уходите</td></tr>
+    <tr><td><span class="zh">48小时发货</span></td><td>Отправка в течение 48 часов — не ждёте неделю</td></tr>
+    <tr><td><span class="zh">预售</span> — предпродажа</td><td>Избегайте: отправка может занять 7–15 дней</td></tr>
+    <tr><td><span class="zh">规格</span> — вариант</td><td>Проверьте, что выбрали нужный цвет и комплект — главная причина «пришло не то»</td></tr>
+    <tr><td>Сравнение</td><td>Посмотрите 3–5 магазинов. Самый дешёвый — редко лучший</td></tr>
+  </table>
+
+  <div class="box b-amber small">
+    <b>Если товар пришёл с браком.</b> На Pinduoduo можно подать заявку на возврат денег: <span class="zh">仅退款</span> (только возврат денег) или <span class="zh">退货退款</span> (возврат товара и денег). Срок на заявку ограничен, поэтому <b>фотоотчёт карго при приёме</b> так важен: брак нужно заметить на складе в Китае, а не в Душанбе через месяц.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>9</b></div>
+</section>
+
+<!-- ============ 10. DICTIONARY ============ -->
+<section class="page">
+  <div class="kicker">Словарь</div>
+  <h1>35 китайских слов для заказа</h1>
+  <p class="lead">Учить язык не нужно. Держите эту страницу открытой, когда работаете в приложении, — и копируйте поисковые запросы прямо в поиск.</p>
+  <div class="grid2">
+    <table class="t">
+      <tr><th colspan="2">В приложении</th></tr>
+      <tr><td class="zh" style="width:38%">拼单</td><td>групповая покупка</td></tr>
+      <tr><td class="zh">单独购买</td><td>купить отдельно (дороже)</td></tr>
+      <tr><td class="zh">去拼单</td><td>присоединиться к группе</td></tr>
+      <tr><td class="zh">包邮</td><td>бесплатная доставка</td></tr>
+      <tr><td class="zh">收货地址</td><td>адрес доставки</td></tr>
+      <tr><td class="zh">收货人</td><td>получатель</td></tr>
+      <tr><td class="zh">规格</td><td>вариант / комплектация</td></tr>
+      <tr><td class="zh">颜色</td><td>цвет</td></tr>
+      <tr><td class="zh">数量</td><td>количество</td></tr>
+      <tr><td class="zh">已拼</td><td>уже куплено (продажи)</td></tr>
+      <tr><td class="zh">评价 / 有图</td><td>отзывы / с фото</td></tr>
+      <tr><td class="zh">店铺</td><td>магазин</td></tr>
+      <tr><td class="zh">旗舰店</td><td>официальный магазин бренда</td></tr>
+      <tr><td class="zh">客服</td><td>чат с продавцом</td></tr>
+      <tr><td class="zh">发货 / 已发货</td><td>отгрузка / отправлено</td></tr>
+      <tr><td class="zh">确认收货</td><td>подтвердить получение</td></tr>
+      <tr><td class="zh">仅退款</td><td>возврат только денег</td></tr>
+      <tr><td class="zh">退货退款</td><td>возврат товара и денег</td></tr>
+      <tr><td class="zh">预售</td><td>предпродажа (долгая отправка)</td></tr>
+      <tr><td class="zh">批发</td><td>опт</td></tr>
+    </table>
+    <div>
+      <table class="t">
+        <tr><th colspan="2">Готовые поисковые запросы</th></tr>
+        <tr><td class="zh" style="width:42%">头巾磁扣</td><td>магнитная застёжка для платка</td></tr>
+        <tr><td class="zh">抓夹</td><td>краб для волос</td></tr>
+        <tr><td class="zh">发夹</td><td>заколка</td></tr>
+        <tr><td class="zh">电话线发圈</td><td>резинки-пружинки</td></tr>
+        <tr><td class="zh">硅胶保鲜盖</td><td>силиконовые крышки для посуды</td></tr>
+        <tr><td class="zh">抽屉收纳盒</td><td>органайзер для ящика</td></tr>
+        <tr><td class="zh">凹槽练字帖</td><td>прописи с желобками</td></tr>
+        <tr><td class="zh">木质拼图</td><td>деревянный пазл</td></tr>
+        <tr><td class="zh">手机支架</td><td>держатель для телефона</td></tr>
+        <tr><td class="zh">数据线收纳</td><td>органайзер для кабелей</td></tr>
+      </table>
+      <div class="box b-blue small">
+        <div class="box-title">Как уточнять запрос</div>
+        Добавляйте к запросу слова:<br>
+        <span class="zh">套装</span> — набор,
+        <span class="zh">儿童</span> — детский,
+        <span class="zh">女</span> — женский,
+        <span class="zh">包邮</span> — с бесплатной доставкой,
+        <span class="zh">批发</span> — оптом (дешевле при количестве).
+      </div>
+      <div class="box b-green small">
+        <b>Лайфхак:</b> если продавец пишет что-то непонятное в чате <span class="zh">客服</span>, отвечайте короткими фразами через переводчик. Простые предложения переводятся точнее длинных.
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>10</b></div>
+</section>
+
+<!-- ============ 11. CALCULATOR ============ -->
+<section class="page">
+  <div class="kicker">Расчёт</div>
+  <h1>Калькулятор себестоимости</h1>
+  <p class="lead">Цена на Pinduoduo — это ещё не ваша себестоимость. Настоящая цена одной штуки включает доставку, и считать её нужно <b>до</b> покупки, а не после.</p>
+
+  <div class="box b-cream" style="text-align:center;font-size:11.5pt">
+    <b>Себестоимость 1 шт</b> = цена в ¥ × <b class="red">курс</b> + вес 1 шт в кг × <b class="red">тариф карго</b><br>
+    <span class="small muted">В примере: курс 1 ¥ ≈ 1,4 сомони (с запасом на комиссии) · тариф ≈ 30 сомони за кг</span>
+  </div>
+
+  <h2>Пример первой партии на 602 сомони</h2>
+  <table class="t" style="font-size:8.8pt">
+    <tr><th>Товар</th><th class="num">Шт</th><th class="num">¥ / шт</th><th class="num">Товар, сом.</th><th class="num">Вес, кг</th><th class="num">Карго, сом.</th><th class="num">Себест. 1 шт</th><th class="num">Продажа</th><th class="num">Выручка</th></tr>
+    <tr><td>Застёжки для платка, набор 10 шт</td><td class="num">20</td><td class="num">6</td><td class="num">168</td><td class="num">0,8</td><td class="num">24</td><td class="num">9,6</td><td class="num">35</td><td class="num">700</td></tr>
+    <tr><td>Крабы для волос</td><td class="num">60</td><td class="num">1,5</td><td class="num">126</td><td class="num">0,9</td><td class="num">27</td><td class="num">2,6</td><td class="num">12</td><td class="num">720</td></tr>
+    <tr><td>Силиконовые крышки, набор 6 шт</td><td class="num">20</td><td class="num">5</td><td class="num">140</td><td class="num">2,0</td><td class="num">60</td><td class="num">10,0</td><td class="num">35</td><td class="num">700</td></tr>
+    <tr><td>Деревянный пазл-сортер</td><td class="num">12</td><td class="num">10</td><td class="num">168</td><td class="num">1,8</td><td class="num">54</td><td class="num">18,5</td><td class="num">60</td><td class="num">720</td></tr>
+    <tr class="total"><td>Итого</td><td class="num">112</td><td class="num">—</td><td class="num">602</td><td class="num">5,5</td><td class="num">165</td><td class="num">—</td><td class="num">—</td><td class="num">2840</td></tr>
+  </table>
+  <p class="small muted">Цены и веса — примерные, для демонстрации расчёта. Перед заказом подставьте реальные цифры из карточки товара и тариф своего карго.</p>
+
+  <h2>Что будет, если продать не всё</h2>
+  <p class="small">Всего потрачено: 602 (товар) + 165 (карго) + 40 (упаковка) + 80 (реклама) = <b>887 сомони</b>. Резерв 113 сомони не тронут.</p>
+  <div class="scen">
+    <div class="card"><span class="small muted">Осторожно: продано 40%</span><b>1136 сом.</b><span class="small">+249 сверху вложений<br>и 60% товара на складе</span></div>
+    <div class="card" style="border:2px solid var(--red)"><span class="small muted">Реалистично: продано 60%</span><b class="red">1704 сом.</b><span class="small">+817 сверху вложений<br>и 40% товара на складе</span></div>
+    <div class="card"><span class="small muted">Хорошо: продано 90%</span><b>2556 сом.</b><span class="small">+1669 сверху вложений<br>почти без остатков</span></div>
+  </div>
+
+  <div class="box b-amber small" style="margin-top:4mm">
+    <b>Правило ×3.</b> Минимальная цена продажи = себестоимость × 3. Эта наценка покрывает доставку по городу, рекламу, бракованные штуки и ваше время. Проверьте цены конкурентов в Instagram и на базаре: если ×3 выходит дороже рынка — это не ваш товар.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>11</b></div>
+</section>
+
+<!-- ============ 12. STEP 6: PRE-ORDER & CHANNELS ============ -->
+<section class="page">
+  <div class="kicker">Шаг 6</div>
+  <h1>Модель предзаказа: продайте до покупки</h1>
+  <p class="lead">Это главный секрет старта с маленьким бюджетом. Вы не угадываете спрос — вы его <b>проверяете</b>: показываете товар, собираете заказы с предоплатой и только потом выкупаете.</p>
+
+  <ol class="num-list">
+    <li><b>Отберите 10–15 товаров</b> по 7 фильтрам. Сохраните фото и видео из карточки и отзывов покупателей (<span class="zh">有图</span>).</li>
+    <li><b>Опубликуйте</b> в Instagram и Telegram: цена, польза, честный срок — «привоз 3–4 недели».</li>
+    <li><b>Берите предоплату 50%</b> переводом (Alif, Dushanbe City и т. п.). Остаток — при получении.</li>
+    <li><b>Выкупайте</b> популярные позиции, как только набралась партия. Добавьте 20–30% сверху под покупателей без предзаказа.</li>
+    <li><b>По приезду</b> снимите свою распаковку, отдайте заказы за 48 часов, соберите отзывы. Дальше продаёте уже со своими фото.</li>
+  </ol>
+
+  <h2>Где искать первых покупателей</h2>
+  <table class="t">
+    <tr><th style="width:26%">Канал</th><th>Как использовать</th></tr>
+    <tr><td><b>Instagram</b></td><td>Reels с товаром + 3–5 сторис в день. Главный канал продаж для большинства ниш в Таджикистане.</td></tr>
+    <tr><td><b>Telegram</b></td><td>Группы-барахолки вашего города, чаты районов и мам. Свой канал — как витрина с ценами.</td></tr>
+    <tr><td><b>WhatsApp</b></td><td>Статусы для своих контактов, родительские чаты школ и садиков (детские товары!).</td></tr>
+    <tr><td><b>Somon.tj</b></td><td>Бесплатные объявления — особенно для детских и домашних товаров.</td></tr>
+    <tr><td><b>Магазины и салоны</b></td><td>Предложите мелкий опт по цене «себестоимость × 2»: салонам — аксессуары для волос, канцтоварам — прописи.</td></tr>
+  </table>
+
+  <h3>Шаблон поста для предзаказа</h3>
+  <div class="quote">Магнитные застёжки для платка — без иголок и дыр на ткани!
+
+✓ Держат крепко даже шёлк и шифон
+✓ Набор 10 штук — разные цвета
+✓ Не ржавеют, не цепляют волосы
+
+Цена: 35 сомони за набор
+Предзаказ до пятницы, привоз через 3–4 недели
+Доставка по городу — курьером или самовывоз
+
+Пишите «ХОЧУ» в директ — отвечу за 10 минут</div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>12</b></div>
+</section>
+
+<!-- ============ 13. SCRIPTS & REELS ============ -->
+<section class="page">
+  <div class="kicker">Продажи</div>
+  <h1>Скрипты ответов и идеи для Reels</h1>
+  <p class="lead">Половина продаж теряется в директе: человек спросил цену, получил сухое «35 сомони» и ушёл. Отвечайте так, чтобы разговор продолжался.</p>
+
+  <table class="t">
+    <tr><th style="width:26%">Клиент пишет</th><th>Ваш ответ</th></tr>
+    <tr><td><b>«Сколько стоит?»</b></td><td>«Набор из 10 застёжек — 35 сомони, хватает на все платки. Вам какие цвета больше нравятся: светлые или тёмные?» <span class="muted">— цена + польза + вопрос.</span></td></tr>
+    <tr><td><b>«Дорого»</b></td><td>«Понимаю. Одна застёжка выходит 3,5 сомони и служит годами, а платок от иголок портится. Могу отложить набор до пятницы — решите спокойно».</td></tr>
+    <tr><td><b>«А вдруг обманете?»</b></td><td>«Правильный вопрос! Вот отзывы и видео прошлых выдач. Берём только 50% предоплаты, остальное — когда товар у вас в руках».</td></tr>
+    <tr><td><b>«Когда будет?»</b></td><td>«Товар уже в пути, ориентир — 3–4 недели. Я пришлю вам видео, когда он приедет, и доставим в первые 2 дня».</td></tr>
+    <tr><td><b>«Подумаю»</b></td><td>«Конечно. Осталось N наборов в этой партии, следующая будет через месяц. Напомнить вам завтра?» <span class="muted">— только если это правда.</span></td></tr>
+  </table>
+
+  <h2>6 идей для Reels, которые продают</h2>
+  <div class="grid2">
+    <div class="card"><h3>Распаковка посылки из Китая</h3><p class="small">Самый смотрибельный формат. Покажите вес мешка, цену за кг, первые впечатления.</p></div>
+    <div class="card"><h3>«До / после»</h3><p class="small">Платок на иголках → на магнитах. Пустой ящик → с органайзером. 7–10 секунд.</p></div>
+    <div class="card"><h3>«Товар за 12 сомони, который…»</h3><p class="small">Один товар — одна проблема — одно решение. Цена в первых словах видео.</p></div>
+    <div class="card"><h3>Проверка на прочность</h3><p class="small">Тянем крышку-растяжку, трясём платок с застёжкой. Люди верят глазам.</p></div>
+    <div class="card"><h3>Сборка заказа</h3><p class="small">Упаковка заказа для «Мадины из Бохтара» (с разрешения клиента) — это живое доказательство продаж.</p></div>
+    <div class="card"><h3>Путь товара</h3><p class="small">Скрин заказа на Pinduoduo → фото со склада → груз в городе. Строит доверие к предзаказам.</p></div>
+  </div>
+
+  <div class="box b-green small"><b>Отзывы — ваш главный актив.</b> После каждой выдачи просите короткое голосовое или скрин переписки. Складывайте в «Актуальное → Отзывы». 20 живых отзывов продают лучше любой рекламы.</div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>13</b></div>
+</section>
+
+<!-- ============ 14. 30-DAY PLAN ============ -->
+<section class="page">
+  <div class="kicker">План</div>
+  <h1>30 дней: чек-лист по неделям</h1>
+  <p class="lead">Распечатайте эту страницу и отмечайте пункты. Не переходите к следующей неделе, пока не закрыта текущая.</p>
+
+  <div class="week"><div class="wk">Неделя<b>1</b>дни 1–7<br>Подготовка</div>
+    <ul class="check">
+      <li>Установить WeChat и Pinduoduo, войти в аккаунт</li>
+      <li>Найти 2–3 карго, задать всем 10 вопросов (стр. 5), выбрать одно</li>
+      <li>Получить личный код и адрес склада, внести его в Pinduoduo</li>
+      <li>Создать страницу: имя, аватар, описание, 6–9 первых публикаций</li>
+      <li>Отобрать 10–15 товаров по 7 фильтрам, посчитать себестоимость (стр. 11)</li>
+    </ul></div>
+
+  <div class="week"><div class="wk">Неделя<b>2</b>дни 8–14<br>Предзаказ и выкуп</div>
+    <ul class="check">
+      <li>Публиковать 1 пост/Reels и 3–5 сторис каждый день</li>
+      <li>Разместить объявления в 5+ Telegram-группах и на Somon.tj</li>
+      <li>Собрать предзаказы с предоплатой 50%, вести их в таблице</li>
+      <li>Выбрать 3–4 лидера и выкупить первую партию (до 602 сомони)</li>
+      <li>Получить от карго фотоотчёт и проверить количество</li>
+    </ul></div>
+
+  <div class="week"><div class="wk">Неделя<b>3</b>дни 15–21<br>Прогрев</div>
+    <ul class="check">
+      <li>Сторис «товар едет»: статусы карго, опросы «какой цвет берёте?»</li>
+      <li>Продолжать собирать предзаказы на товары в пути</li>
+      <li>Обойти 3–5 магазинов и салонов с предложением мелкого опта</li>
+      <li>Купить упаковку и наклейки (40 сомони), запустить рекламу (80 сомони)</li>
+    </ul></div>
+
+  <div class="week"><div class="wk">Неделя<b>4</b>дни 22–30<br>Продажи и итоги</div>
+    <ul class="check">
+      <li>Забрать груз, снять распаковку для Reels</li>
+      <li>Раздать все предзаказы за 48 часов, взять остаток оплаты</li>
+      <li>Собрать минимум 10 отзывов, выложить в «Актуальное»</li>
+      <li>Заполнить таблицу итогов ниже и спланировать вторую партию</li>
+    </ul></div>
+
+  <div class="box b-cream">
+    <div class="box-title">Итоги месяца</div>
+    <div class="grid2 small" style="gap:3mm 6mm">
+      <div>Вложено всего: <span class="fill"></span> сом.</div>
+      <div>Выручка: <span class="fill"></span> сом.</div>
+      <div>Прибыль: <span class="fill"></span> сом.</div>
+      <div>Остаток товара: <span class="fill"></span> шт</div>
+      <div>Хит продаж: <span class="fill" style="min-width:45mm"></span></div>
+      <div>Убрать из ассортимента: <span class="fill" style="min-width:30mm"></span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони</span><b>14</b></div>
+</section>
+
+<!-- ============ 15. MISTAKES + NEXT ============ -->
+<section class="page">
+  <div class="kicker">Финал</div>
+  <h1>10 ошибок, которые стоят денег</h1>
+  <p class="lead">Каждую из них делал почти каждый, кто начинал возить из Китая. Вам не обязательно.</p>
+
+  <div class="grid2">
+    <ol class="num-list small">
+      <li><b>Все деньги в один товар.</b> Не продался — бизнес закончился.</li>
+      <li><b>Не посчитан вес и объём.</b> Доставка оказалась дороже товара.</li>
+      <li><b>Брендовые копии.</b> Риск на таможне и потеря доверия.</li>
+      <li><b>Одежда с размерами в первой партии.</b> Обмены съедают прибыль.</li>
+      <li><b>Самое дешёвое карго без вопросов.</b> Потерянный или испорченный груз.</li>
+    </ol>
+    <ol class="num-list small" start="6" style="counter-reset:n 5">
+      <li><b>Нет фотоотчёта со склада.</b> Брак замечен, когда вернуть деньги уже нельзя.</li>
+      <li><b>Цена «на глаз».</b> Наценка ниже ×3 — работа в ноль.</li>
+      <li><b>Тишина, пока товар едет.</b> Три недели можно было собирать заказы.</li>
+      <li><b>Прибыль потрачена.</b> Вторую партию не на что купить.</li>
+      <li><b>Нет учёта.</b> Без таблицы вы не знаете, заработали или нет.</li>
+    </ol>
+  </div>
+
+  <h2>Что делать со второй партией</h2>
+  <div class="grid3">
+    <div class="card"><span class="tag">Партия 2</span><h3 style="margin-top:2mm">Удвойте хит</h3><p class="small">Реинвестируйте прибыль. Купите ×2 товара-лидера, уберите аутсайдера, добавьте 1 новый товар на тест.</p></div>
+    <div class="card"><span class="tag">От 3000 сом.</span><h3 style="margin-top:2mm">Переход на опт</h3><p class="small">Ищите хиты на 1688 и у производителей — при партии от 50–100 шт цена за штуку падает ещё на 20–40%.</p></div>
+    <div class="card"><span class="tag">Стабильные продажи</span><h3 style="margin-top:2mm">Оформитесь</h3><p class="small">Зарегистрируйте деятельность официально (патент или ИП). Условия уточните в налоговом органе по месту жительства.</p></div>
+  </div>
+
+  <div class="box b-red" style="margin-top:5mm">
+    <div class="box-title">Главная мысль гайда</div>
+    1000 сомони — это не капитал для большого магазина. Это цена <b>обучения на реальных деньгах</b>, которое может окупиться уже в первый месяц, если вы тестируете 3–4 товара, считаете себестоимость до покупки и продаёте, пока товар ещё в пути. Начните сегодня с шага 1 на стр. 4.
+  </div>
+
+  <div class="box b-cream small muted" style="margin-top:5mm">
+    <b>Важно.</b> Цены, курсы валют, тарифы карго и правила площадок меняются. Все цифры в гайде — примеры и ориентиры на момент подготовки, а не обещание дохода. Результат зависит от выбора товара, вашего города и усилий в продажах. Гайд не является финансовой или юридической консультацией. Pinduoduo — товарный знак его владельца; автор гайда с платформой не связан.
+  </div>
+  <div class="foot"><span>Pinduoduo с 1000 сомони · Издание 2026</span><b>15</b></div>
+</section>
+
+</body>
+</html>
