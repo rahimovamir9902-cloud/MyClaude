@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>ЗАГОВОРИ по-английски за 30 дней</title>
+<style>
+@font-face { font-family: 'Unbounded'; font-weight: 500; src: url(fonts/Unbounded-500.woff) format('woff'); }
+@font-face { font-family: 'Unbounded'; font-weight: 700; src: url(fonts/Unbounded-700.woff) format('woff'); }
+@font-face { font-family: 'Unbounded'; font-weight: 800; src: url(fonts/Unbounded-800.woff) format('woff'); }
+@font-face { font-family: 'Manrope'; font-weight: 400; src: url(fonts/Manrope-400.woff) format('woff'); }
+@font-face { font-family: 'Manrope'; font-weight: 500; src: url(fonts/Manrope-500.woff) format('woff'); }
+@font-face { font-family: 'Manrope'; font-weight: 700; src: url(fonts/Manrope-700.woff) format('woff'); }
+@font-face { font-family: 'Manrope'; font-weight: 800; src: url(fonts/Manrope-800.woff) format('woff'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 500; src: url(fonts/JetBrainsMono-500.woff) format('woff'); }
+
+@page { size: A4; margin: 0; }
+
+:root {
+  --ink: #1B1B3A;
+  --ink-2: #3B3B5E;
+  --muted: #6E6E88;
+  --paper: #FFFCF7;
+  --card: #FFFFFF;
+  --cream: #F6F1E7;
+  --line: #E6DFD1;
+  --coral: #FF5B3A;
+  --coral-soft: #FFE6DF;
+  --amber: #E89F00;
+  --amber-soft: #FFF1CC;
+  --teal: #12A184;
+  --teal-soft: #DDF4EE;
+  --violet: #6C5CE7;
+  --violet-soft: #E9E6FD;
+  --yellow: #FFD84D;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: 'Manrope', 'DejaVu Sans', sans-serif;
+  color: var(--ink);
+  font-size: 9.6pt;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.page {
+  width: 210mm; height: 297mm;
+  position: relative; overflow: hidden;
+  background: var(--paper);
+  padding: 13mm 15mm 17mm;
+  break-after: page;
+}
+.page:last-child { break-after: auto; }
+
+/* ---------- shared chrome ---------- */
+.top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Unbounded'; font-weight: 500; font-size: 6.8pt;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  padding-bottom: 3mm; border-bottom: 1px solid var(--line);
+}
+.tag { display: inline-flex; align-items: center; gap: 2mm; color: var(--ink); }
+.dot { width: 2.6mm; height: 2.6mm; border-radius: 50%; background: var(--ink); display: inline-block; }
+.dot.s { background: var(--coral); } .dot.c { background: var(--amber); }
+.dot.t { background: var(--teal); }  .dot.a { background: var(--violet); }
+
+.foot {
+  position: absolute; left: 15mm; right: 15mm; bottom: 8mm;
+  display: flex; justify-content: space-between;
+  font-family: 'Unbounded'; font-weight: 500; font-size: 6.5pt;
+  letter-spacing: .08em; color: var(--muted); text-transform: uppercase;
+}
+.foot b { color: var(--coral); font-weight: 700; }
+
+h1 {
+  font-family: 'Unbounded'; font-weight: 700; font-size: 19pt;
+  line-height: 1.15; letter-spacing: -.01em; margin: 6mm 0 3mm;
+}
+h1 em { font-style: normal; color: var(--coral); }
+h2 {
+  font-family: 'Unbounded'; font-weight: 700; font-size: 10.5pt;
+  line-height: 1.25; margin-bottom: 2mm;
+}
+h3 {
+  font-family: 'Unbounded'; font-weight: 700; font-size: 8.4pt;
+  letter-spacing: .02em; line-height: 1.3; margin-bottom: 1.5mm;
+}
+.lead { font-size: 10.6pt; line-height: 1.5; color: var(--ink-2); max-width: 170mm; }
+.lead b, p b, li b { color: var(--ink); font-weight: 800; }
+p + p { margin-top: 2mm; }
+.muted { color: var(--muted); }
+.small { font-size: 8.4pt; }
+.en { font-weight: 800; color: var(--ink); }
+.mt2 { margin-top: 2mm; } .mt3 { margin-top: 3mm; } .mt4 { margin-top: 4mm; } .mt5 { margin-top: 5mm; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 3mm; padding: 4mm 4.5mm;
+}
+.card.cream { background: var(--cream); border-color: transparent; }
+.dark {
+  background: var(--ink); color: #F4F1EA; border-radius: 3mm; padding: 4.5mm 5mm;
+}
+.dark b { color: var(--yellow); }
+.dark .muted { color: #B9B7CF; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+
+.cb {
+  display: inline-block; flex: none; width: 3.3mm; height: 3.3mm;
+  border: 1.3px solid var(--ink); border-radius: .8mm; background: #fff;
+  vertical-align: -0.5mm;
+}
+.checks { list-style: none; }
+.checks li { display: flex; gap: 2.5mm; align-items: flex-start; padding: 1.3mm 0; border-bottom: 1px dashed var(--line); }
+.checks li:last-child { border-bottom: 0; }
+.checks li .cb { margin-top: .6mm; }
+
+.steps { list-style: none; counter-reset: st; }
+.steps li { counter-increment: st; position: relative; padding-left: 9mm; margin-bottom: 2.6mm; }
+.steps li::before {
+  content: counter(st); position: absolute; left: 0; top: -.3mm;
+  width: 6mm; height: 6mm; border-radius: 50%;
+  background: var(--ink); color: #fff; text-align: center;
+  font-family: 'Unbounded'; font-weight: 700; font-size: 7.5pt; line-height: 6mm;
+}
+.steps.coral li::before { background: var(--coral); }
+.steps.teal li::before { background: var(--teal); }
+
+.pill {
+  display: inline-block; font-family: 'Unbounded'; font-weight: 700; font-size: 6.6pt;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: .9mm 2.4mm; border-radius: 10mm; background: var(--ink); color: #fff;
+}
+.pill.s { background: var(--coral); } .pill.c { background: var(--amber); }
+.pill.t { background: var(--teal); }  .pill.a { background: var(--violet); }
+.pill.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+
+.quote {
+  border-left: 1.2mm solid var(--coral); background: #fff;
+  padding: 2.4mm 3.5mm; border-radius: 0 2mm 2mm 0;
+  font-style: italic; color: var(--ink-2); font-size: 9pt;
+}
+.quote.t { border-color: var(--teal); }
+
+/* ---------- cover ---------- */
+.cover { background: var(--ink); color: #F4F1EA; padding: 16mm 16mm 14mm; }
+.cover .chips { display: flex; gap: 2mm; flex-wrap: wrap; }
+.cover .chip {
+  font-family: 'Unbounded'; font-weight: 500; font-size: 6.8pt; letter-spacing: .1em;
+  text-transform: uppercase; border: 1px solid #5A5A80; color: #D9D7EA;
+  padding: 1.2mm 3mm; border-radius: 10mm;
+}
+.cover .title {
+  font-family: 'Unbounded'; font-weight: 800; font-size: 50pt; line-height: .95;
+  color: var(--coral); letter-spacing: -.02em; margin-top: 16mm;
+}
+.cover .title2 {
+  font-family: 'Unbounded'; font-weight: 700; font-size: 22pt; line-height: 1.12;
+  color: #fff; margin-top: 3mm;
+}
+.cover .title2 span { color: var(--yellow); }
+.cover .sub { font-size: 12pt; line-height: 1.5; color: #CFCDE3; margin-top: 7mm; max-width: 150mm; }
+.cover .sub b { color: #fff; }
+
+.bubbles { margin-top: 13mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.bubble { position: relative; border-radius: 5mm; padding: 5mm 5.5mm; font-size: 12.5pt; line-height: 1.35; }
+.bubble .lbl {
+  font-family: 'Unbounded'; font-weight: 700; font-size: 6.8pt; letter-spacing: .1em;
+  text-transform: uppercase; display: block; margin-bottom: 2.5mm;
+}
+.bubble.before { border: 1.5px dashed #6A6A92; color: #A9A7C4; font-style: italic; }
+.bubble.before .lbl { color: #8F8DB0; font-style: normal; }
+.bubble.after { background: var(--coral); color: #fff; font-weight: 700; }
+.bubble.after .lbl { color: var(--ink); }
+.bubble::after {
+  content: ''; position: absolute; bottom: -3.2mm; left: 9mm;
+  width: 6mm; height: 6mm; transform: rotate(45deg);
+}
+.bubble.after::after { background: var(--coral); }
+.bubble.before::after {
+  border-right: 1.5px dashed #6A6A92; border-bottom: 1.5px dashed #6A6A92;
+  background: var(--ink);
+}
+
+.cover .for {
+  margin-top: 12mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm;
+}
+.cover .for div {
+  border-top: 1.5px solid var(--yellow); padding-top: 2.5mm; font-size: 9.3pt; color: #E4E2F2; line-height: 1.4;
+}
+.cover .stats {
+  position: absolute; left: 16mm; right: 16mm; bottom: 14mm;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm;
+  border-top: 1px solid #3F3F66; padding-top: 5mm;
+}
+.cover .stats b {
+  display: block; font-family: 'Unbounded'; font-weight: 800; font-size: 21pt; color: var(--yellow); line-height: 1.1;
+}
+.cover .stats span { font-size: 8.4pt; color: #CFCDE3; line-height: 1.3; display: block; margin-top: 1mm; }
+
+/* ---------- page 3: gap bars ---------- */
+.gap { margin-top: 4mm; }
+.bar-row { display: grid; grid-template-columns: 36mm 1fr; align-items: center; gap: 3mm; margin-bottom: 2mm; font-size: 8.6pt; font-weight: 700; }
+.bar { height: 7mm; border-radius: 1.5mm; display: flex; align-items: center; padding-left: 3mm; color: #fff; font-size: 7.6pt; font-weight: 700; }
+.bar.big { width: 100%; background: var(--ink); }
+.bar.tiny { width: 28%; background: var(--coral); }
+.gap-note { display: flex; justify-content: flex-end; margin-top: -1mm; }
+.gap-note span { width: 72%; border-top: 1.5px dashed var(--coral); padding-top: 1.2mm; text-align: center; color: var(--coral); font-weight: 800; font-size: 8.4pt; }
+
+.reason { display: grid; grid-template-columns: 15mm 1fr; gap: 4mm; padding: 4mm 0; border-bottom: 1px solid var(--line); }
+.reason:last-of-type { border-bottom: 0; }
+.reason .n { font-family: 'Unbounded'; font-weight: 800; font-size: 22pt; color: var(--coral); line-height: 1; }
+.reason .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 1.5mm; }
+.reason .k { font-family: 'Unbounded'; font-weight: 700; font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .8mm; }
+.reason .fix .k { color: var(--teal); }
+
+.formula { display: flex; align-items: center; gap: 2.5mm; flex-wrap: nowrap; }
+.formula .f { background: rgba(255,255,255,.08); border: 1px solid #4A4A72; border-radius: 2mm; padding: 2.2mm 3mm; font-weight: 700; font-size: 8.8pt; text-align: center; flex: 1; }
+.formula .op { font-family: 'Unbounded'; font-weight: 800; font-size: 13pt; color: var(--yellow); }
+.formula .f.res { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+/* ---------- page 4: system ---------- */
+.tech { border-radius: 3mm; padding: 4mm 4.5mm; background: #fff; border: 1px solid var(--line); position: relative; overflow: hidden; }
+.tech::before { content: ''; position: absolute; left: 0; top: 0; right: 0; height: 1.6mm; }
+.tech.s::before { background: var(--coral); } .tech.c::before { background: var(--amber); }
+.tech.t::before { background: var(--teal); }  .tech.a::before { background: var(--violet); }
+.tech .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5mm; }
+.tech .name { font-family: 'Unbounded'; font-weight: 800; font-size: 11pt; }
+.tech .min { font-family: 'Unbounded'; font-weight: 700; font-size: 8pt; color: var(--muted); }
+.tech .ref { display: block; margin-top: 2mm; font-size: 7.8pt; font-weight: 700; color: var(--muted); }
+
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 2mm; overflow: hidden; margin-top: 2mm; }
+.timeline div { padding: 2.4mm 3mm; color: #fff; font-weight: 800; font-size: 8.4pt; }
+.timeline div small { display: block; font-weight: 500; font-size: 7.2pt; opacity: .9; }
+.tl-s { background: var(--coral); } .tl-c { background: var(--amber); } .tl-t { background: var(--teal); } .tl-a { background: var(--violet); }
+.ticks { display: grid; grid-template-columns: repeat(4, 1fr); font-family: 'Unbounded'; font-size: 6.4pt; color: var(--muted); margin-top: 1mm; }
+.ticks span:last-child { display: flex; justify-content: space-between; }
+
+.rules { list-style: none; counter-reset: r; }
+.rules li { counter-increment: r; display: grid; grid-template-columns: 9mm 1fr; padding: 2.2mm 0; border-bottom: 1px solid var(--line); }
+.rules li:last-child { border-bottom: 0; }
+.rules li::before { content: '0' counter(r); font-family: 'Unbounded'; font-weight: 800; font-size: 10pt; color: var(--coral); }
+
+/* ---------- phrase bank ---------- */
+.bank { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.pbox { background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 2.8mm 4mm 1.8mm; }
+.pbox .ph { display: flex; align-items: center; gap: 2mm; margin-bottom: 1.4mm; }
+.pbox .letter {
+  width: 6.2mm; height: 6.2mm; border-radius: 1.5mm; background: var(--amber); color: #fff;
+  font-family: 'Unbounded'; font-weight: 800; font-size: 8pt; text-align: center; line-height: 6.2mm; flex: none;
+}
+.pbox .ph h3 { margin: 0; font-size: 7.9pt; }
+.pbox ol { list-style: none; }
+.pbox li { display: grid; grid-template-columns: 4.6mm 1fr; column-gap: 1.2mm; padding: .42mm 0; border-top: 1px dashed var(--line); }
+.pbox li .cb { width: 2.9mm; height: 2.9mm; margin-top: .7mm; border-color: #9B97AF; }
+.pbox li .e { font-weight: 800; font-size: 8.6pt; line-height: 1.25; }
+.pbox li .r { grid-column: 2; font-size: 7.6pt; color: var(--muted); line-height: 1.2; }
+.pbox li .e i { font-style: normal; color: var(--coral); font-weight: 700; font-size: 7.4pt; }
+
+.howto { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; margin-top: 3mm; }
+.howto div { background: var(--amber-soft); border-radius: 2mm; padding: 2.4mm 3mm; font-size: 8.3pt; line-height: 1.35; }
+.howto b { font-family: 'Unbounded'; font-weight: 800; color: var(--amber); font-size: 9pt; display: block; margin-bottom: .6mm; }
+
+/* ---------- self-talk ---------- */
+.level { display: grid; grid-template-columns: 37mm 1fr; gap: 5mm; padding: 4mm 0; border-bottom: 1px solid var(--line); }
+.level:last-child { border-bottom: 0; }
+.level .lv { font-family: 'Unbounded'; font-weight: 800; font-size: 8pt; color: var(--teal); letter-spacing: .06em; text-transform: uppercase; }
+.level .lv b { display: block; font-size: 11pt; color: var(--ink); letter-spacing: 0; text-transform: none; margin-top: 1mm; }
+.level .lv span { display: block; font-family: 'Manrope'; font-weight: 700; font-size: 7.8pt; color: var(--muted); letter-spacing: 0; text-transform: none; margin-top: 1mm; }
+
+.chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 2.5mm; }
+.chain div { background: var(--teal-soft); padding: 3mm 3mm 3mm 5mm; position: relative; font-size: 8.3pt; line-height: 1.35; }
+.chain div:first-child { border-radius: 2mm 0 0 2mm; padding-left: 3.5mm; }
+.chain div:last-child { border-radius: 0 2mm 2mm 0; background: var(--teal); color: #fff; }
+.chain div:not(:last-child)::after {
+  content: ''; position: absolute; right: -2.5mm; top: 50%; margin-top: -2.5mm; z-index: 2;
+  border-left: 2.5mm solid var(--teal); border-top: 2.5mm solid transparent; border-bottom: 2.5mm solid transparent;
+}
+.chain b { font-family: 'Unbounded'; font-weight: 800; font-size: 7.4pt; letter-spacing: .06em; display: block; color: var(--teal); margin-bottom: .8mm; }
+.chain div:last-child b { color: #fff; }
+.chain .en { display: block; }
+.chain div:last-child .en { color: #fff; }
+
+/* ---------- AI prompts ---------- */
+.prompt { border-radius: 3mm; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.prompt .ph { display: flex; gap: 3mm; align-items: center; padding: 2.4mm 4mm; background: var(--violet-soft); }
+.prompt .ph .no { font-family: 'Unbounded'; font-weight: 800; font-size: 8pt; color: #fff; background: var(--violet); border-radius: 1.4mm; padding: .6mm 2mm; }
+.prompt .ph h3 { margin: 0; font-size: 8.2pt; }
+.prompt .ph span { font-size: 7.6pt; color: var(--ink-2); margin-left: auto; font-weight: 700; white-space: nowrap; }
+.prompt pre {
+  font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 7.7pt; line-height: 1.5;
+  white-space: pre-wrap; padding: 2.8mm 4mm 3mm; color: var(--ink);
+}
+.prompt pre mark.nw { white-space: nowrap; }
+.prompt pre mark { background: var(--amber-soft); color: var(--ink); padding: 0 .6mm; border-radius: .6mm; }
+
+/* ---------- plan tables ---------- */
+.week { margin-top: 4mm; }
+.week-head { display: flex; align-items: center; gap: 3mm; margin-bottom: 1.8mm; }
+.week-head .wk { font-family: 'Unbounded'; font-weight: 800; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 1mm 2.6mm; border-radius: 1.4mm; }
+.week-head h2 { margin: 0; font-size: 10pt; }
+.week-head .goal { margin-left: auto; font-size: 7.9pt; color: var(--muted); font-weight: 700; text-align: right; }
+table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 8.3pt; background: #fff; border: 1px solid var(--line); border-radius: 2.5mm; overflow: hidden; }
+table.plan th {
+  text-align: left; font-family: 'Unbounded'; font-weight: 700; font-size: 6.3pt; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); padding: 1.8mm 2.5mm; background: var(--cream);
+}
+table.plan { table-layout: fixed; }
+table.plan td { padding: 1.9mm 2.5mm; border-top: 1px solid var(--line); vertical-align: top; line-height: 1.32; }
+table.plan th:nth-child(1) { width: 17mm; } table.plan th:nth-child(2) { width: 25mm; } table.plan th:nth-child(3) { width: 47%; }
+table.plan td.d { width: 15mm; font-family: 'Unbounded'; font-weight: 800; font-size: 8.4pt; white-space: nowrap; }
+table.plan td.d .cb { margin-right: 1.6mm; vertical-align: -0.4mm; }
+table.plan td.ph { width: 25mm; font-weight: 800; color: var(--amber); }
+table.plan tr.rev td { background: var(--coral-soft); }
+table.plan tr.rev td.ph { color: var(--coral); }
+table.plan th.h-c { color: var(--amber); } table.plan th.h-t { color: var(--teal); } table.plan th.h-a { color: var(--violet); }
+.pl-note .pill { white-space: nowrap; }
+.pl-note { display: flex; gap: 3mm; align-items: center; font-size: 8.2pt; margin-top: 1.6mm; color: var(--ink-2); }
+
+/* ---------- errors table ---------- */
+table.err { width: 100%; border-collapse: collapse; font-size: 8.9pt; }
+table.err th { text-align: left; font-family: 'Unbounded'; font-weight: 700; font-size: 6.3pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 1.6mm 2mm; border-bottom: 1.5px solid var(--ink); }
+table.err td { padding: 2.3mm 2mm; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.3; }
+table.err td.no { font-family: 'Unbounded'; font-weight: 800; color: var(--muted); width: 7mm; font-size: 7.4pt; }
+table.err td.bad { color: var(--coral); font-weight: 700; width: 43mm; }
+table.err td.bad::before { content: '✕ '; font-weight: 800; }
+table.err td.good::before { content: '✓ '; }
+table.err td.good { color: var(--teal); font-weight: 800; width: 55mm; }
+table.err td.why { color: var(--ink-2); }
+
+/* ---------- topics ---------- */
+.topics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; margin-top: 3mm; }
+.tcol { background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 3.5mm 3.8mm; }
+.tcol .th { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2mm; }
+.tcol ol { list-style: none; }
+.tcol li { display: grid; grid-template-columns: 6.5mm 1fr; padding: 1.5mm 0; border-top: 1px dashed var(--line); }
+.tcol li .n { font-family: 'Unbounded'; font-weight: 800; font-size: 7.4pt; color: var(--teal); }
+.tcol li .q { font-weight: 800; font-size: 8.5pt; line-height: 1.3; }
+.tcol li .q small { display: block; font-weight: 500; font-size: 7.5pt; color: var(--muted); margin-top: .3mm; }
+.tcol.l2 li .n { color: var(--amber); } .tcol.l3 li .n { color: var(--coral); }
+
+/* ---------- tracker ---------- */
+table.meas { width: 100%; border-collapse: collapse; font-size: 8.8pt; background: #fff; }
+table.meas th { text-align: center; font-family: 'Unbounded'; font-weight: 700; font-size: 6.6pt; letter-spacing: .08em; text-transform: uppercase; padding: 2mm; background: var(--ink); color: #fff; }
+table.meas th:first-child { text-align: left; }
+table.meas td { padding: 2.2mm 2.5mm; border: 1px solid var(--line); }
+table.meas td.v { width: 36mm; }
+table.meas th:not(:first-child) { white-space: nowrap; }
+.trk { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2.8mm; margin-top: 3mm; }
+.day { background: #fff; border: 1px solid var(--line); border-radius: 2mm; padding: 2.6mm 2.6mm 3mm; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font-family: 'Unbounded'; font-weight: 800; font-size: 11pt; }
+.day .dn small { font-family: 'Manrope'; font-size: 6.4pt; font-weight: 700; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.day .sq { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2mm; margin-top: 1.5mm; }
+.day .sq span { height: 5.2mm; line-height: 4.8mm !important; border-radius: 1mm; border: 1.3px solid; font-size: 5.8pt; font-weight: 800; text-align: center; line-height: 4mm; }
+.sq .s { border-color: var(--coral); color: var(--coral); } .sq .c { border-color: var(--amber); color: var(--amber); }
+.sq .t { border-color: var(--teal); color: var(--teal); }  .sq .a { border-color: var(--violet); color: var(--violet); }
+.day.rv { background: var(--coral-soft); border-color: transparent; }
+.legend { display: flex; gap: 5mm; font-size: 8pt; font-weight: 700; color: var(--ink-2); flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 1.5mm; }
+.legend i { width: 3.4mm; height: 3.4mm; border-radius: .8mm; border: 1.3px solid; display: inline-block; }
+
+/* ---------- cover contents ---------- */
+.cover .toc { margin-top: 11mm; }
+.cover .toc h4 { font-family: 'Unbounded'; font-weight: 700; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 2.5mm; }
+.cover .toc ol { list-style: none; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; column-gap: 8mm; }
+.cover .toc li { display: flex; justify-content: space-between; gap: 3mm; padding: 1.5mm 0; border-bottom: 1px solid #34345A; font-size: 9pt; color: #E4E2F2; }
+.cover .toc li span:last-child { font-family: 'Unbounded'; font-weight: 700; font-size: 7.6pt; color: #8F8DB0; }
+
+/* ---------- pledge ---------- */
+.pledge { display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 5mm; align-items: end; border: 1.5px solid var(--ink); border-radius: 3mm; padding: 4mm 5mm; background: #fff; }
+.pledge .t { font-family: 'Unbounded'; font-weight: 800; font-size: 9pt; line-height: 1.25; }
+.pledge .t small { display: block; font-family: 'Manrope'; font-weight: 500; font-size: 7.8pt; color: var(--muted); margin-top: .8mm; }
+.pledge .f { border-bottom: 1.3px solid var(--ink); height: 8mm; position: relative; }
+.pledge .f span { position: absolute; bottom: -4.2mm; left: 0; font-size: 7pt; color: var(--muted); font-weight: 700; }
+
+/* ---------- misc ---------- */
+.errs .card { padding: 3mm 3.5mm; }
+.need { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.5mm; }
+.need div { background: #fff; border: 1px solid var(--line); border-radius: 2mm; padding: 2.6mm 3mm; font-size: 8.2pt; line-height: 1.3; }
+.need b { display: block; font-weight: 800; margin-bottom: .6mm; }
+.mark { font-size: 10pt; line-height: 1.9; color: var(--ink); }
+.mark b { color: var(--coral); }
+.mark .sl { color: var(--teal); font-weight: 800; padding: 0 .8mm; }
+.dayone { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-radius: 2.5mm; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.dayone div { padding: 3mm 3.2mm; font-size: 8.1pt; line-height: 1.35; border-right: 1px solid var(--line); }
+.dayone div:last-child { border-right: 0; }
+.dayone b { display: block; font-family: 'Unbounded'; font-weight: 700; font-size: 7pt; letter-spacing: .04em; margin-bottom: 1mm; }
+
+/* ---------- cheatsheet ---------- */
+.cheat { border: 1.6px dashed var(--ink); border-radius: 4mm; padding: 6mm 6mm 5mm; font-size: 10pt; background: #fff; position: relative; }
+.cheat .scis { position: absolute; top: -3mm; left: 8mm; background: var(--paper); padding: 0 2mm; font-family: 'Unbounded'; font-weight: 700; font-size: 6.6pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.cheat .small { font-size: 9.2pt; line-height: 1.5; }
+.cheat h3 { font-size: 8.8pt; }
+.mini { list-style: none; }
+.mini li { padding: 1mm 0; display: flex; gap: 2mm; align-items: baseline; }
+.mini li::before { content: '→'; color: var(--coral); font-weight: 800; }
+.next { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; }
+.next .card .big { font-family: 'Unbounded'; font-weight: 800; color: var(--coral); font-size: 14pt; line-height: 1; display: block; margin-bottom: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- =============================== 1. COVER =============================== -->
+<section class="page cover">
+  <div class="chips">
+    <span class="chip">PDF-гайд · 15 страниц</span>
+    <span class="chip">Уровень A2–B2</span>
+    <span class="chip">20 минут в день</span>
+  </div>
+
+  <div class="title">ЗАГОВОРИ</div>
+  <div class="title2">по-английски за 30 дней —<br><span>без учителя и собеседника</span></div>
+
+  <p class="sub">Пошаговая система из 4 техник для тех, кто <b>понимает английский, но молчит</b>, когда нужно говорить. Ломаем языковой барьер самостоятельно — дома, в дороге, с телефоном.</p>
+
+  <div class="bubbles">
+    <div class="bubble before"><span class="lbl">День 1</span>Эээ… I… ммм… как это… I think that… эээ…</div>
+    <div class="bubble after"><span class="lbl">День 30</span>Well, the way I see it, it depends on the situation…</div>
+  </div>
+
+  <div class="for">
+    <div>Вы понимаете сериалы и статьи, но в разговоре в голове — пусто</div>
+    <div>Вы переводите каждую фразу с русского и не успеваете за собеседником</div>
+    <div>Вы боитесь ошибиться — и поэтому просто молчите</div>
+  </div>
+
+  <div class="toc">
+    <h4>Что внутри</h4>
+    <ol>
+      <li><span>3 причины, почему вы молчите</span><span>03</span></li>
+      <li><span>Система: 4 техники по 5 минут</span><span>04</span></li>
+      <li><span>Shadowing: тренируем рот</span><span>05</span></li>
+      <li><span>80 готовых фраз и фразы-спасатели</span><span>06</span></li>
+      <li><span>Self-talk: речь без собеседника</span><span>08</span></li>
+      <li><span>4 промпта для ИИ-собеседника</span><span>09</span></li>
+      <li><span>План на 30 дней — по дням</span><span>10</span></li>
+      <li><span>10 ошибок русскоговорящих</span><span>12</span></li>
+      <li><span>30 тем для разговора</span><span>13</span></li>
+      <li><span>Трекер, замер и шпаргалка</span><span>14–15</span></li>
+    </ol>
+  </div>
+
+  <div class="stats">
+    <div><b>4</b><span>техники, которые работают без учителя</span></div>
+    <div><b>80</b><span>готовых фраз для речи без перевода</span></div>
+    <div><b>4</b><span>промпта для ИИ-собеседника</span></div>
+    <div><b>30</b><span>дней пошагового плана с трекером</span></div>
+  </div>
+</section>
+
+<!-- =============================== 2. INTRO =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>Начало</span><span>Для кого этот гайд</span></div>
+
+  <h1>Вы знаете английский.<br>Вы просто ещё <em>не умеете на нём говорить.</em></h1>
+  <p class="lead">Вы читаете статьи, смотрите сериалы с субтитрами, когда-то сдали всю грамматику. Но стоит иностранцу задать простой вопрос — в голове пусто. Вы строите фразу по-русски, переводите, проверяете время глагола… а собеседник уже ждёт.</p>
+  <p class="lead mt2">Это не отсутствие способностей. Вам не хватает <b>одного конкретного навыка — беглой речи</b>. Его не дают учебники и приложения со словами. Хорошая новость: этот навык тренируется самостоятельно, как мышца. Учитель для этого не обязателен.</p>
+
+  <div class="grid2 mt5">
+    <div class="card">
+      <h2>Быстрый тест: что про вас?</h2>
+      <ul class="checks">
+        <li><i class="cb"></i><span>Понимаю намного больше, чем могу сказать</span></li>
+        <li><i class="cb"></i><span>Сначала строю фразу по-русски, потом перевожу</span></li>
+        <li><i class="cb"></i><span>Делаю длинные паузы «эээ» посреди предложения</span></li>
+        <li><i class="cb"></i><span>Знаю слово, но в разговоре не могу его вспомнить</span></li>
+        <li><i class="cb"></i><span>Боюсь ошибиться — поэтому лучше промолчу</span></li>
+        <li><i class="cb"></i><span>Пишу по-английски заметно лучше, чем говорю</span></li>
+        <li><i class="cb"></i><span>Учил(а) английский годами, но ни разу не говорил(а) дольше 2 минут подряд</span></li>
+      </ul>
+      <p class="small mt2"><b>3 и больше галочки</b> — этот гайд написан именно для вас.</p>
+    </div>
+
+    <div>
+      <div class="dark">
+        <h2 style="color:#fff">Что изменится за 30 дней</h2>
+        <ul class="mini" style="color:#E4E2F2">
+          <li><span><b>1–2 минуты связной речи</b> на бытовую тему без подготовки</span></li>
+          <li><span><b>Меньше пауз:</b> вместо перевода в голове — готовые блоки фраз</span></li>
+          <li><span><b>Привычка говорить каждый день</b> — даже когда рядом нет ни одного носителя</span></li>
+          <li><span><b>Спокойствие</b> в ситуации «забыл(а) слово»: вы знаете, как выкрутиться</span></li>
+        </ul>
+      </div>
+      <div class="card cream mt3">
+        <h3>Подходит ли вам уровень?</h3>
+        <p class="small">Прочитайте фразу. Если смысл понятен без словаря — гайд вам подходит:</p>
+        <p class="en mt2" style="font-size:9.6pt">“I usually get up at seven, but yesterday I overslept and missed the bus.”</p>
+        <p class="small muted mt2">Если совсем непонятно — сначала пройдите базовый курс уровня A1–A2, а потом возвращайтесь к этому гайду.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt5">Как пользоваться гайдом</h2>
+  <div class="grid4">
+    <div class="card"><span class="pill">Шаг 1</span><p class="small mt2">Прочитайте стр. 3–9 за один вечер — это 30–40 минут.</p></div>
+    <div class="card"><span class="pill">Шаг 2</span><p class="small mt2">Сделайте замер «ДО» на стр. 14: запишите себя на 1 минуту.</p></div>
+    <div class="card"><span class="pill">Шаг 3</span><p class="small mt2">Со следующего дня идите по плану на стр. 10–11. 20 минут в день.</p></div>
+    <div class="card"><span class="pill s">Шаг 4</span><p class="small mt2">На 30-й день сделайте замер «ПОСЛЕ» и сравните две записи.</p></div>
+  </div>
+
+  <div class="pledge mt5">
+    <div class="t">Моё обещание себе<small>20 минут в день · 30 дней подряд</small></div>
+    <div class="f"><span>Дата старта</span></div>
+    <div class="f"><span>Дата финиша</span></div>
+    <div class="f"><span>Подпись</span></div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>02</b> / 15</span></div>
+</section>
+
+<!-- =============================== 3. WHY =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot s"></i>Диагноз</span><span>Откуда берётся языковой барьер</span></div>
+
+  <h1>Почему вы молчите:<br><em>3 настоящие причины</em></h1>
+  <p class="lead">Понимать и говорить — два разных навыка. Понимание — пассивное: вы <b>узнаёте</b> слово, когда его видите или слышите. Речь — активная: вы должны <b>достать</b> слово из памяти за полсекунды. Большинство курсов и приложений тренирует только первое.</p>
+
+  <div class="card gap">
+    <div class="bar-row"><span>Узнаю при чтении и на слух</span><div class="bar big">пассивный словарь</div></div>
+    <div class="bar-row"><span>Могу сказать сам(а)</span><div class="bar tiny">активный</div></div>
+    <div class="gap-note"><span>этот разрыв и есть языковой барьер</span></div>
+    <p class="small muted mt2">Примерно так выглядит словарь большинства самоучек: слов, которые человек узнаёт, в разы больше, чем тех, которыми он пользуется в речи.</p>
+  </div>
+
+  <div class="mt3">
+    <div class="reason">
+      <div class="n">01</div>
+      <div>
+        <h2>Вы переводите с русского</h2>
+        <div class="cols">
+          <div><span class="k">Что происходит</span>Мозг сначала строит фразу по-русски, потом переводит слово за словом. Это медленно — несколько секунд на фразу — и даёт кальки: <span class="en">«I am agree»</span>, <span class="en">«It is depends»</span>.</div>
+          <div class="fix"><span class="k">Лекарство → стр. 6–7</span>Учить не отдельные слова, а <b>готовые блоки (chunks)</b> — целые фразы, которые достаются из памяти одним куском, без перевода.</div>
+        </div>
+      </div>
+    </div>
+    <div class="reason">
+      <div class="n">02</div>
+      <div>
+        <h2>У вашего рта нет «мышечной памяти»</h2>
+        <div class="cols">
+          <div><span class="k">Что происходит</span>Речь — моторный навык, как вождение или игра на гитаре. Если ваш рот ни разу не произносил <span class="en">«I’ve been meaning to…»</span>, под давлением он этого не сделает.</div>
+          <div class="fix"><span class="k">Лекарство → стр. 5</span><b>Shadowing</b> — повторение за носителем вслух. Рот запоминает звуки, ритм и готовые обороты.</div>
+        </div>
+      </div>
+    </div>
+    <div class="reason">
+      <div class="n">03</div>
+      <div>
+        <h2>Вы боитесь ошибиться</h2>
+        <div class="cols">
+          <div><span class="k">Что происходит</span>Страх оценки «съедает» внимание, и вы забываете даже простые слова. При этом носители тоже говорят с паузами и ошибками — просто заполняют паузы словами-связками.</div>
+          <div class="fix"><span class="k">Лекарство → стр. 8–9</span>Сначала тренироваться там, где <b>никто не оценивает</b>: вслух с самим собой (self-talk) и с ИИ-собеседником.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark mt4">
+    <h3 style="color:#fff; margin-bottom:2.5mm">Формула речи без барьера</h3>
+    <div class="formula">
+      <div class="f">Готовые фразы</div><span class="op">+</span>
+      <div class="f">Натренированный рот</div><span class="op">+</span>
+      <div class="f">Практика без страха</div><span class="op">=</span>
+      <div class="f res">Вы говорите</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>03</b> / 15</span></div>
+</section>
+
+<!-- =============================== 4. SYSTEM =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>Система</span><span>Как устроены 20 минут в день</span></div>
+
+  <h1>4 техники × 5 минут =<br><em>20 минут в день</em></h1>
+  <p class="lead">Каждая техника лечит одну причину барьера. Вместе они дают полный цикл: <b>услышать → запомнить → сказать самому → поговорить</b>. Всё, что нужно, — телефон и наушники.</p>
+
+  <div class="grid2 mt4">
+    <div class="tech s">
+      <div class="head"><span class="name">1. Shadowing</span><span class="min">5 мин</span></div>
+      <p>Повторяете вслух за диктором, отставая на полсекунды. Тренирует рот, произношение и ритм речи.</p>
+      <span class="ref">Подробно — стр. 5</span>
+    </div>
+    <div class="tech c">
+      <div class="head"><span class="name">2. Chunks</span><span class="min">5 мин</span></div>
+      <p>Учите 3–4 готовые фразы из банка и придумываете с ними свои примеры. Убирает перевод в голове.</p>
+      <span class="ref">Банк из 80 фраз — стр. 6–7</span>
+    </div>
+    <div class="tech t">
+      <div class="head"><span class="name">3. Self-talk</span><span class="min">5 мин</span></div>
+      <p>Говорите вслух сами с собой: комментируете действия, пересказываете день, отвечаете на вопрос дня.</p>
+      <span class="ref">3 уровня — стр. 8 · 30 тем — стр. 13</span>
+    </div>
+    <div class="tech a">
+      <div class="head"><span class="name">4. ИИ-диалог</span><span class="min">5 мин</span></div>
+      <p>Голосовой разговор с ИИ по готовому промпту. Настоящий диалог — без стыда, в любое время.</p>
+      <span class="ref">4 готовых промпта — стр. 9</span>
+    </div>
+  </div>
+
+  <h2 class="mt5">Ваша ежедневная тренировка</h2>
+  <div class="timeline">
+    <div class="tl-s">Shadowing<small>слушаю и повторяю</small></div>
+    <div class="tl-c">Chunks<small>4 новые фразы</small></div>
+    <div class="tl-t">Self-talk<small>говорю сам(а)</small></div>
+    <div class="tl-a">ИИ-диалог<small>разговариваю</small></div>
+  </div>
+  <div class="ticks"><span>0 мин</span><span>5</span><span>10</span><span><span>15</span><span>20 мин</span></span></div>
+
+  <div class="grid2 mt5" style="grid-template-columns: 1.35fr 1fr;">
+    <div>
+      <h2>5 правил системы</h2>
+      <ol class="rules">
+        <li><span><b>Только вслух.</b> Шёпотом — можно. Про себя — не считается: рот должен работать.</span></li>
+        <li><span><b>Каждый день важнее, чем долго.</b> 20 минут ежедневно лучше, чем 2 часа в воскресенье.</span></li>
+        <li><span><b>Ошибки разрешены.</b> Первые 2 недели цель — скорость, а не точность. Ошибки разберём по записям.</span></li>
+        <li><span><b>Не останавливайтесь.</b> Забыли слово — обойдите его (стр. 7), но не замолкайте.</span></li>
+        <li><span><b>Записывайте себя раз в неделю.</b> Диктофон — бесплатный и очень честный учитель.</span></li>
+      </ol>
+    </div>
+    <div>
+      <div class="card cream">
+        <h3>Нет 20 минут подряд?</h3>
+        <p class="small">Разбейте тренировку на части:</p>
+        <ul class="mini small mt2">
+          <li><span><b>Shadowing</b> — в дороге, в наушниках</span></li>
+          <li><span><b>Chunks</b> — за утренним кофе</span></li>
+          <li><span><b>Self-talk</b> — пока готовите или убираете</span></li>
+          <li><span><b>ИИ-диалог</b> — вечером перед сном</span></li>
+        </ul>
+      </div>
+      <div class="quote mt3">Цель — не идеальный английский, а английский, который <b>выходит изо рта</b> без долгих пауз.</div>
+    </div>
+  </div>
+
+  <h2 class="mt5">Что понадобится</h2>
+  <div class="need">
+    <div><b>Телефон</b>с YouTube и диктофоном</div>
+    <div><b>Наушники</b>желательно с микрофоном</div>
+    <div><b>ИИ-приложение</b>с голосовым режимом</div>
+    <div><b>Голосовой ввод</b>на клавиатуре (English)</div>
+    <div><b>Распечатка</b>стр. 10–11 и 14 — отмечать дни</div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>04</b> / 15</span></div>
+</section>
+
+<!-- =============================== 5. SHADOWING =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot s"></i>Техника 1 · 5 минут</span><span>Тренируем рот</span></div>
+
+  <h1>Shadowing: повторяйте<br>за носителем, <em>как тень</em></h1>
+  <p class="lead">Включаете короткую запись носителя и говорите вслух <b>одновременно с ним</b>, отставая на полсекунды — как эхо. Понимать каждое слово не обязательно: вы копируете звук, ритм, интонацию и паузы. Через 2–3 недели готовые обороты начинают «выскакивать» в речи сами.</p>
+
+  <div class="grid2 mt4" style="grid-template-columns: 1.2fr 1fr;">
+    <div class="card">
+      <h2>Пошагово: 5 минут</h2>
+      <ol class="steps coral mt2">
+        <li><b>Выберите отрывок 30–60 секунд</b>, у которого есть текст: субтитры или транскрипт.</li>
+        <li><b>Послушайте 1 раз, читая текст.</b> Проверьте незнакомые слова — смысл должен быть понятен.</li>
+        <li><b>Прочитайте текст вслух вместе с аудио</b> — одновременно с диктором, глядя в текст.</li>
+        <li><b>Shadowing с текстом — 2 раза.</b> Говорите одновременно с диктором, копируйте интонацию.</li>
+        <li><b>Shadowing без текста — 2–3 раза.</b> Цель: не отставать и не останавливаться.</li>
+      </ol>
+      <div class="quote mt2">Один и тот же отрывок используйте <b>3–4 дня подряд</b>. Повторение — это и есть тренировка, а не повод для скуки.</div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Где брать материал</h2>
+        <p class="mt2"><span class="pill ghost">A2</span></p>
+        <p class="small mt2">Подкасты для изучающих с медленной речью и транскриптом. Поиск: <span class="en">«English podcast for learners with transcript»</span>. Адаптированные аудиокниги.</p>
+        <p class="mt3"><span class="pill ghost">B1</span></p>
+        <p class="small mt2">YouTube-влоги с английскими субтитрами. Диалоги из ситкомов: «Friends», «Modern Family» — короткие реплики, бытовая речь.</p>
+        <p class="mt3"><span class="pill ghost">B2</span></p>
+        <p class="small mt2">Выступления TED (на сайте есть транскрипт), интервью, подкасты для носителей.</p>
+      </div>
+      <div class="card cream mt3">
+        <h3>Настройки в YouTube</h3>
+        <p class="small">Скорость → <b>0.75</b>, пока речь кажется быстрой. Субтитры → <b>English</b> (не русские!). Когда успеваете на 0.75 — переходите на 1.0.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt4">Частые ошибки — и как их исправить</h2>
+  <div class="grid4 errs">
+    <div class="card"><p class="small"><b>Слишком длинный отрывок.</b><br>Берите 30–60 секунд, а не 10 минут.</p></div>
+    <div class="card"><p class="small"><b>Бормотание под нос.</b><br>Говорите в полный голос, чётко, как актёр.</p></div>
+    <div class="card"><p class="small"><b>Новый отрывок каждый день.</b><br>Меняйте раз в 3–4 дня, не чаще.</p></div>
+    <div class="card"><p class="small"><b>Остановки на ошибках.</b><br>Сбились — догоняйте диктора, не начинайте заново.</p></div>
+  </div>
+
+  <div class="card mt3">
+    <h2>Разметка текста: как читает носитель</h2>
+    <p class="small">Перед shadowing разметьте транскрипт: <span class="sl" style="color:var(--teal);font-weight:800">/</span> — пауза, <b style="color:var(--coral)">ЖИРНЫМ</b> — слово, на которое падает ударение. В английском ударные слова звучат громче и длиннее, а служебные (a, the, to, of) — быстро и почти «проглатываются».</p>
+    <p class="mark mt2">So <b>yesterday</b> <span class="sl">/</span> I was <b>about</b> to <b>leave</b> the <b>office</b> <span class="sl">/</span> when my <b>boss</b> <b>called</b> me <span class="sl">/</span> and said <span class="sl">/</span> “We <b>need</b> to <b>talk</b>.”</p>
+  </div>
+
+  <div class="dark mt3">
+    <p><b>Лайфхак:</b> копируйте эмоцию, а не только слова. Утрируйте интонацию, будто пародируете диктора. Так ритм английской речи запоминается быстрее, а русский акцент становится мягче.</p>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>05</b> / 15</span></div>
+</section>
+
+<!-- =============================== 6. CHUNKS A–D =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot c"></i>Техника 2 · 5 минут</span><span>Банк фраз · часть 1 из 2</span></div>
+
+  <h1>80 готовых фраз, чтобы<br>говорить <em>без перевода в голове</em></h1>
+  <p class="lead">Носители не собирают фразы из отдельных слов — они достают из памяти готовые блоки: <span class="en">to be honest</span>, <span class="en">the thing is</span>. Выучите эти 80 блоков — и у вас будет каркас, к которому остаётся добавить свои слова.</p>
+
+  <div class="howto">
+    <div><b>1 · Прочитайте</b>Каждую фразу вслух 3 раза, с интонацией</div>
+    <div><b>2 · Примерьте</b>Придумайте 2 своих примера про вашу жизнь</div>
+    <div><b>3 · Скажите</b>Произнесите примеры вслух, не глядя в текст</div>
+    <div><b>4 · Используйте</b>Вставьте фразу сегодня в self-talk и ИИ-диалог</div>
+  </div>
+
+  <div class="bank mt3">
+    <div class="pbox">
+      <div class="ph"><span class="letter">A</span><h3>Начать ответ и выиграть время</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">Well, let me think…</span><span class="r">Ну, дайте подумать…</span></li>
+        <li><i class="cb"></i><span class="e">That’s a good question.</span><span class="r">Хороший вопрос.</span></li>
+        <li><i class="cb"></i><span class="e">To be honest, …</span><span class="r">Честно говоря, …</span></li>
+        <li><i class="cb"></i><span class="e">Actually, …</span><span class="r">Вообще-то / на самом деле, …</span></li>
+        <li><i class="cb"></i><span class="e">The thing is, …</span><span class="r">Дело в том, что…</span></li>
+        <li><i class="cb"></i><span class="e">How can I put it…</span><span class="r">Как бы это сказать…</span></li>
+        <li><i class="cb"></i><span class="e">It’s hard to say, but…</span><span class="r">Сложно сказать, но…</span></li>
+        <li><i class="cb"></i><span class="e">I’ve never really thought about it, but…</span><span class="r">Никогда особо об этом не думал(а), но…</span></li>
+        <li><i class="cb"></i><span class="e">Let me see…</span><span class="r">Так, сейчас соображу…</span></li>
+        <li><i class="cb"></i><span class="e">You know, …</span><span class="r">Знаешь, … (связка в начале фразы)</span></li>
+      </ol>
+    </div>
+    <div class="pbox">
+      <div class="ph"><span class="letter">B</span><h3>Высказать мнение</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">I think… / I believe…</span><span class="r">Я думаю… / Я считаю…</span></li>
+        <li><i class="cb"></i><span class="e">In my opinion, …</span><span class="r">По-моему, …</span></li>
+        <li><i class="cb"></i><span class="e">The way I see it, …</span><span class="r">Как я это вижу, …</span></li>
+        <li><i class="cb"></i><span class="e">As far as I know, …</span><span class="r">Насколько я знаю, …</span></li>
+        <li><i class="cb"></i><span class="e">I’m pretty sure that…</span><span class="r">Я почти уверен(а), что…</span></li>
+        <li><i class="cb"></i><span class="e">It seems to me that…</span><span class="r">Мне кажется, что…</span></li>
+        <li><i class="cb"></i><span class="e">I’d say that…</span><span class="r">Я бы сказал(а), что…</span></li>
+        <li><i class="cb"></i><span class="e">If you ask me, …</span><span class="r">Если хотите знать моё мнение, …</span></li>
+        <li><i class="cb"></i><span class="e">I’m not sure, but I guess…</span><span class="r">Не уверен(а), но, наверное…</span></li>
+        <li><i class="cb"></i><span class="e">Personally, I prefer…</span><span class="r">Лично я предпочитаю…</span></li>
+      </ol>
+    </div>
+    <div class="pbox">
+      <div class="ph"><span class="letter">C</span><h3>Согласиться и возразить</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">Exactly! / Absolutely!</span><span class="r">Точно! / Абсолютно!</span></li>
+        <li><i class="cb"></i><span class="e">I totally agree. <i>не «I am agree»</i></span><span class="r">Полностью согласен(на).</span></li>
+        <li><i class="cb"></i><span class="e">That’s true.</span><span class="r">Это правда.</span></li>
+        <li><i class="cb"></i><span class="e">That makes sense.</span><span class="r">Логично. / Звучит разумно.</span></li>
+        <li><i class="cb"></i><span class="e">Fair enough.</span><span class="r">Справедливо. / Ладно, принимается.</span></li>
+        <li><i class="cb"></i><span class="e">I see your point, but…</span><span class="r">Понимаю вашу мысль, но…</span></li>
+        <li><i class="cb"></i><span class="e">I’m not so sure about that.</span><span class="r">Я в этом не уверен(а).</span></li>
+        <li><i class="cb"></i><span class="e">I don’t think so.</span><span class="r">Не думаю.</span></li>
+        <li><i class="cb"></i><span class="e">That’s not always the case.</span><span class="r">Так бывает не всегда.</span></li>
+        <li><i class="cb"></i><span class="e">It depends on… <i>не «It is depends»</i></span><span class="r">Это зависит от…</span></li>
+      </ol>
+    </div>
+    <div class="pbox">
+      <div class="ph"><span class="letter">D</span><h3>Рассказать историю</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">The other day, …</span><span class="r">На днях…</span></li>
+        <li><i class="cb"></i><span class="e">It all started when…</span><span class="r">Всё началось, когда…</span></li>
+        <li><i class="cb"></i><span class="e">At first, …</span><span class="r">Сначала…</span></li>
+        <li><i class="cb"></i><span class="e">After that, … / Then, …</span><span class="r">После этого… / Потом…</span></li>
+        <li><i class="cb"></i><span class="e">All of a sudden, …</span><span class="r">Вдруг, внезапно…</span></li>
+        <li><i class="cb"></i><span class="e">It turned out that…</span><span class="r">Оказалось, что…</span></li>
+        <li><i class="cb"></i><span class="e">I was about to…, when…</span><span class="r">Я как раз собирался(-лась)…, когда…</span></li>
+        <li><i class="cb"></i><span class="e">In the end, …</span><span class="r">В итоге…</span></li>
+        <li><i class="cb"></i><span class="e">Long story short, …</span><span class="r">Короче говоря, …</span></li>
+        <li><i class="cb"></i><span class="e">You won’t believe what happened!</span><span class="r">Ты не поверишь, что случилось!</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>06</b> / 15</span></div>
+</section>
+
+<!-- =============================== 7. CHUNKS E–H =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot c"></i>Техника 2 · 5 минут</span><span>Банк фраз · часть 2 из 2</span></div>
+
+  <h1>Связки, переспросы<br>и <em>фразы-спасатели</em></h1>
+  <p class="lead">Группа G — самая важная в гайде. Главный страх в разговоре — «забуду слово и замолчу». Эти фразы позволяют <b>объяснить любое слово другими словами</b>, и разговор продолжается.</p>
+
+  <div class="bank mt3">
+    <div class="pbox">
+      <div class="ph"><span class="letter">E</span><h3>Причина, следствие, связки</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">That’s why…</span><span class="r">Вот почему…</span></li>
+        <li><i class="cb"></i><span class="e">Because of that, …</span><span class="r">Из-за этого…</span></li>
+        <li><i class="cb"></i><span class="e">The reason is that…</span><span class="r">Причина в том, что…</span></li>
+        <li><i class="cb"></i><span class="e">So basically, …</span><span class="r">То есть, по сути, …</span></li>
+        <li><i class="cb"></i><span class="e">On top of that, …</span><span class="r">Вдобавок к этому…</span></li>
+        <li><i class="cb"></i><span class="e">Not only that, but…</span><span class="r">И это ещё не всё: …</span></li>
+        <li><i class="cb"></i><span class="e">On the one hand… on the other hand…</span><span class="r">С одной стороны… с другой стороны…</span></li>
+        <li><i class="cb"></i><span class="e">Anyway, …</span><span class="r">В любом случае… / Так вот… (возврат к теме)</span></li>
+        <li><i class="cb"></i><span class="e">By the way, …</span><span class="r">Кстати, …</span></li>
+        <li><i class="cb"></i><span class="e">What I mean is…</span><span class="r">Я имею в виду, что…</span></li>
+      </ol>
+    </div>
+    <div class="pbox">
+      <div class="ph"><span class="letter">F</span><h3>Переспросить и уточнить</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">Sorry, could you say that again?</span><span class="r">Извините, можете повторить?</span></li>
+        <li><i class="cb"></i><span class="e">Could you speak a bit more slowly?</span><span class="r">Можете говорить чуть медленнее?</span></li>
+        <li><i class="cb"></i><span class="e">Sorry, I didn’t catch that.</span><span class="r">Простите, я не расслышал(а).</span></li>
+        <li><i class="cb"></i><span class="e">What do you mean by…?</span><span class="r">Что вы имеете в виду под…?</span></li>
+        <li><i class="cb"></i><span class="e">Do you mean that…?</span><span class="r">Вы имеете в виду, что…?</span></li>
+        <li><i class="cb"></i><span class="e">So what you’re saying is…</span><span class="r">То есть вы говорите, что…</span></li>
+        <li><i class="cb"></i><span class="e">What does “…” mean?</span><span class="r">Что значит «…»?</span></li>
+        <li><i class="cb"></i><span class="e">How do you say “…” in English?</span><span class="r">Как сказать «…» по-английски?</span></li>
+        <li><i class="cb"></i><span class="e">Just to make sure I understand, …</span><span class="r">Хочу убедиться, что правильно понял(а): …</span></li>
+        <li><i class="cb"></i><span class="e">Can you give me an example?</span><span class="r">Можете привести пример?</span></li>
+      </ol>
+    </div>
+    <div class="pbox" style="border:1.5px solid var(--coral)">
+      <div class="ph"><span class="letter" style="background:var(--coral)">G</span><h3>Спасатели: когда забыли слово</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">It’s a kind of…</span><span class="r">Это такой вид…</span></li>
+        <li><i class="cb"></i><span class="e">It’s something you use to…</span><span class="r">Это штука, которой пользуются, чтобы…</span></li>
+        <li><i class="cb"></i><span class="e">It’s a place where…</span><span class="r">Это место, где…</span></li>
+        <li><i class="cb"></i><span class="e">It’s a person who…</span><span class="r">Это человек, который…</span></li>
+        <li><i class="cb"></i><span class="e">It’s like… / It’s similar to…</span><span class="r">Это похоже на…</span></li>
+        <li><i class="cb"></i><span class="e">It’s the opposite of…</span><span class="r">Это противоположность…</span></li>
+        <li><i class="cb"></i><span class="e">I can’t remember the word, but…</span><span class="r">Не могу вспомнить слово, но…</span></li>
+        <li><i class="cb"></i><span class="e">What’s the word…?</span><span class="r">Как же это слово…?</span></li>
+        <li><i class="cb"></i><span class="e">It’s on the tip of my tongue.</span><span class="r">Вертится на языке.</span></li>
+        <li><i class="cb"></i><span class="e">Something like…</span><span class="r">Что-то вроде…</span></li>
+      </ol>
+    </div>
+    <div class="pbox">
+      <div class="ph"><span class="letter">H</span><h3>Подвести итог и закончить</h3></div>
+      <ol>
+        <li><i class="cb"></i><span class="e">So, all in all, …</span><span class="r">Так что в целом…</span></li>
+        <li><i class="cb"></i><span class="e">To sum up, …</span><span class="r">Подводя итог, …</span></li>
+        <li><i class="cb"></i><span class="e">At the end of the day, …</span><span class="r">В конечном счёте…</span></li>
+        <li><i class="cb"></i><span class="e">That’s pretty much it.</span><span class="r">Вот, в общем-то, и всё.</span></li>
+        <li><i class="cb"></i><span class="e">Anyway, that’s my story.</span><span class="r">В общем, такая история.</span></li>
+        <li><i class="cb"></i><span class="e">What do you think?</span><span class="r">А ты что думаешь?</span></li>
+        <li><i class="cb"></i><span class="e">How about you?</span><span class="r">А у тебя как?</span></li>
+        <li><i class="cb"></i><span class="e">It was nice talking to you.</span><span class="r">Было приятно поговорить.</span></li>
+        <li><i class="cb"></i><span class="e">Let’s talk about it later.</span><span class="r">Давай обсудим это позже.</span></li>
+        <li><i class="cb"></i><span class="e">Anyway, I’d better go.</span><span class="r">Ладно, мне пора.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="dark mt3">
+    <p><b>Пример: забыли слово «стремянка» (ladder).</b> Не молчите — опишите: <span style="color:#fff;font-weight:800">“It’s something you use to reach high places. It has steps, and you put it against a wall.”</span> <span class="muted">Собеседник подскажет слово — и вы его уже никогда не забудете.</span></p>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>07</b> / 15</span></div>
+</section>
+
+<!-- =============================== 8. SELF-TALK =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot t"></i>Техника 3 · 5 минут</span><span>Говорим без собеседника</span></div>
+
+  <h1>Self-talk: говорите сами<br>с собой — <em>это нормально</em></h1>
+  <p class="lead">Чтобы тренировать речь, не нужен собеседник — нужен повод открыть рот. Self-talk — это проговаривание вслух на английском своих действий, воспоминаний и мнений. Звучит странно, но работает: вы тренируете ровно то, что нужно в разговоре, — <b>быстро доставать слова из памяти</b>.</p>
+
+  <div class="card mt4">
+    <div class="level">
+      <div class="lv">Уровень 1<b>Комментатор</b><span>Дни 1–7</span></div>
+      <div>
+        <p>Описываете вслух, что делаете <b>прямо сейчас</b>. Простыми фразами в Present Continuous. Не знаете слово — показываете пальцем и описываете (стр. 7, группа G).</p>
+        <div class="quote t mt2">“Okay, I’m making coffee now. I’m taking my favourite cup… Hmm, where’s the milk? Oh, here it is. I think I need more sugar today.”</div>
+      </div>
+    </div>
+    <div class="level">
+      <div class="lv">Уровень 2<b>Рассказчик</b><span>Дни 8–14</span></div>
+      <div>
+        <p>Пересказываете <b>то, что уже было</b>: вчерашний день, серию, разговор. Прошедшее время + фразы из группы D (стр. 6).</p>
+        <div class="quote t mt2">“The other day I went to a new café near my office. At first, it seemed really nice, but it turned out that they only accepted cash. Long story short, I had coffee at home.”</div>
+      </div>
+    </div>
+    <div class="level">
+      <div class="lv">Уровень 3<b>Оратор</b><span>Дни 15–30</span></div>
+      <div>
+        <p>1–2 минуты <b>мнения</b> на тему дня (стр. 13) по формуле ниже. Это уже настоящая разговорная речь.</p>
+        <div class="quote t mt2">“I think working from home is better for me. The reason is that I save two hours a day. For example, last week I finished a big project early because I didn’t waste time in traffic. So, all in all, home is my best office.”</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt5">Формула «1 минута» — каркас любого ответа</h2>
+  <div class="chain">
+    <div><b>1 · МНЕНИЕ</b><span class="en">I think…</span><span class="small muted">Ответ одной фразой</span></div>
+    <div><b>2 · ПРИЧИНА</b><span class="en">The reason is that…</span><span class="small muted">Почему вы так думаете</span></div>
+    <div><b>3 · ПРИМЕР</b><span class="en">For example, last week…</span><span class="small muted">Случай из жизни</span></div>
+    <div><b>4 · ВЫВОД</b><span class="en">So, all in all, …</span><span class="small" style="color:#DDF4EE">Повторите мнение</span></div>
+  </div>
+
+  <div class="grid2 mt4">
+    <div class="dark">
+      <h3 style="color:#fff">Правило «3 секунды»</h3>
+      <p class="small">Поставьте таймер на 60 секунд. Молчать дольше 3 секунд нельзя. Нет слова — используйте филлер (<b>Well, let me think…</b>) или опишите его. Главное — не останавливаться.</p>
+    </div>
+    <div class="card cream">
+      <h3>Если неловко говорить вслух</h3>
+      <p class="small">Говорите в наушниках с микрофоном — со стороны это выглядит как звонок. В машине, в душе и на прогулке можно говорить в полный голос.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>08</b> / 15</span></div>
+</section>
+
+<!-- =============================== 9. AI =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot a"></i>Техника 4 · 5 минут</span><span>Собеседник 24/7</span></div>
+
+  <h1>ИИ-собеседник: живой диалог<br><em>без стыда и без расписания</em></h1>
+  <p class="lead">В приложениях ChatGPT, Claude и Gemini есть <b>голосовой режим</b>. ИИ не устаёт, не смеётся над ошибками и подстраивается под ваш уровень. Главное — правильно его настроить. <b>Скопируйте промпт → вставьте в чат текстом → включите голосовой режим.</b> Значения в [скобках] замените на свои.</p>
+
+  <div class="grid2 mt4" style="gap:3.5mm">
+    <div class="prompt">
+      <div class="ph"><span class="no">01</span><h3>Разговорный партнёр</h3><span>основной</span></div>
+<pre>You are my friendly English conversation partner. My level is <mark>[A2/B1/B2]</mark>. Today's topic: <mark>[topic]</mark>.
+Rules:
+- Use simple, natural spoken English.
+- Keep your replies short (2–3 sentences) so that I speak more than you.
+- Always end with a question.
+- Do NOT correct my mistakes during the conversation.
+- When I say "feedback", list my 5 most important mistakes with corrections and suggest 3 phrases that would make my English sound more natural.</pre>
+    </div>
+    <div class="prompt">
+      <div class="ph"><span class="no">02</span><h3>Ролевая игра</h3><span>реальные ситуации</span></div>
+<pre>Let's do a role-play. You are <mark>[a barista / a hotel receptionist / a job interviewer / a doctor]</mark>. I am <mark>[a customer / a guest / a candidate / a patient]</mark>.
+Stay in character and speak naturally. Make the situation a little challenging: ask follow-up questions and add one small problem I need to solve.
+Keep your replies short. If I get stuck and say "hint", suggest one phrase I could use.
+Start the conversation now.</pre>
+    </div>
+    <div class="prompt">
+      <div class="ph"><span class="no">03</span><h3>Фразы дня</h3><span>закрепляет chunks</span></div>
+<pre>Today I'm learning these phrases:
+<mark class="nw">[phrase 1]</mark>, <mark class="nw">[phrase 2]</mark>, <mark class="nw">[phrase 3]</mark>, <mark class="nw">[phrase 4]</mark>.
+Ask me questions that make me naturally use each phrase in my answers. One question at a time.
+If I don't use a phrase, gently remind me and ask again.
+At the end, tell me which phrases I used correctly and which ones I should practise more.</pre>
+    </div>
+    <div class="prompt">
+      <div class="ph"><span class="no">04</span><h3>Разбор записи</h3><span>вместо учителя</span></div>
+<pre>Below is a transcript of my 1-minute spoken answer. Please:
+1) show a corrected version that keeps my own words and style;
+2) list my mistakes with a short explanation in Russian;
+3) show a more natural version a native speaker might say;
+4) give me 3 phrases to learn from this.
+My answer: <mark>[вставьте текст]</mark></pre>
+    </div>
+  </div>
+
+  <div class="grid3 mt4">
+    <div class="card cream">
+      <h3>Как получить текст записи</h3>
+      <p class="small">Включите голосовой ввод на клавиатуре телефона, выберите английский и говорите. Телефон превратит речь в текст — вставьте его в промпт 04.</p>
+    </div>
+    <div class="card cream">
+      <h3>Бонус: проверка произношения</h3>
+      <p class="small">Если голосовой ввод упорно пишет не то слово — скорее всего, вы произносите его неразборчиво. Добавьте это слово в shadowing.</p>
+    </div>
+    <div class="card cream">
+      <h3>Если растерялись</h3>
+      <p class="small">Говорите ИИ: <span class="en">“Could you speak more slowly?”</span>, <span class="en">“Give me a hint.”</span>, <span class="en">“Ask me an easier question.”</span></p>
+    </div>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>09</b> / 15</span></div>
+</section>
+
+<!-- =============================== 10. PLAN 1–14 =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>План · дни 1–14</span><span>Отмечайте каждый день</span></div>
+
+  <h1>План на 30 дней:<br><em>недели 1 и 2</em></h1>
+  <div class="pl-note"><span class="pill s">Каждый день</span><span>5 минут shadowing (стр. 5). Новый отрывок — в дни 1, 4, 8, 11, 15, 18, 22, 25. «П1–П4» — номера промптов со стр. 9, «тема N» — со стр. 13.</span></div>
+
+  <div class="week">
+    <div class="week-head"><span class="wk">Неделя 1</span><h2>Разогрев: привыкаем говорить вслух</h2><span class="goal">Self-talk — уровень 1<br>«Комментатор»</span></div>
+    <table class="plan">
+      <tr><th>День</th><th class="h-c">Фразы</th><th class="h-t">Self-talk</th><th class="h-a">ИИ-диалог</th></tr>
+      <tr><td class="d"><i class="cb"></i>1</td><td class="ph">A1–A4</td><td>Замер «ДО» (стр. 14). Комментируйте своё утро</td><td>П1 · тема 1</td></tr>
+      <tr><td class="d"><i class="cb"></i>2</td><td class="ph">A5–A7</td><td>Комментируйте, как готовите еду</td><td>П1 · тема 2</td></tr>
+      <tr><td class="d"><i class="cb"></i>3</td><td class="ph">A8–A10</td><td>Комментируйте дорогу или прогулку</td><td>П3 · фразы A</td></tr>
+      <tr><td class="d"><i class="cb"></i>4</td><td class="ph">B1–B4</td><td>Опишите комнату, в которой вы находитесь</td><td>П1 · тема 3</td></tr>
+      <tr><td class="d"><i class="cb"></i>5</td><td class="ph">B5–B7</td><td>Комментируйте уборку или сборы</td><td>П2 · кафе: закажите кофе и десерт</td></tr>
+      <tr><td class="d"><i class="cb"></i>6</td><td class="ph">B8–B10</td><td>Опишите вид из окна и людей на улице</td><td>П3 · фразы B</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>7</td><td class="ph">Повтор A–B</td><td>Запись 1 мин: тема 2 → прослушайте по чек-листу (стр. 12)</td><td>П1 · тема 10, в конце — «feedback»</td></tr>
+    </table>
+  </div>
+
+  <div class="week">
+    <div class="week-head"><span class="wk">Неделя 2</span><h2>Истории: говорим о прошлом</h2><span class="goal">Self-talk — уровень 2<br>«Рассказчик»</span></div>
+    <table class="plan">
+      <tr><th>День</th><th class="h-c">Фразы</th><th class="h-t">Self-talk</th><th class="h-a">ИИ-диалог</th></tr>
+      <tr><td class="d"><i class="cb"></i>8</td><td class="ph">C1–C4</td><td>Перескажите вчерашний день</td><td>П1 · тема 14</td></tr>
+      <tr><td class="d"><i class="cb"></i>9</td><td class="ph">C5–C7</td><td>Перескажите серию или видео, которое смотрели</td><td>П2 · магазин: верните товар</td></tr>
+      <tr><td class="d"><i class="cb"></i>10</td><td class="ph">C8–C10</td><td>Тема 11</td><td>П3 · фразы C — поспорьте с ИИ</td></tr>
+      <tr><td class="d"><i class="cb"></i>11</td><td class="ph">D1–D4</td><td>Тема 18</td><td>П1 · тема 12</td></tr>
+      <tr><td class="d"><i class="cb"></i>12</td><td class="ph">D5–D7</td><td>Тема 17</td><td>П2 · отель: проблема с номером</td></tr>
+      <tr><td class="d"><i class="cb"></i>13</td><td class="ph">D8–D10</td><td>Тема 20</td><td>П3 · фразы D</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>14</td><td class="ph">Повтор C–D</td><td>Запись 1 мин: тема 15 → чек-лист (стр. 12)</td><td>П4 · разбор вашей записи</td></tr>
+    </table>
+  </div>
+
+  <h2 class="mt4">Пример: день 1 по минутам</h2>
+  <div class="dayone">
+    <div><b style="color:var(--coral)">0–5 · Shadowing</b>Найдите на YouTube короткое видео с английскими субтитрами. Вырежьте 40 секунд и пройдите 5 шагов со стр. 5.</div>
+    <div><b style="color:var(--amber)">5–10 · Chunks</b>Фразы A1–A4. Каждую — вслух 3 раза, плюс 2 своих примера: <span class="en">“To be honest, I hate Mondays.”</span></div>
+    <div><b style="color:var(--teal)">10–15 · Self-talk</b>Запишите замер «ДО» (стр. 14). Потом 3 минуты комментируйте вслух, что делаете.</div>
+    <div><b style="color:var(--violet)">15–20 · ИИ</b>Вставьте промпт 01, тема 1 — <span class="en">hometown</span>. Включите голос и говорите. Используйте свои 4 фразы.</div>
+  </div>
+
+  <div class="card cream mt3">
+    <p class="small"><b>Пропустили день?</b> Не начинайте заново и не делайте двойную норму. Просто продолжите с того дня, на котором остановились. Главное правило — <b>не пропускать два дня подряд</b>.</p>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>10</b> / 15</span></div>
+</section>
+
+<!-- =============================== 11. PLAN 15–30 =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>План · дни 15–30</span><span>Отмечайте каждый день</span></div>
+
+  <h1>План на 30 дней:<br><em>недели 3 и 4</em></h1>
+  <div class="pl-note"><span class="pill s">Каждый день</span><span>5 минут shadowing. С 15-го дня попробуйте материал уровнем выше или скорость 1.0.</span></div>
+
+  <div class="week">
+    <div class="week-head"><span class="wk">Неделя 3</span><h2>Мнение: учимся рассуждать</h2><span class="goal">Self-talk — уровень 3<br>«Оратор», формула «1 минута»</span></div>
+    <table class="plan">
+      <tr><th>День</th><th class="h-c">Фразы</th><th class="h-t">Self-talk</th><th class="h-a">ИИ-диалог</th></tr>
+      <tr><td class="d"><i class="cb"></i>15</td><td class="ph">E1–E4</td><td>Монолог: тема 21</td><td>П1 · тема 13</td></tr>
+      <tr><td class="d"><i class="cb"></i>16</td><td class="ph">E5–E7</td><td>Монолог: тема 22</td><td>П2 · собеседование на работу</td></tr>
+      <tr><td class="d"><i class="cb"></i>17</td><td class="ph">E8–E10</td><td>Монолог: тема 23</td><td>П3 · фразы E</td></tr>
+      <tr><td class="d"><i class="cb"></i>18</td><td class="ph">F1–F4</td><td>Монолог: тема 24</td><td>П2 · у врача: опишите симптомы</td></tr>
+      <tr><td class="d"><i class="cb"></i>19</td><td class="ph">F5–F7</td><td>Монолог: тема 25</td><td>П1 · тема 16. Попросите ИИ говорить быстрее и переспрашивайте фразами F</td></tr>
+      <tr><td class="d"><i class="cb"></i>20</td><td class="ph">F8–F10</td><td>Монолог: тема 26</td><td>П3 · фразы F</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>21</td><td class="ph">Повтор E–F</td><td>Запись 1,5 мин: тема 27. Сравните с записью 7-го дня</td><td>П4 · разбор вашей записи</td></tr>
+    </table>
+  </div>
+
+  <div class="week">
+    <div class="week-head"><span class="wk">Неделя 4</span><h2>Свобода: говорим без подготовки</h2><span class="goal">Self-talk — уровень 3<br>монологи до 2 минут</span></div>
+    <table class="plan">
+      <tr><th>День</th><th class="h-c">Фразы</th><th class="h-t">Self-talk</th><th class="h-a">ИИ-диалог</th></tr>
+      <tr><td class="d"><i class="cb"></i>22</td><td class="ph">G1–G4</td><td>Игра «Объясни без слова»: опишите 5 предметов вокруг, не называя их</td><td>П1 · пусть ИИ угадывает ваши предметы</td></tr>
+      <tr><td class="d"><i class="cb"></i>23</td><td class="ph">G5–G7</td><td>Монолог: тема 28</td><td>П2 · аэропорт: потерялся багаж</td></tr>
+      <tr><td class="d"><i class="cb"></i>24</td><td class="ph">G8–G10</td><td>Монолог: тема 29</td><td>П3 · фразы G</td></tr>
+      <tr><td class="d"><i class="cb"></i>25</td><td class="ph">H1–H4</td><td>Монолог: тема 30</td><td>П2 · знакомство с новым коллегой</td></tr>
+      <tr><td class="d"><i class="cb"></i>26</td><td class="ph">H5–H7</td><td>2 минуты: любая тема 11–20</td><td>П1 · поспорьте с ИИ на тему 29</td></tr>
+      <tr><td class="d"><i class="cb"></i>27</td><td class="ph">H8–H10</td><td>2 минуты: тема на выбор, без подготовки</td><td>П3 · фразы H</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>28</td><td class="ph">Повтор G–H</td><td>Запись 2 мин: тема 23 → чек-лист (стр. 12)</td><td>П4 · разбор вашей записи</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>29</td><td class="ph">Марафон</td><td colspan="2">15 минут разговора с ИИ без перерыва (П1, темы на выбор). Цель — не переходить на русский ни разу</td></tr>
+      <tr class="rev"><td class="d"><i class="cb"></i>30</td><td class="ph">Финиш</td><td colspan="2">Замер «ПОСЛЕ» (стр. 14). Послушайте подряд запись 1-го и 30-го дня — и оцените разницу</td></tr>
+    </table>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>11</b> / 15</span></div>
+</section>
+
+<!-- =============================== 12. SELF-CHECK =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>Самопроверка</span><span>Учитель, который всегда с вами</span></div>
+
+  <h1>Как исправлять ошибки,<br>когда <em>нет учителя</em></h1>
+  <p class="lead">Учитель нужен в первую очередь для того, чтобы замечать ваши ошибки. Эту работу могут делать три бесплатных инструмента: <b>диктофон</b> (слышите себя со стороны), <b>голосовой ввод</b> (проверяет произношение) и <b>ИИ</b> (исправляет грамматику по промпту 04).</p>
+
+  <div class="grid2 mt4" style="grid-template-columns: 1fr 1fr;">
+    <div class="card">
+      <h2>Чек-лист: слушаем свою запись</h2>
+      <ul class="checks">
+        <li><i class="cb"></i><span>Где были паузы дольше 3 секунд? <span class="muted">В этих местах нужен готовый блок.</span></span></li>
+        <li><i class="cb"></i><span>Сколько раз я сказал(а) «эээ»? <span class="muted">Замените на <span class="en">Well…</span> / <span class="en">Let me think…</span></span></span></li>
+        <li><i class="cb"></i><span>Какие слова я не смог(ла) вспомнить? <span class="muted">Выпишите — это слова на завтра.</span></span></li>
+        <li><i class="cb"></i><span>Переходил(а) ли я на русский? <span class="muted">Когда и почему?</span></span></li>
+        <li><i class="cb"></i><span>Сколько фраз из банка я использовал(а)?</span></li>
+        <li><i class="cb"></i><span>Есть ли ошибки из таблицы ниже?</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="dark">
+        <h3 style="color:#fff">Не паникуйте из-за артиклей</h3>
+        <p class="small">Ошибка в <b>a / the</b> почти никогда не мешает вас понять. В первые 30 дней беглость важнее точности. Артикли начнут вставать на место сами — от shadowing и готовых фраз.</p>
+      </div>
+      <div class="card cream mt3">
+        <h3>Правило одной ошибки</h3>
+        <p class="small">После разбора записи выберите <b>одну</b> ошибку и следите только за ней всю следующую неделю. Одну ошибку можно исправить за неделю. Если пытаться следить за десятью сразу, не исправится ни одна.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt5">10 ошибок, которые выдают русскоговорящих</h2>
+  <table class="err">
+    <tr><th>№</th><th>Так говорят</th><th>Правильно</th><th>Почему</th></tr>
+    <tr><td class="no">01</td><td class="bad">I am agree.</td><td class="good">I agree.</td><td class="why">agree — это глагол, am не нужен</td></tr>
+    <tr><td class="no">02</td><td class="bad">It is depends.</td><td class="good">It depends.</td><td class="why">is и глагол вместе не ставятся</td></tr>
+    <tr><td class="no">03</td><td class="bad">I very like it.</td><td class="good">I really like it.</td><td class="why">very не ставится перед глаголом</td></tr>
+    <tr><td class="no">04</td><td class="bad">How it works?</td><td class="good">How does it work?</td><td class="why">в вопросе нужен вспомогательный глагол</td></tr>
+    <tr><td class="no">05</td><td class="bad">I live here since 2020.</td><td class="good">I’ve lived here since 2020.</td><td class="why">since / for + «до сих пор» = Present Perfect</td></tr>
+    <tr><td class="no">06</td><td class="bad">Explain me, please.</td><td class="good">Please explain it to me.</td><td class="why">explain что-то <b>to</b> кому-то</td></tr>
+    <tr><td class="no">07</td><td class="bad">I have 25 years.</td><td class="good">I’m 25 (years old).</td><td class="why">возраст — через be, а не have</td></tr>
+    <tr><td class="no">08</td><td class="bad">He said me that…</td><td class="good">He told me that…</td><td class="why">say — что сказали, tell — кому сказали</td></tr>
+    <tr><td class="no">09</td><td class="bad">informations, advices</td><td class="good">information, advice</td><td class="why">неисчисляемые, без -s</td></tr>
+    <tr><td class="no">10</td><td class="bad">make a photo</td><td class="good">take a photo</td><td class="why">устойчивое сочетание — учите целиком</td></tr>
+  </table>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>12</b> / 15</span></div>
+</section>
+
+<!-- =============================== 13. TOPICS =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot t"></i>Темы</span><span>Для self-talk и ИИ-диалогов</span></div>
+
+  <h1>30 тем, чтобы <em>всегда было<br>о чём говорить</em></h1>
+  <p class="lead">Темы идут от простого к сложному. Используйте их в self-talk, в ИИ-диалогах (вставьте в промпт 01 вместо <span class="en">[topic]</span>) и для записей. Отвечайте по формуле «1 минута»: <b>мнение → причина → пример → вывод</b>.</p>
+
+  <div class="topics">
+    <div class="tcol">
+      <div class="th"><h3>О себе</h3><span class="pill t">Легко</span></div>
+      <ol>
+        <li><span class="n">01</span><span class="q">Tell me about your hometown.<small>Расскажите о родном городе</small></span></li>
+        <li><span class="n">02</span><span class="q">What does your typical weekday look like?<small>Ваш обычный будний день</small></span></li>
+        <li><span class="n">03</span><span class="q">What do you usually do at the weekend?<small>Ваши выходные</small></span></li>
+        <li><span class="n">04</span><span class="q">What’s your favourite food, and how do you make it?<small>Любимое блюдо и рецепт</small></span></li>
+        <li><span class="n">05</span><span class="q">Describe your best friend.<small>Ваш лучший друг</small></span></li>
+        <li><span class="n">06</span><span class="q">What do you do for work or study?<small>Работа или учёба</small></span></li>
+        <li><span class="n">07</span><span class="q">What’s your favourite season, and why?<small>Любимое время года</small></span></li>
+        <li><span class="n">08</span><span class="q">Describe your home.<small>Ваш дом или квартира</small></span></li>
+        <li><span class="n">09</span><span class="q">Which apps do you use every day?<small>Приложения, без которых никак</small></span></li>
+        <li><span class="n">10</span><span class="q">What are your hobbies?<small>Ваши увлечения</small></span></li>
+      </ol>
+    </div>
+    <div class="tcol l2">
+      <div class="th"><h3>Опыт и истории</h3><span class="pill c">Средне</span></div>
+      <ol>
+        <li><span class="n">11</span><span class="q">Tell me about your last holiday.<small>Последний отпуск</small></span></li>
+        <li><span class="n">12</span><span class="q">Describe a time you got lost.<small>Как вы однажды заблудились</small></span></li>
+        <li><span class="n">13</span><span class="q">What’s the best gift you’ve ever received?<small>Лучший подарок</small></span></li>
+        <li><span class="n">14</span><span class="q">Tell me about a film you watched recently.<small>Недавний фильм</small></span></li>
+        <li><span class="n">15</span><span class="q">Describe a mistake you learned from.<small>Ошибка, которая чему-то научила</small></span></li>
+        <li><span class="n">16</span><span class="q">What was your first job like?<small>Ваша первая работа</small></span></li>
+        <li><span class="n">17</span><span class="q">Tell me about a person who inspired you.<small>Человек, который вдохновил</small></span></li>
+        <li><span class="n">18</span><span class="q">Describe something funny that happened to you.<small>Смешной случай</small></span></li>
+        <li><span class="n">19</span><span class="q">What was school like for you?<small>Какой была ваша школа</small></span></li>
+        <li><span class="n">20</span><span class="q">Tell me about a goal you achieved.<small>Цель, которой вы достигли</small></span></li>
+      </ol>
+    </div>
+    <div class="tcol l3">
+      <div class="th"><h3>Мнения</h3><span class="pill s">Сложнее</span></div>
+      <ol>
+        <li><span class="n">21</span><span class="q">Is it better to live in a city or in the countryside?<small>Город или деревня?</small></span></li>
+        <li><span class="n">22</span><span class="q">Should children have smartphones?<small>Нужен ли детям смартфон?</small></span></li>
+        <li><span class="n">23</span><span class="q">Can you learn a language without a teacher?<small>Можно ли выучить язык без учителя?</small></span></li>
+        <li><span class="n">24</span><span class="q">Is working from home better than working in an office?<small>Удалёнка или офис?</small></span></li>
+        <li><span class="n">25</span><span class="q">Do social networks make people happier?<small>Соцсети делают нас счастливее?</small></span></li>
+        <li><span class="n">26</span><span class="q">What’s more important: money or free time?<small>Деньги или свободное время?</small></span></li>
+        <li><span class="n">27</span><span class="q">Should everyone learn to cook?<small>Должен ли каждый уметь готовить?</small></span></li>
+        <li><span class="n">28</span><span class="q">Is it better to travel alone or with friends?<small>Путешествовать одному или с друзьями?</small></span></li>
+        <li><span class="n">29</span><span class="q">Will AI replace teachers?<small>Заменит ли ИИ учителей?</small></span></li>
+        <li><span class="n">30</span><span class="q">If you could change one thing in your life, what would it be?<small>Что бы вы изменили в своей жизни?</small></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="dark mt4">
+    <p><b>Секрет глубины:</b> на любую тему задайте себе 3 уточняющих вопроса — <span style="color:#fff;font-weight:800">Why? · When exactly? · What happened next?</span> Ответ на каждый — ещё 20 секунд речи. Так 1 минута легко превращается в 3.</p>
+  </div>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>13</b> / 15</span></div>
+</section>
+
+<!-- =============================== 14. TRACKER =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot"></i>Трекер</span><span>Распечатайте эту страницу</span></div>
+
+  <h1>Замер прогресса<br>и <em>трекер 30 дней</em></h1>
+  <p class="lead"><b>Тест «1 минута»:</b> включите диктофон, возьмите тему <span class="en">“Tell me about yourself and your plans for this year”</span> и говорите ровно 60 секунд без подготовки. Потом прослушайте запись и заполните таблицу. Запись не удаляйте — она понадобится на 30-й день.</p>
+
+  <table class="meas mt4">
+    <tr><th>Показатель</th><th>ДО · день 1</th><th>ПОСЛЕ · день 30</th></tr>
+    <tr><td>Сколько секунд из 60 я говорил(а) (без учёта пауз)</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Количество пауз дольше 3 секунд</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Количество «эээ / ммм»</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Сколько раз перешёл(шла) на русский</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Количество слов (посчитайте через голосовой ввод)</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Фраз из банка использовано</td><td class="v"></td><td class="v"></td></tr>
+    <tr><td>Уверенность в себе, от 1 до 10</td><td class="v"></td><td class="v"></td></tr>
+  </table>
+
+  <div class="mt5" style="display:flex; justify-content:space-between; align-items:center; gap:4mm">
+    <h2 style="margin:0; white-space:nowrap">Не разрывайте цепочку</h2>
+    <div class="legend" style="justify-content:flex-end; flex-wrap:nowrap; gap:3.5mm">
+      <span><i style="border-color:var(--coral)"></i>S — Shadowing</span>
+      <span><i style="border-color:var(--amber)"></i>C — Chunks</span>
+      <span><i style="border-color:var(--teal)"></i>T — Self-talk</span>
+      <span><i style="border-color:var(--violet)"></i>A — ИИ</span>
+    </div>
+  </div>
+
+  <div class="trk" id="tracker"></div>
+
+  <p class="small muted mt3">Закрашивайте квадрат, когда выполнили технику. Розовые дни — повтор и запись. Зачёт дня — минимум 3 квадрата из 4.</p>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>14</b> / 15</span></div>
+</section>
+
+<!-- =============================== 15. CHEATSHEET =============================== -->
+<section class="page">
+  <div class="top"><span class="tag"><i class="dot s"></i>Шпаргалка</span><span>Всё главное на одной странице</span></div>
+
+  <h1>Шпаргалка <em>на холодильник</em></h1>
+
+  <div class="cheat" style="margin-top:7mm">
+    <span class="scis">✂ вырежьте и повесьте на видное место</span>
+    <div class="grid2" style="gap:6mm">
+      <div>
+        <h3>Моя тренировка · 20 минут</h3>
+        <ul class="mini small">
+          <li><span><b style="color:var(--coral)">Shadowing</b> — 5 мин: повторяю за диктором</span></li>
+          <li><span><b style="color:var(--amber)">Chunks</b> — 5 мин: 3–4 фразы + свои примеры</span></li>
+          <li><span><b style="color:var(--teal)">Self-talk</b> — 5 мин: говорю вслух сам(а)</span></li>
+          <li><span><b style="color:var(--violet)">ИИ-диалог</b> — 5 мин: промпт → голос</span></li>
+        </ul>
+        <h3 class="mt4">Формула «1 минута»</h3>
+        <p class="small"><span class="en">I think…</span> → <span class="en">The reason is that…</span> → <span class="en">For example, …</span> → <span class="en">So, all in all, …</span></p>
+        <h3 class="mt4">Правила</h3>
+        <p class="small">Только вслух · Каждый день · Ошибки разрешены · Молчать не дольше 3 секунд · Запись раз в неделю</p>
+      </div>
+      <div>
+        <h3>Выиграть время</h3>
+        <p class="small"><span class="en">Well, let me think…</span> · <span class="en">That’s a good question.</span> · <span class="en">The thing is, …</span></p>
+        <h3 class="mt4">Забыл(а) слово</h3>
+        <p class="small"><span class="en">It’s a kind of…</span> · <span class="en">It’s something you use to…</span> · <span class="en">It’s a place where…</span> · <span class="en">It’s like…</span></p>
+        <h3 class="mt4">Не понял(а)</h3>
+        <p class="small"><span class="en">Sorry, I didn’t catch that.</span> · <span class="en">Could you speak a bit more slowly?</span></p>
+        <h3 class="mt4">Закончить мысль</h3>
+        <p class="small"><span class="en">So, all in all, …</span> · <span class="en">What do you think?</span> · <span class="en">How about you?</span></p>
+      </div>
+    </div>
+    <div style="border-top:1px dashed var(--line); margin-top:4mm; padding-top:3.5mm">
+      <h3>Бонус: начать первый живой разговор (small talk)</h3>
+      <p class="small"><span class="en">Hi, how’s it going?</span> · <span class="en">Where are you from?</span> · <span class="en">What do you do?</span> · <span class="en">How long have you lived here?</span> · <span class="en">Oh, that sounds interesting!</span> · <span class="en">Tell me more about it.</span> · <span class="en">Nice to meet you!</span></p>
+    </div>
+  </div>
+
+  <h2 class="mt5">Что делать после 30 дней</h2>
+  <div class="next">
+    <div class="card">
+      <span class="big">01</span>
+      <h3>Повторите цикл</h3>
+      <p class="small">Пройдите план ещё раз с новыми отрывками для shadowing. Увеличьте монолог до 3 минут, а ИИ-диалог — до 10.</p>
+    </div>
+    <div class="card">
+      <span class="big">02</span>
+      <h3>Найдите живого собеседника</h3>
+      <p class="small">Языковой обмен (приложения Tandem, HelloTalk) или онлайн-разговорный клуб. Теперь вам есть что сказать — и вы знаете, как.</p>
+    </div>
+    <div class="card">
+      <span class="big">03</span>
+      <h3>Усложняйте материал</h3>
+      <p class="small">Shadowing на скорости 1.0, затем подкасты и интервью для носителей. Каждую неделю — 10 новых фраз из того, что слушаете.</p>
+    </div>
+  </div>
+
+  <div class="dark mt5" style="padding:6mm">
+    <p style="font-family:'Unbounded'; font-weight:700; font-size:12.5pt; line-height:1.35; color:#fff">Языковой барьер ломается не в голове, а во рту. <span style="color:var(--yellow)">Говорите каждый день — даже если только с собой.</span></p>
+    <p class="small muted mt3">Вы уже знаете английский. Осталось его выпустить. Удачи — и увидимся на 30-м дне.</p>
+  </div>
+
+  <p class="small muted mt4" style="text-align:center">© 2026 · «Заговори по-английски за 30 дней». Только для личного использования. Копирование и распространение без разрешения автора запрещены.</p>
+
+  <div class="foot"><span>Заговори за 30 дней</span><span><b>15</b> / 15</span></div>
+</section>
+
+<script>
+  // Build the 30-day tracker grid (review days highlighted).
+  const review = new Set([7, 14, 21, 28, 29, 30]);
+  const box = document.getElementById('tracker');
+  for (let d = 1; d <= 30; d++) {
+    const week = d <= 7 ? 'нед. 1' : d <= 14 ? 'нед. 2' : d <= 21 ? 'нед. 3' : 'нед. 4';
+    box.insertAdjacentHTML('beforeend',
+      `<div class="day${review.has(d) ? ' rv' : ''}"><div class="dn">${d}<small>${week}</small></div>` +
+      `<div class="sq"><span class="s">S</span><span class="c">C</span><span class="t">T</span><span class="a">A</span></div></div>`);
+  }
+</script>
+</body>
+</html>
