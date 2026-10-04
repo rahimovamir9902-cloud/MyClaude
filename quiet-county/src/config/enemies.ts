@@ -47,11 +47,11 @@ export interface EnemyArchetype {
 const defs: EnemyArchetype[] = [
   {
     id: 'common', name: 'Hollow', description: 'Slow and clumsy alone. In numbers, a tide.',
-    health: 100, walkSpeed: 0.85, chaseSpeed: 3.1, turnSpeed: 4.5,
-    attackDamage: 14, attackRange: 1.35, attackWindup: 0.55, attackCooldown: 1.4,
+    health: 100, walkSpeed: 0.85, chaseSpeed: 3.4, turnSpeed: 4.5,
+    attackDamage: 16, attackRange: 1.35, attackWindup: 0.55, attackCooldown: 1.4,
     visionRange: 17, visionFov: 120, proximitySense: 2.0, hearingMultiplier: 1.0,
     awarenessGain: 1.1, awarenessDecay: 0.3,
-    staggerThreshold: 30, staggerDuration: 0.7, searchDuration: 10, loseSightTime: 3.5,
+    staggerThreshold: 40, staggerDuration: 0.7, searchDuration: 10, loseSightTime: 3.5,
     wanderRadius: 7, doorBashTime: 2.2, scale: 1.0, radius: 0.35, takedownable: true,
     alertRadius: 13, flanks: false, quiet: false, knockback: 0,
     skinTones: [0x8a8f7c, 0x7d8274, 0x948b7a, 0x6f776e], clothTones: [0x3c4a52, 0x5a4a3a, 0x4b5240, 0x6a5f55, 0x2f3438, 0x704a3c],

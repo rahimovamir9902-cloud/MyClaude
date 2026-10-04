@@ -69,6 +69,9 @@ export class Game {
   private readonly hostApi: ScreenHost;
   private afterEdit: (() => void) | null = null;
   frameCount = 0;
+  /** Smoothed CPU milliseconds spent in gameplay simulation per frame (excludes rendering). */
+  simMs = 0;
+  simMsPeak = 0;
   /** Optional QA driver (debug builds) that feeds input before each update. */
   autopilot: { update(dt: number): void } | null = null;
 
@@ -160,11 +163,15 @@ export class Game {
         return;
       }
       // Big frame hitches are split so physics never tunnels.
+      const simStart = performance.now();
       if (dt > 1 / 30) {
         session.update(dt / 2, this.input);
         this.input.consumeEdges();
         session.update(dt / 2, this.input);
       } else session.update(dt, this.input);
+      const simCost = performance.now() - simStart;
+      this.simMs += (simCost - this.simMs) * 0.05;
+      this.simMsPeak = Math.max(this.simMsPeak * 0.995, simCost);
       this.renderer.render(rawDt);
       const hud = session.hud();
       const w = session.player.weapon;
@@ -185,7 +192,7 @@ export class Game {
     }
     if (this.settings.showFps) {
       const st = this.renderer.stats;
-      const extra = session ? `  AI ${session.enemies.aliveCount}  paths ${session.paths.searchesThisFrame}` : '';
+      const extra = session ? `  sim ${this.simMs.toFixed(2)}ms  AI ${session.enemies.aliveCount}  paths ${session.paths.searchesThisFrame}` : '';
       this.fpsNode.textContent = `${st.fps} fps  ${st.frameMs.toFixed(1)}ms  dc ${st.drawCalls}  tri ${(st.triangles / 1000).toFixed(0)}k  px ${st.pixelRatio.toFixed(2)}${extra}`;
     }
   }

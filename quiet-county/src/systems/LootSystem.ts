@@ -47,6 +47,9 @@ export class LootSystem {
       return result;
     }
     const rng = new Random(this.worldSeed).fork(containerId);
-    return [...result, ...rollLootTable(table, rng)];
+    // Merge guaranteed and rolled items so the same item never shows as two rows.
+    const totals = new Map<string, number>();
+    for (const s of [...result, ...rollLootTable(table, rng)]) totals.set(s.itemId, (totals.get(s.itemId) ?? 0) + s.quantity);
+    return splitIntoStacks(totals);
   }
 }

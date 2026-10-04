@@ -85,7 +85,7 @@ describe('EnemyBrain', () => {
 
   it('staggers on heavy hits and becomes hostile', () => {
     const { b } = brain();
-    b.applyHit(40, 2, 0, 0.5);
+    b.applyHit(45, 2, 0, 0.5);
     b.think(senses(), 0.05);
     expect(b.state).toBe('stagger');
     expect(b.isHostile).toBe(true);
@@ -128,5 +128,37 @@ describe('EnemyBrain', () => {
     b.think(senses({ playerAlive: false, selfX: 10 }), 0.1);
     expect(b.state).toBe('returnToPatrol');
     expect(b.intent.targetX).toBe(0);
+  });
+});
+
+describe('EnemyBrain lunge', () => {
+  it('speeds up when closing in on a visible player', () => {
+    const b = new EnemyBrain(getArchetype('common'), { x: 0, z: 0 }, new Random(4));
+    b.applyHit(1, 10, 0, 0);
+    b.think(senses({ playerX: 10, playerZ: 0, playerVisibility: 1 }), 0.05);
+    const far = b.intent.speed;
+    b.think(senses({ playerX: 3, playerZ: 0, playerVisibility: 1 }), 0.05);
+    expect(b.intent.speed).toBeGreaterThan(far * 1.2);
+  });
+});
+
+describe('EnemyBrain stagger immunity', () => {
+  it('cannot be stun-locked by repeated heavy hits', () => {
+    const b = new EnemyBrain(getArchetype('common'), { x: 0, z: 0 }, new Random(5));
+    b.applyHit(60, 1, 0, 0);
+    b.think(senses({ playerX: 1, playerZ: 0, playerVisibility: 1 }), 0.05);
+    expect(b.state).toBe('stagger');
+    for (let i = 0; i < 20; i++) b.think(senses({ playerX: 1, playerZ: 0, playerVisibility: 1 }), 0.05);
+    expect(b.state).not.toBe('stagger');
+    b.applyHit(60, 1, 0, 0);
+    b.think(senses({ playerX: 1, playerZ: 0, playerVisibility: 1 }), 0.05);
+    expect(b.state).not.toBe('stagger');
+  });
+
+  it('ordinary crowbar hits do not stagger a common infected', () => {
+    const b = new EnemyBrain(getArchetype('common'), { x: 0, z: 0 }, new Random(6));
+    b.applyHit(34, 1, 0, 0.7);
+    b.think(senses({ playerX: 1, playerZ: 0, playerVisibility: 1 }), 0.05);
+    expect(b.state).not.toBe('stagger');
   });
 });

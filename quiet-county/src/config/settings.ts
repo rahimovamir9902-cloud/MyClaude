@@ -1,7 +1,13 @@
 import type { QualityLevel } from './quality';
 import type { TouchButtonLayout } from './controls';
 
+export type Difficulty = 'easy' | 'normal' | 'hard';
+
+/** Damage infected deal to the player, per difficulty. */
+export const DIFFICULTY_DAMAGE: Readonly<Record<Difficulty, number>> = { easy: 0.55, normal: 1, hard: 1.35 };
+
 export interface GameSettings {
+  difficulty: Difficulty;
   quality: QualityLevel;
   targetFps: 30 | 60;
   dynamicResolution: boolean;
@@ -24,6 +30,7 @@ export interface GameSettings {
 }
 
 export const DEFAULT_SETTINGS: Readonly<GameSettings> = Object.freeze({
+  difficulty: 'normal',
   quality: 'medium',
   targetFps: 60,
   dynamicResolution: true,

@@ -102,6 +102,8 @@ export class EnemyBrain {
   private searchCenter = { x: 0, z: 0 };
   private searchPause = 0;
   private groanTimer: number;
+  /** Seconds of stagger immunity left (prevents melee stun-locking). */
+  private staggerImmunity = 0;
 
   constructor(
     readonly archetype: EnemyArchetype,
@@ -164,7 +166,8 @@ export class EnemyBrain {
     this.awareness = 1;
     this.lastKnown = { x: fromX, z: fromZ };
     this.timeSinceSeen = 0;
-    if (damage >= this.archetype.staggerThreshold || staggerPower >= 1) this.pendingStagger = true;
+    const staggers = damage >= this.archetype.staggerThreshold || staggerPower >= 1;
+    if (staggers && this.staggerImmunity <= 0) this.pendingStagger = true;
     else if (CHASE_START.has(this.fsm.current)) this.fsm.change('chase');
   }
 
@@ -185,6 +188,7 @@ export class EnemyBrain {
       return it;
     }
     this.updateAwareness(dt);
+    if (this.staggerImmunity > 0) this.staggerImmunity -= dt;
     if (this.pendingStagger) {
       this.pendingStagger = false;
       this.fsm.change('stagger');
@@ -350,7 +354,9 @@ export class EnemyBrain {
       tx = s.playerX + Math.sin(s.playerYaw) * 2.5;
       tz = s.playerZ + Math.cos(s.playerYaw) * 2.5;
     }
-    this.moveTo(tx, tz, this.archetype.chaseSpeed, 'run');
+    // Close in with a lunge: up close they match a running player, so escaping costs sprint.
+    const lunge = sees && this.distanceToPlayer() < 4 ? 1.3 : 1;
+    this.moveTo(tx, tz, this.archetype.chaseSpeed * lunge, 'run');
     if (sees) this.lookAt(s.playerX, s.playerZ);
   }
 
@@ -382,7 +388,10 @@ export class EnemyBrain {
   updateStagger(dt: number): EnemyStateId | void {
     this.intent.anim = 'stagger';
     this.timer -= dt;
-    if (this.timer <= 0) return this.senses.playerAlive ? 'chase' : 'returnToPatrol';
+    if (this.timer <= 0) {
+      this.staggerImmunity = 1.6;
+      return this.senses.playerAlive ? 'chase' : 'returnToPatrol';
+    }
   }
 
   enterLoseTarget(): void {

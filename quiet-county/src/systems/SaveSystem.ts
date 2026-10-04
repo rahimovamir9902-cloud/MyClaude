@@ -75,6 +75,8 @@ export interface ProfileState {
   campResources: Record<string, number>;
   recruitedNpcs: string[];
   playTimeSeconds: number;
+  /** Camp facility levels (Phase 3). */
+  facilities?: Partial<Record<string, number>>;
 }
 
 export interface SaveData {

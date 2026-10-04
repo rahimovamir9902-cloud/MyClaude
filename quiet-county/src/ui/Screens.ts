@@ -82,25 +82,29 @@ export function mainMenu(
 
 export function briefingScreen(host: ScreenHost, mission: MissionDef, onBegin: () => void, onBack: () => void): void {
   const s = el('div', 'screen solid', { id: 'briefing' });
-  const panel = el('div', 'panel');
-  panel.append(
+  const panel = el('div', 'panel', { style: 'max-width:980px' });
+  const story = el('div', 'col', { style: 'gap:0' });
+  story.append(
     el('div', 'kicker', {}, `Mission ${String(mission.number).padStart(2, '0')} - ${mission.region}`),
-    el('h2', '', { style: 'font-size:28px;margin-top:4px' }, mission.title),
+    el('h2', '', { style: 'font-size:26px;margin-top:4px' }, mission.title),
     el('div', 'briefing-speaker', {}, `Radio - ${mission.briefing.speaker}`),
   );
   mission.briefing.lines.forEach((line, i) => {
     const p = el('p', 'briefing-line', {}, line);
     p.style.animationDelay = `${0.25 + i * 0.45}s`;
-    panel.append(p);
+    story.append(p);
   });
   const list = el('ul', 'objective-list');
   for (const o of mission.objectives) {
     if (o.revealWhen && o.kind !== 'primary' && o.kind !== 'extraction') continue;
     list.append(el('li', o.kind, {}, o.text, el('span', 'tag', {}, o.kind)));
   }
-  panel.append(el('hr', 'rule'), el('h3', '', {}, 'Objectives'), list);
-  panel.append(
-    el('div', 'row', { style: 'margin-top:12px' },
+  const side = el('div', 'briefing-side col', { style: 'gap:6px' });
+  side.append(
+    el('h3', '', {}, 'Objectives'),
+    list,
+    el('p', 'muted', { style: 'font-size:13px' }, 'Tip: crouch in tall grass, use takedowns from behind, and remember - every gunshot is heard.'),
+    el('div', 'row', { style: 'margin-top:6px' },
       button('Back', () => {
         host.click();
         onBack();
@@ -112,6 +116,7 @@ export function briefingScreen(host: ScreenHost, mission: MissionDef, onBegin: (
       }, 'btn primary', { id: 'btn-begin' }),
     ),
   );
+  panel.append(el('div', 'briefing-grid', {}, story, side));
   s.append(panel);
   host.mount(s);
 }
@@ -299,6 +304,7 @@ export function settingsScreen(host: ScreenHost, current: GameSettings, onChange
   const render = () => {
     grid.innerHTML = '';
     grid.append(
+      select('Difficulty', 'difficulty', [['easy', 'Easy (story)'], ['normal', 'Normal'], ['hard', 'Hard (unforgiving)']]),
       select('Graphics quality', 'quality', (Object.keys(QUALITY_PRESETS) as QualityLevel[]).map((q) => [q, QUALITY_PRESETS[q].label])),
       select('Frame-rate target', 'targetFps', [['30', '30 FPS (battery)'], ['60', '60 FPS']]),
       toggle('Dynamic resolution', 'dynamicResolution'),

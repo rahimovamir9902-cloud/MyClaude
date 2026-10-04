@@ -30,7 +30,7 @@ export function installDebugApi(game: Game): void {
         time: s.time.clock,
         prompt: s.interactions.current?.prompt ?? null,
         stats: s.missions.stats,
-        render: { ...game.renderer.stats },
+        render: { ...game.renderer.stats, simMs: game.simMs, simMsPeak: game.simMsPeak },
         level: s.level.stats,
         bot: { status: bot.status, index: bot.index, done: bot.done, history: bot.history.slice(-30) },
       };
@@ -52,9 +52,14 @@ export function installDebugApi(game: Game): void {
     },
     give: (itemId: string, qty = 1) => game.session?.inventory.add(itemId, qty, {}, 'debug'),
     setTime: (hour: number) => game.session?.time.set(hour),
-    spawn: (archetype: string, x: number, z: number, opts: { dormant?: boolean } = {}) => {
+    spawn: (archetype: string, x: number, z: number, opts: { dormant?: boolean; rot?: number; stay?: boolean } = {}) => {
       getArchetype(archetype);
-      return !!game.session?.enemies.spawn({ id: `debug_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`, archetype: archetype as never, x, z, dormant: opts.dormant });
+      return !!game.session?.enemies.spawn({
+        id: `debug_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        archetype: archetype as never, x, z, rot: opts.rot, dormant: opts.dormant,
+        // A single-point patrol keeps the infected on its spot (deterministic tests).
+        patrol: opts.stay ? [{ x, z }] : undefined,
+      });
     },
     killAll: () => {
       const s = game.session;

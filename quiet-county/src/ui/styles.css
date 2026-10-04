@@ -270,7 +270,7 @@ p { line-height: 1.45; margin: 8px 0; font-size: 16px; }
 .stat b { display: block; font-size: 22px; font-family: var(--mono); font-weight: 500; }
 .stat span { font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
 .reward { color: var(--green); font-size: 15px; padding: 3px 0; }
-.death-title { font-size: clamp(30px, 6vw, 56px); letter-spacing: 0.2em; color: var(--red); }
+.death-title { font-size: clamp(26px, 5vw, 48px); letter-spacing: 0.14em; color: var(--red); text-transform: uppercase; font-weight: 700; line-height: 1.05; }
 
 /* ---------- Settings ---------- */
 .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
@@ -303,3 +303,19 @@ p { line-height: 1.45; margin: 8px 0; font-size: 16px; }
   .menu-wrap { gap: 20px; }
 }
 #results .objective-list li.completed { text-decoration: none; color: var(--text); }
+
+/* Landscape briefing: radio message left, objectives + begin button right. */
+.briefing-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.briefing-side { position: sticky; top: 0; }
+@media (max-width: 640px) { .briefing-grid { grid-template-columns: 1fr; } }
+
+/* Short landscape phones: keep overlays inside 400px of height. */
+@media (max-height: 500px) {
+  #toasts { top: calc(94px + var(--safe-t)); width: min(440px, 48vw); }
+  .toast { font-size: 13px; padding: 5px 10px; }
+  .inv-grid { grid-template-columns: repeat(6, 1fr); gap: 4px; }
+  .slot { aspect-ratio: auto; min-height: 64px; height: 64px; }
+  .slot svg { width: 24px; height: 24px; }
+  .briefing-line { font-size: 15px; margin: 4px 0; }
+  .panel { max-height: calc(100vh - 24px); }
+}

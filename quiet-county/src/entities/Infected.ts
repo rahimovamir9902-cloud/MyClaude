@@ -25,6 +25,8 @@ export interface EnemyHost {
   aimYaw: number;
   isNight(): boolean;
   darkness(): number;
+  /** Multiplier on damage dealt to the player (difficulty). */
+  damageScale(): number;
   neighbors(self: Infected, radius: number): Infected[];
   onVocal(enemy: Infected, vocal: EnemyVocal): void;
   onAlert(enemy: Infected): void;
@@ -293,7 +295,7 @@ export class Infected implements NoiseListener {
     const inRange = this.distanceToPlayer <= a.attackRange + 0.5 && Math.abs(p.y) < 0.6;
     const facing = angleTo(this.yaw, this.x, this.z, p.x, p.z) < 1.3;
     const hit = p.alive && inRange && facing;
-    if (hit) p.takeDamage(a.attackDamage, this.x, this.z, `infected:${a.id}`);
+    if (hit) p.takeDamage(Math.round(a.attackDamage * host.damageScale()), this.x, this.z, `infected:${a.id}`);
     host.onStrike(this, hit);
   }
 

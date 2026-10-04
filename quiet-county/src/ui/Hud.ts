@@ -186,7 +186,8 @@ export class Hud {
     const node = el('div', `toast ${kind}`, {}, text);
     this.toasts.append(node);
     this.toastList.push({ node, life: duration });
-    while (this.toastList.length > 4) this.toastList.shift()!.node.remove();
+    const max = window.innerHeight < 500 ? 3 : 4;
+    while (this.toastList.length > max) this.toastList.shift()!.node.remove();
   }
 
   private hit(killed: boolean): void {

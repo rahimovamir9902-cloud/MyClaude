@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { getItem } from '../config/items';
 import { PLAYER, STARTING_LOADOUT } from '../config/player';
 import type { QualityPreset } from '../config/quality';
-import type { GameSettings } from '../config/settings';
+import { DIFFICULTY_DAMAGE, type GameSettings } from '../config/settings';
 import type { AudioSystem } from '../audio/AudioSystem';
 import { ThirdPersonCamera } from '../camera/ThirdPersonCamera';
 import type { EventBus } from '../core/EventBus';
@@ -184,7 +184,7 @@ export class GameSession implements InteractionHandler {
 
     this.enemies = new EnemyManager(
       this.level.physics, this.paths, bus, this.noise, this.player, ctx.quality, this.world, this.level.spawns,
-      { isNight: () => this.time.isNight, darkness: () => this.time.darkness },
+      { isNight: () => this.time.isNight, darkness: () => this.time.darkness, damageScale: () => DIFFICULTY_DAMAGE[ctx.settings().difficulty] ?? 1 },
       {
         onVocal: (e, vocal) => {
           const pitch = 0.9 + ((e.id.charCodeAt(e.id.length - 1) % 7) / 20);
@@ -342,10 +342,8 @@ export class GameSession implements InteractionHandler {
     const sens = 0.0042;
     this.camera.look(input.lookX * sens * settings.lookSensitivityX, input.lookY * sens * settings.lookSensitivityY * (settings.invertY ? -1 : 1));
 
-    if (this.godMode) {
-      this.player.health.set(this.player.health.max);
-      this.player.stamina.restore(100);
-    }
+    // QA god mode only protects health so stamina/combat behave normally in tests.
+    if (this.godMode) this.player.health.set(this.player.health.max);
     this.player.update(dt, input, this.camera.yaw, this.camera.pitch, this.playerWorld(), settings);
     this.combat.update(dt, input);
     this.interactions.update(dt, input, this.player);

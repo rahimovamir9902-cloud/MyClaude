@@ -55,7 +55,7 @@ export class EnemyManager implements EnemyHost {
     readonly quality: QualityPreset,
     private readonly world: WorldState,
     private readonly spawnDefs: readonly SpawnDef[],
-    private readonly env: { isNight(): boolean; darkness(): number },
+    private readonly env: { isNight(): boolean; darkness(): number; damageScale(): number },
     private readonly callbacks: EnemyCallbacks,
     private readonly shadows: boolean,
   ) {
@@ -68,6 +68,10 @@ export class EnemyManager implements EnemyHost {
 
   darkness(): number {
     return this.env.darkness();
+  }
+
+  damageScale(): number {
+    return this.env.damageScale();
   }
 
   get aliveCount(): number {

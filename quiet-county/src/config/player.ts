@@ -8,7 +8,7 @@ export const PLAYER = Object.freeze({
   crouchChestHeight: 0.85,
 
   walkSpeed: 2.2,
-  runSpeed: 4.5,
+  runSpeed: 4.3,
   sprintSpeed: 6.3,
   crouchSpeed: 1.5,
   aimSpeed: 1.9,

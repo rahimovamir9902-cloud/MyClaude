@@ -63,6 +63,8 @@ const defs: ItemDef[] = [
   { id: 'battery', name: 'Flashlight Battery', category: 'tool', maxStack: 4, weight: 0.05, icon: 'battery', useTime: 0.8, effect: { type: 'battery', amount: 100 }, description: 'Fully recharges the flashlight.' },
   { id: 'glass_bottle', name: 'Empty Bottle', category: 'tool', maxStack: 3, weight: 0.3, icon: 'bottle', description: 'Throw it to make a noise somewhere else.' },
   { id: 'repair_kit', name: 'Repair Kit', category: 'tool', maxStack: 2, weight: 0.6, icon: 'wrench', description: 'Restores weapon durability. (Workshop, Phase 4)' },
+  { id: 'noise_maker', name: 'Rattle Can', category: 'tool', maxStack: 2, weight: 0.4, icon: 'parts', description: 'A taped tin of bolts on a wind-up timer. Throw it, wait, and let it rattle. (Phase 4)' },
+  { id: 'field_ration', name: 'Field Ration', category: 'food', maxStack: 4, weight: 0.3, icon: 'bar', useTime: 1.5, effect: { type: 'nourish', amount: 50, heal: 8 }, description: 'Beans, oats and salt pressed into a brick. Not good. Filling.', campValue: { resource: 'food', amount: 1.5 } },
 
   // Crafting / camp materials
   { id: 'scrap_metal', name: 'Scrap Metal', category: 'material', maxStack: 10, weight: 0.5, icon: 'scrap', description: 'Bent brackets, bolts, sheet offcuts.', campValue: { resource: 'materials', amount: 1 } },

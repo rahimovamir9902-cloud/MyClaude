@@ -1,3 +1,7 @@
+> **This repository contains two independent projects:**
+> - `app/` + `backend/` — **Xitoi**, the Chinese-for-Tajik-speakers learning app (described below).
+> - [`quiet-county/`](quiet-county/README.md) — **Quiet County**, an original third-person survival-action game for Android and iOS.
+
 # Хитоӣ — Омӯзиши забони хитоӣ бо ёрии зеҳни сунъӣ
 
 **Xitoi** is a mobile app for **Google Play** that helps **native Tajik speakers

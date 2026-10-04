@@ -96,3 +96,18 @@ describe('LootSystem', () => {
     }
   });
 });
+
+describe('LootSystem merging', () => {
+  it('merges guaranteed items with rolled duplicates', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const loot = new LootSystem(seed).rollContainer('van', 'medicine_cabinet', [{ itemId: 'bandage', quantity: 2 }]);
+      const ids = loot.map((s) => s.itemId);
+      // Only split when a stack exceeds the max stack size.
+      for (const id of new Set(ids)) {
+        const stacks = loot.filter((s) => s.itemId === id);
+        if (stacks.length > 1) expect(stacks.slice(0, -1).every((s) => s.quantity === ITEMS[id].maxStack)).toBe(true);
+      }
+      expect(loot.filter((s) => s.itemId === 'bandage').reduce((n, s) => n + s.quantity, 0)).toBeGreaterThanOrEqual(2);
+    }
+  });
+});

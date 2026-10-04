@@ -296,6 +296,8 @@ export const SILENT_ROAD_LEVEL: LevelDef = {
       { id: 'siren_2', x: 12, z: -61, group: 'siren_horde' },
       { id: 'siren_3', x: 17, z: -57, group: 'siren_horde' },
       { id: 'siren_4', x: 3, z: -62, group: 'siren_horde' },
+      { id: 'siren_5', x: 22, z: -55, group: 'siren_horde' },
+      { id: 'siren_6', x: -6, z: -56, group: 'siren_horde' },
       { id: 'night_1', x: -31, z: 10, wanderRadius: 10, night: true },
       { id: 'night_2', x: 20, z: 50, wanderRadius: 10, night: true },
     ]),
