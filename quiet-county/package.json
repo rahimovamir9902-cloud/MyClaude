@@ -1,0 +1,37 @@
+{
+  "name": "quiet-county",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Quiet County - an original third-person survival-action game for Android and iOS (vertical slice).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host --port 4173",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "cap:sync": "npm run build && cap sync",
+    "cap:android": "npm run build && cap sync android && cap open android",
+    "cap:ios": "npm run build && cap sync ios && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.5.2",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/screen-orientation": "^8.0.2",
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@playwright/test": "1.56.1",
+    "@types/three": "0.170.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.4.3",
+    "vitest": "^4.1.11"
+  }
+}
