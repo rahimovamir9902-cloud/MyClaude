@@ -795,7 +795,7 @@ export class GameSession implements InteractionHandler {
     return this.missions.objectiveStatus(id);
   }
 
-  /** Infected within `radius`, used by the HUD to draw recent alert pings on the minimap. */
+  /** 0 in daylight .. 1 at night. */
   get darkness(): number {
     return clamp01(this.time.darkness);
   }

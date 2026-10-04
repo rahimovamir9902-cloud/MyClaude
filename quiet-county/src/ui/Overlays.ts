@@ -84,12 +84,19 @@ export function inventoryOverlay(host: ScreenHost, inv: Inventory, equippedSlot:
       actions.equip(selected);
       refresh();
     }, 'btn small', { id: 'btn-equip' }));
-    if (!def.quest) row.append(button('Discard', () => {
-      if (confirm(`Discard ${def.name}? It will be lost.`)) {
-        actions.drop(selected);
-        refresh();
-      }
-    }, 'btn small danger'));
+    if (!def.quest) {
+      // Two-tap confirm (native dialogs look out of place in the mobile WebView).
+      const discard = button('Discard', () => {
+        if (discard.dataset.armed) {
+          actions.drop(selected);
+          refresh();
+          return;
+        }
+        discard.dataset.armed = '1';
+        discard.textContent = 'Tap again to discard';
+      }, 'btn small danger', { id: 'btn-discard' });
+      row.append(discard);
+    }
     detail.append(row);
   };
   refresh();
